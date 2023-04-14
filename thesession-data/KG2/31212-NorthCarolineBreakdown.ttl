@@ -1,0 +1,785 @@
+@prefix jams: <http://w3id.org/polifonia/ontology/jams/> .
+@prefix mc: <http://w3id.org/polifonia/ontology/musical-composition/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://w3id.org/polifonia/resource/JAMSAnnotation/0df9adb8642feaba69300d20b9692c1f9bfb2ba3> a jams:JAMSAnnotation ;
+    jams:includesObservation <http://w3id.org/polifonia/resource/JAMSObservation/048d27e6bdd9776469668c6d1b7bc866ea6d299e>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/04cb5c15c265a29ba5c185b8f2b2ae7d54ed37dc>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/062edddc957a8eb21cbd1d66b7b7c72fe2a960e1>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/07aefbca6826505e3b338d13a32c30832eb156b4>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/0c30cd299966f908d4ae674cc8dcf5847f97f2cb>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/0c44803a9f9a0a8ff4548af1b0c2e5a6ad7fc7e3>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/12ad6aa95b8970dc373ffa659a01d6c39594d3f2>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/153fe930614685eed916ee3829fad906e73fa2b1>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/19e9f2e7ca4f78fc313098dfbdd981ff941945f9>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/1fc9261d1fd7d712ec8c800afd7b324779a15048>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/203d7837e82e2a79827ad47d1faca812b60b1b83>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/235f3c40b84012e79b8a42ee4f5c027c84728d7a>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/24e917275138d69418f793a372730943fac6b830>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/2b44ffb8df9991abb40fdbb0d4bbe6dd4e76a29d>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/2bacf273e3fd673fc86bce8a56d8f4b52b285862>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/2eef500f0d7c65e23001e74271b9f945dd820ce4>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/354b77171a5a4a90353ef913f22a918b358be450>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/45c46ae4ba4227005109f864c2ffcb0a21a273d6>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/476900f9af5f61ed8d267fcd77317851eae12d98>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/4a92e6370fe2b22c1217cf133c1ce42294ad7d88>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/4af8436ddd769fe0fd57d5a48b384c166e1ec120>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/4b3992dca78e458961d6a0a6adf82370b29bf8b5>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/51b46fb487156c812ea6456a3e64c6da41efbea7>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/56bb8df9f07daee98ef2eaa806cea5e0927538b6>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/592b04789075437f44fc69d9c547c0e0f12f9530>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/59387517c52a6c8dea374f2cf73640ae1369f8a2>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/5d1a010aecbff2b6f7aa4f716cb794c32eb92bac>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/5dd5b39b089147bb77914888b13fd6ad021d759d>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/630463723025453713eb21846139de14c674df72>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/69fb6939e24024619cd80f484326888c2460a7ac>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/6a295163386df3313ee6edd1f0f337c211ea1e24>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/6e56d0c855acf5b7bea4df0e8fd1e47d1048414c>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/6f546ee2ead6c1d20e24fd9233b1123c00b8f3f2>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/70b539b2b44d95e2b170bae9d532464ce0c58454>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/710e825b1c396445a05ca1c0daca5e86036539d6>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/71ccb7d07deb5124c7215675b79e558af5ff3a80>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/7753c0280b14895a8865963ae376c6885e5a036a>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/77fe908f0f46eea6117e3a130ee0c16ee1e301a2>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/7f0c8e443b3057a5be1a6db6da653292920d5118>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/815cfde4201f1c11cda27cdebe4d6f2ddfc66ea0>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/85da091e3584ee61e77e072de7daafdbeb83f4ea>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/85e082fa64e905e60e13e2f6f67b509cdfba0f2e>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/87400b6add914a91498925066f7c2b843b58049b>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/87d1fade38479b53008a15f29b4a5bcee6b07d0a>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/87fa19258d51ba03c55f83a5b4a83c774ff08c0b>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/89a8fe044f41d7a18532a1656ffd2945b39ad906>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/8a9f33dc4cdcc284bb060e21c58133c264444d0b>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/8d34c7785d268bdc6391e67cb8d8e0ac18f32802>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/9a052450f5d720c7097ccab0249f06a37bafc364>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/a95f59b7e995f5b73fa1c8ada48e9e969b572a32>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/abed1bd3c10af32a74e1b9f35e7a8e1d2eca505f>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/ad1636f5be8f50b1d65320ad943c37d5e9fc448b>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/ae0ee74f4d58c22a81e7641a42e514d11cf0d9eb>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/b303623f2af79e9761a87c7b4dea28539e583d67>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/b3e789b6c95799fb64163132d5a32e26f44cf5db>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/b7e14055e4a5c9e0849f3156b25a9517a6682076>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/bef4b9a865754af5b10c9ff10ef6a72488f62266>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/c1939a99acface8fc1931bd184d7712086115a68>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/c43ea4f5544a1fcf5e231e3c72efe4786f9ca66e>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/c85f340f8e6e05fa96d173921aade08dbab51931>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/c8d33a6b5a16ea70edced53cd221fae5e6b38d23>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/c9c3054fab7da2c49ba844f4f591902ac2a33946>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/cacf6ca8349ff9d94e6d2513c1413d39a38b243b>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/cad03ad7648842775398374b421d4738f1bbb7d2>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/cad3902ab9de9521107bab6a82c8d114936e6dda>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/cc85409f0d412dccf6d91dabc9940dcfba66107f>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/cd041847377e5e89ed550d00ac1ff471bf8590ae>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/cd819846682ca7cd9d582c30843e82ec7e5df22c>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/cfeac5a561189d22c3dbb5688b312738b346e6ec>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/d401e19ce074afad4d45d7962f2c75edc7a5e6ba>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/d5a6004be1483236da810b612621b4464d9ae6c5>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/d8960e342b770d3d49b93e65c34e1c729d95c34d>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/d93fe13fec1b2d0eb838ab664b93c780cb9a09a1>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/dbe9885b0c3b4090aeda6ac82b62e13e367c610a>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/e3b73e5bfb05cc110ab1b02d6375559b5ac62ff3>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/e521081fe66b2dd3ebe29b615093b10258c9eed9>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/e6aa13c63f03e55c02bc0b87f02bb25c420cdd6a>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/ee7decec13f9ddc7a582e6087d905313b58371de>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/efd153db5bcc4647ba2c602e4ec555ddea8f388d>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/f0045d9e0c869b51d346d16786708f8ece3fefb7>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/f90fdfb3df4aa91ab0deb57962a7129bfe3aee1a>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/fb42d900cf51f288c45dd7b759fadec643fcba36>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/fce7ff04ee8858d1f0986ac22a8fe61e21e42b4b>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/fd3661b4c97741e440cf129fb105d2b3b39735e9> ;
+    jams:isJAMSAnnotationOf <http://w3id.org/polifonia/resource/MusicalComposition/68c9349f907e2459e606832ebe8f5259e52221ac> .
+
+<http://w3id.org/polifonia/resource/JAMSFile/68c9349f907e2459e606832ebe8f5259e52221ac> a jams:JAMSFile ;
+    jams:beatsDuration 3.4e+01 ;
+    jams:jamsVersion "0.3.4" ;
+    jams:release "n-grams patterns-kg 1.0" ;
+    prov:wasDerivedFrom "The Session" ;
+    prov:wasMemberOf <https://github.com/ashahidkhattak/thesession> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/048d27e6bdd9776469668c6d1b7bc866ea6d299e> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.5"^^xsd:float ;
+    jams:hasPatternLocation "71.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/5_1_6_6_6_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/04cb5c15c265a29ba5c185b8f2b2ae7d54ed37dc> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.83"^^xsd:float ;
+    jams:hasPatternLocation "80.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/5_6_6_3_2_1> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/062edddc957a8eb21cbd1d66b7b7c72fe2a960e1> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.6"^^xsd:float ;
+    jams:hasPatternLocation "41.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/1_6_5_1_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/07aefbca6826505e3b338d13a32c30832eb156b4> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.6"^^xsd:float ;
+    jams:hasPatternLocation "51.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/5_5_6_6_3> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/0c30cd299966f908d4ae674cc8dcf5847f97f2cb> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.5"^^xsd:float ;
+    jams:hasPatternLocation "60.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/3_1_6_1_6_1> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/0c44803a9f9a0a8ff4548af1b0c2e5a6ad7fc7e3> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.75"^^xsd:float ;
+    jams:hasPatternLocation "12.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/1_6_5_1> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/12ad6aa95b8970dc373ffa659a01d6c39594d3f2> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.5"^^xsd:float ;
+    jams:hasPatternLocation "6.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/1_6_1_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/153fe930614685eed916ee3829fad906e73fa2b1> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.33"^^xsd:float ;
+    jams:hasPatternLocation "73.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/6_6_6_6_5_5> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/19e9f2e7ca4f78fc313098dfbdd981ff941945f9> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.5"^^xsd:float ;
+    jams:hasPatternLocation "72.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/1_6_6_6_6_5> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/1fc9261d1fd7d712ec8c800afd7b324779a15048> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.5"^^xsd:float ;
+    jams:hasPatternLocation "19.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/6_5_5_5> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/203d7837e82e2a79827ad47d1faca812b60b1b83> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.5"^^xsd:float ;
+    jams:hasPatternLocation "7.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/6_1_6_1> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/235f3c40b84012e79b8a42ee4f5c027c84728d7a> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.8"^^xsd:float ;
+    jams:hasPatternLocation "52.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/5_6_6_3_2> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/24e917275138d69418f793a372730943fac6b830> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.5"^^xsd:float ;
+    jams:hasPatternLocation "15.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/1_6_6_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/2b44ffb8df9991abb40fdbb0d4bbe6dd4e76a29d> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "1.0"^^xsd:float ;
+    jams:hasPatternLocation "27.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/2_1_6_5> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/2bacf273e3fd673fc86bce8a56d8f4b52b285862> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.5"^^xsd:float ;
+    jams:hasPatternLocation "57.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/1_6_1_3_1_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/2eef500f0d7c65e23001e74271b9f945dd820ce4> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "1.0"^^xsd:float ;
+    jams:hasPatternLocation "55.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/3_2_1_6_5> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/354b77171a5a4a90353ef913f22a918b358be450> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.8"^^xsd:float ;
+    jams:hasPatternLocation "40.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/3_1_6_5_1> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/45c46ae4ba4227005109f864c2ffcb0a21a273d6> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.6"^^xsd:float ;
+    jams:hasPatternLocation "32.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/3_1_6_1_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/476900f9af5f61ed8d267fcd77317851eae12d98> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.33"^^xsd:float ;
+    jams:hasPatternLocation "76.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/6_5_5_5_5_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/4a92e6370fe2b22c1217cf133c1ce42294ad7d88> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.67"^^xsd:float ;
+    jams:hasPatternLocation "79.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/5_5_6_6_3_2> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/4af8436ddd769fe0fd57d5a48b384c166e1ec120> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.75"^^xsd:float ;
+    jams:hasPatternLocation "1.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/6_1_3_1> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/4b3992dca78e458961d6a0a6adf82370b29bf8b5> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.67"^^xsd:float ;
+    jams:hasPatternLocation "81.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/6_6_3_2_1_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/51b46fb487156c812ea6456a3e64c6da41efbea7> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.4"^^xsd:float ;
+    jams:hasPatternLocation "45.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/6_6_6_6_5> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/56bb8df9f07daee98ef2eaa806cea5e0927538b6> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.4"^^xsd:float ;
+    jams:hasPatternLocation "33.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/1_6_1_6_1> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/592b04789075437f44fc69d9c547c0e0f12f9530> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.8"^^xsd:float ;
+    jams:hasPatternLocation "56.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/2_1_6_5_1> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/59387517c52a6c8dea374f2cf73640ae1369f8a2> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.5"^^xsd:float ;
+    jams:hasPatternLocation "22.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/5_5_6_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/5d1a010aecbff2b6f7aa4f716cb794c32eb92bac> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.75"^^xsd:float ;
+    jams:hasPatternLocation "8.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/1_6_1_3> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/5dd5b39b089147bb77914888b13fd6ad021d759d> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.6"^^xsd:float ;
+    jams:hasPatternLocation "43.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/5_1_6_6_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/630463723025453713eb21846139de14c674df72> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.83"^^xsd:float ;
+    jams:hasPatternLocation "82.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/6_3_2_1_6_5> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/69fb6939e24024619cd80f484326888c2460a7ac> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.4"^^xsd:float ;
+    jams:hasPatternLocation "48.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/6_5_5_5_5> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/6a295163386df3313ee6edd1f0f337c211ea1e24> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.6"^^xsd:float ;
+    jams:hasPatternLocation "36.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/6_1_6_1_3> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/6e56d0c855acf5b7bea4df0e8fd1e47d1048414c> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.75"^^xsd:float ;
+    jams:hasPatternLocation "2.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/1_3_1_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/6f546ee2ead6c1d20e24fd9233b1123c00b8f3f2> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.75"^^xsd:float ;
+    jams:hasPatternLocation "3.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/3_1_6_1> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/70b539b2b44d95e2b170bae9d532464ce0c58454> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.75"^^xsd:float ;
+    jams:hasPatternLocation "24.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/6_6_3_2> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/710e825b1c396445a05ca1c0daca5e86036539d6> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.25"^^xsd:float ;
+    jams:hasPatternLocation "20.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/5_5_5_5> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/71ccb7d07deb5124c7215675b79e558af5ff3a80> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.75"^^xsd:float ;
+    jams:hasPatternLocation "14.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/5_1_6_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/7753c0280b14895a8865963ae376c6885e5a036a> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.6"^^xsd:float ;
+    jams:hasPatternLocation "42.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/6_5_1_6_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/77fe908f0f46eea6117e3a130ee0c16ee1e301a2> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.33"^^xsd:float ;
+    jams:hasPatternLocation "74.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/6_6_6_5_5_5> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/7f0c8e443b3057a5be1a6db6da653292920d5118> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.6"^^xsd:float ;
+    jams:hasPatternLocation "31.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/1_3_1_6_1> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/815cfde4201f1c11cda27cdebe4d6f2ddfc66ea0> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.75"^^xsd:float ;
+    jams:hasPatternLocation "28.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/1_6_5_1> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/85da091e3584ee61e77e072de7daafdbeb83f4ea> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "1.0"^^xsd:float ;
+    jams:hasPatternLocation "26.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/3_2_1_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/85e082fa64e905e60e13e2f6f67b509cdfba0f2e> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.67"^^xsd:float ;
+    jams:hasPatternLocation "66.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/6_1_3_1_6_5> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/87400b6add914a91498925066f7c2b843b58049b> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.8"^^xsd:float ;
+    jams:hasPatternLocation "54.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/6_3_2_1_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/87d1fade38479b53008a15f29b4a5bcee6b07d0a> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.5"^^xsd:float ;
+    jams:hasPatternLocation "69.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/1_6_5_1_6_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/87fa19258d51ba03c55f83a5b4a83c774ff08c0b> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.8"^^xsd:float ;
+    jams:hasPatternLocation "39.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/1_3_1_6_5> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/89a8fe044f41d7a18532a1656ffd2945b39ad906> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.33"^^xsd:float ;
+    jams:hasPatternLocation "61.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/1_6_1_6_1_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/8a9f33dc4cdcc284bb060e21c58133c264444d0b> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.6"^^xsd:float ;
+    jams:hasPatternLocation "30.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/6_1_3_1_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/8d34c7785d268bdc6391e67cb8d8e0ac18f32802> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.6"^^xsd:float ;
+    jams:hasPatternLocation "29.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/1_6_1_3_1> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/9a052450f5d720c7097ccab0249f06a37bafc364> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.75"^^xsd:float ;
+    jams:hasPatternLocation "13.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/6_5_1_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/a95f59b7e995f5b73fa1c8ada48e9e969b572a32> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.33"^^xsd:float ;
+    jams:hasPatternLocation "75.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/6_6_5_5_5_5> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/abed1bd3c10af32a74e1b9f35e7a8e1d2eca505f> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "1.0"^^xsd:float ;
+    jams:hasPatternLocation "11.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/3_1_6_5> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/ad1636f5be8f50b1d65320ad943c37d5e9fc448b> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.5"^^xsd:float ;
+    jams:hasPatternLocation "63.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/1_6_1_6_1_3> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/ae0ee74f4d58c22a81e7641a42e514d11cf0d9eb> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.25"^^xsd:float ;
+    jams:hasPatternLocation "16.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/6_6_6_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/b303623f2af79e9761a87c7b4dea28539e583d67> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.5"^^xsd:float ;
+    jams:hasPatternLocation "18.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/6_6_5_5> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/b3e789b6c95799fb64163132d5a32e26f44cf5db> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.4"^^xsd:float ;
+    jams:hasPatternLocation "34.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/6_1_6_1_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/b7e14055e4a5c9e0849f3156b25a9517a6682076> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.6"^^xsd:float ;
+    jams:hasPatternLocation "37.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/1_6_1_3_1> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/bef4b9a865754af5b10c9ff10ef6a72488f62266> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.5"^^xsd:float ;
+    jams:hasPatternLocation "4.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/1_6_1_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/c1939a99acface8fc1931bd184d7712086115a68> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.5"^^xsd:float ;
+    jams:hasPatternLocation "17.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/6_6_6_5> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/c43ea4f5544a1fcf5e231e3c72efe4786f9ca66e> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.5"^^xsd:float ;
+    jams:hasPatternLocation "65.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/1_6_1_3_1_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/c85f340f8e6e05fa96d173921aade08dbab51931> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.5"^^xsd:float ;
+    jams:hasPatternLocation "59.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/1_3_1_6_1_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/c8d33a6b5a16ea70edced53cd221fae5e6b38d23> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.75"^^xsd:float ;
+    jams:hasPatternLocation "0.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/1_6_1_3> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/c9c3054fab7da2c49ba844f4f591902ac2a33946> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.8"^^xsd:float ;
+    jams:hasPatternLocation "53.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/6_6_3_2_1> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/cacf6ca8349ff9d94e6d2513c1413d39a38b243b> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.5"^^xsd:float ;
+    jams:hasPatternLocation "21.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/5_5_5_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/cad03ad7648842775398374b421d4738f1bbb7d2> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.4"^^xsd:float ;
+    jams:hasPatternLocation "44.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/1_6_6_6_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/cad3902ab9de9521107bab6a82c8d114936e6dda> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.4"^^xsd:float ;
+    jams:hasPatternLocation "46.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/6_6_6_5_5> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/cc85409f0d412dccf6d91dabc9940dcfba66107f> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "1.0"^^xsd:float ;
+    jams:hasPatternLocation "25.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/6_3_2_1> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/cd041847377e5e89ed550d00ac1ff471bf8590ae> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.75"^^xsd:float ;
+    jams:hasPatternLocation "23.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/5_6_6_3> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/cd819846682ca7cd9d582c30843e82ec7e5df22c> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.75"^^xsd:float ;
+    jams:hasPatternLocation "9.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/6_1_3_1> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/cfeac5a561189d22c3dbb5688b312738b346e6ec> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.5"^^xsd:float ;
+    jams:hasPatternLocation "5.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/6_1_6_1> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/d401e19ce074afad4d45d7962f2c75edc7a5e6ba> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.33"^^xsd:float ;
+    jams:hasPatternLocation "62.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/6_1_6_1_6_1> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/d5a6004be1483236da810b612621b4464d9ae6c5> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.6"^^xsd:float ;
+    jams:hasPatternLocation "38.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/6_1_3_1_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/d8960e342b770d3d49b93e65c34e1c729d95c34d> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.67"^^xsd:float ;
+    jams:hasPatternLocation "68.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/3_1_6_5_1_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/d93fe13fec1b2d0eb838ab664b93c780cb9a09a1> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.4"^^xsd:float ;
+    jams:hasPatternLocation "50.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/5_5_5_6_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/dbe9885b0c3b4090aeda6ac82b62e13e367c610a> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.67"^^xsd:float ;
+    jams:hasPatternLocation "67.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/1_3_1_6_5_1> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/e3b73e5bfb05cc110ab1b02d6375559b5ac62ff3> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.5"^^xsd:float ;
+    jams:hasPatternLocation "64.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/6_1_6_1_3_1> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/e521081fe66b2dd3ebe29b615093b10258c9eed9> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.5"^^xsd:float ;
+    jams:hasPatternLocation "70.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/6_5_1_6_6_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/e6aa13c63f03e55c02bc0b87f02bb25c420cdd6a> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.5"^^xsd:float ;
+    jams:hasPatternLocation "58.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/6_1_3_1_6_1> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/ee7decec13f9ddc7a582e6087d905313b58371de> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.83"^^xsd:float ;
+    jams:hasPatternLocation "83.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/3_2_1_6_5_1> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/efd153db5bcc4647ba2c602e4ec555ddea8f388d> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.75"^^xsd:float ;
+    jams:hasPatternLocation "10.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/1_3_1_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/f0045d9e0c869b51d346d16786708f8ece3fefb7> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.4"^^xsd:float ;
+    jams:hasPatternLocation "49.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/5_5_5_5_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/f90fdfb3df4aa91ab0deb57962a7129bfe3aee1a> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.4"^^xsd:float ;
+    jams:hasPatternLocation "35.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/1_6_1_6_1> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/fb42d900cf51f288c45dd7b759fadec643fcba36> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.4"^^xsd:float ;
+    jams:hasPatternLocation "47.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/6_6_5_5_5> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/fce7ff04ee8858d1f0986ac22a8fe61e21e42b4b> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.33"^^xsd:float ;
+    jams:hasPatternLocation "77.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/5_5_5_5_6_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/fd3661b4c97741e440cf129fb105d2b3b39735e9> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.5"^^xsd:float ;
+    jams:hasPatternLocation "78.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/5_5_5_6_6_3> .
+
+<http://w3id.org/polifonia/resource/MusicalComposition/68c9349f907e2459e606832ebe8f5259e52221ac> a mc:MusicalComposition ;
+    rdfs:label "North Caroline Breakdown" ;
+    jams:beatsDuration "34.0"^^xsd:float ;
+    jams:key <http://w3id.org/polifonia/resource/key/Gmajor> ;
+    jams:timeSignature <http://w3id.org/polifonia/resource/timesig/4_4> ;
+    jams:transcriber <http://w3id.org/polifonia/resource/transcriber/MarcusDisessa> ;
+    jams:tuneContent "|:G2 GGED EF|GFGA Bdef|1 g2 f2 ed ef|gagf edBA:|2 g2 f2 edBA|dBAF G2G2|||:e2 e2 e2e2|ee e2 e2e2|d2 d2 d2d2|dd d2 d2d2|e3 z|e3 z|b2 bbag ef|gagf edBA|dBAF G2G2||" ;
+    jams:tuneFamily <http://w3id.org/polifonia/resource/tunefamily/> ;
+    jams:tuneId "31212" ;
+    jams:tuneType <http://w3id.org/polifonia/resource/tunetype/reel> ;
+    mc:title "North Caroline Breakdown" ;
+    prov:wasDerivedFrom <http://w3id.org/polifonia/resource/JAMSFile/68c9349f907e2459e606832ebe8f5259e52221ac> .
+

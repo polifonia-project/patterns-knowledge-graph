@@ -1,0 +1,83 @@
+@prefix jams: <http://w3id.org/polifonia/ontology/jams/> .
+@prefix mc: <http://w3id.org/polifonia/ontology/musical-composition/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://w3id.org/polifonia/resource/JAMSAnnotation/65fcfb7d947c93fb99c495940e996fac2b5ddbe9> a jams:JAMSAnnotation ;
+    jams:includesObservation <http://w3id.org/polifonia/resource/JAMSObservation/203e107a76cd2b5db332315063e9ad8a2d80cf67>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/3a98abeed91d333a383f448e1f4fbe5cd56082d6>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/a8b5813728a0bd32a0dba6c7613b39c4f3c335d8>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/cf82749cf47c18fb31d7ec0dfe6e052f60d27ab7>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/e070af9a63e0419ddff4aa34f6c8af94a9b62c6c>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/ec165313ecbac3340fc83f385772e33af56728a4> ;
+    jams:isJAMSAnnotationOf <http://w3id.org/polifonia/resource/MusicalComposition/c8770bab57ec87c612633cb99706fa943d71a3e9> .
+
+<http://w3id.org/polifonia/resource/JAMSFile/c8770bab57ec87c612633cb99706fa943d71a3e9> a jams:JAMSFile ;
+    jams:beatsDuration 8e+00 ;
+    jams:jamsVersion "0.3.4" ;
+    jams:release "n-grams patterns-kg 1.0" ;
+    prov:wasDerivedFrom "The Session" ;
+    prov:wasMemberOf <https://github.com/ashahidkhattak/thesession> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/203e107a76cd2b5db332315063e9ad8a2d80cf67> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.5"^^xsd:float ;
+    jams:hasPatternLocation "2.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/6_1_6_1> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/3a98abeed91d333a383f448e1f4fbe5cd56082d6> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.5"^^xsd:float ;
+    jams:hasPatternLocation "1.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/1_6_1_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/a8b5813728a0bd32a0dba6c7613b39c4f3c335d8> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.75"^^xsd:float ;
+    jams:hasPatternLocation "0.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/5_1_6_1> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/cf82749cf47c18fb31d7ec0dfe6e052f60d27ab7> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.4"^^xsd:float ;
+    jams:hasPatternLocation "4.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/1_6_1_6_1> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/e070af9a63e0419ddff4aa34f6c8af94a9b62c6c> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.6"^^xsd:float ;
+    jams:hasPatternLocation "3.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/5_1_6_1_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/ec165313ecbac3340fc83f385772e33af56728a4> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.5"^^xsd:float ;
+    jams:hasPatternLocation "5.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/5_1_6_1_6_1> .
+
+<http://w3id.org/polifonia/resource/MusicalComposition/c8770bab57ec87c612633cb99706fa943d71a3e9> a mc:MusicalComposition ;
+    rdfs:label "Around The House And Mind The Dresser" ;
+    jams:beatsDuration "8.0"^^xsd:float ;
+    jams:key <http://w3id.org/polifonia/resource/key/Dmajor> ;
+    jams:timeSignature <http://w3id.org/polifonia/resource/timesig/12_8> ;
+    jams:transcriber <http://w3id.org/polifonia/resource/transcriber/aidriano> ;
+    jams:tuneContent "g|:fef A2 A BAB G2 g|fef A2 A B3 g3|fef A2 A BAB G2 g|faf gec d3 d2 g:||:faf afd ege gec|f/g/af afd f3 a3|faf afd ege gec|f2 d gec d3 d2 g:|" ;
+    jams:tuneFamily <http://w3id.org/polifonia/resource/tunefamily/> ;
+    jams:tuneId "28079" ;
+    jams:tuneType <http://w3id.org/polifonia/resource/tunetype/slide> ;
+    mc:title "Around The House And Mind The Dresser" ;
+    prov:wasDerivedFrom <http://w3id.org/polifonia/resource/JAMSFile/c8770bab57ec87c612633cb99706fa943d71a3e9> .
+
