@@ -1,0 +1,83 @@
+@prefix jams: <http://w3id.org/polifonia/ontology/jams/> .
+@prefix mc: <http://w3id.org/polifonia/ontology/musical-composition/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://w3id.org/polifonia/resource/JAMSAnnotation/4762329cb32d875c9ff75cee932f5302c9fbe395> a jams:JAMSAnnotation ;
+    jams:includesObservation <http://w3id.org/polifonia/resource/JAMSObservation/02a6923bc58713f42062c98cb660c3b44e8af1ea>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/50523c2f1823c97c90aac2c53f4413bf02834d9e>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/557359b87b9aae49bcdf1bd544b384783a481de0>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/59037b9605458828ca8d9de67dda40d4efddc9bc>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/7d5ff683221226cc14257b42e7d7132482dc9622>,
+        <http://w3id.org/polifonia/resource/JAMSObservation/dfbac616f67f5af383d3abb88235fd5516da1c84> ;
+    jams:isJAMSAnnotationOf <http://w3id.org/polifonia/resource/MusicalComposition/4762329cb32d875c9ff75cee932f5302c9fbe395> .
+
+<http://w3id.org/polifonia/resource/JAMSFile/4762329cb32d875c9ff75cee932f5302c9fbe395> a jams:JAMSFile ;
+    jams:beatsDuration 8e+00 ;
+    jams:jamsVersion "0.3.4" ;
+    jams:release "n-grams patterns-kg 1.0" ;
+    prov:wasDerivedFrom "The Session" ;
+    prov:wasMemberOf <https://github.com/ashahidkhattak/thesession> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/02a6923bc58713f42062c98cb660c3b44e8af1ea> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.67"^^xsd:float ;
+    jams:hasPatternLocation "5.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/3_4_3_6_3_2> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/50523c2f1823c97c90aac2c53f4413bf02834d9e> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.75"^^xsd:float ;
+    jams:hasPatternLocation "0.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/3_4_3_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/557359b87b9aae49bcdf1bd544b384783a481de0> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.75"^^xsd:float ;
+    jams:hasPatternLocation "2.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/3_6_3_2> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/59037b9605458828ca8d9de67dda40d4efddc9bc> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.8"^^xsd:float ;
+    jams:hasPatternLocation "4.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/4_3_6_3_2> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/7d5ff683221226cc14257b42e7d7132482dc9622> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.6"^^xsd:float ;
+    jams:hasPatternLocation "3.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/3_4_3_6_3> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/dfbac616f67f5af383d3abb88235fd5516da1c84> a jams:JAMSObservation,
+        jams:JAMSScoreObservation,
+        jams:ScorePatternOccurrence ;
+    jams:hasPatternComplexity "0.75"^^xsd:float ;
+    jams:hasPatternLocation "1.0"^^xsd:float ;
+    jams:hasPatternType "pitch-class-values" ;
+    jams:ofPattern <http://w3id.org/polifonia/resource/pattern/4_3_6_3> .
+
+<http://w3id.org/polifonia/resource/MusicalComposition/4762329cb32d875c9ff75cee932f5302c9fbe395> a mc:MusicalComposition ;
+    rdfs:label "Ar Lan Y Mor" ;
+    jams:beatsDuration "8.0"^^xsd:float ;
+    jams:key <http://w3id.org/polifonia/resource/key/Gmajor> ;
+    jams:timeSignature <http://w3id.org/polifonia/resource/timesig/3_4> ;
+    jams:transcriber <http://w3id.org/polifonia/resource/transcriber/ceolachan> ;
+    jams:tuneContent "Bars 4 & 8 ~|c2 B4-|B4 z2||Bar 12 ~|E2 G4-|G4 z2||Bar 16 ~|A2 G4-|G4 z2||" ;
+    jams:tuneFamily <http://w3id.org/polifonia/resource/tunefamily/> ;
+    jams:tuneId "20471" ;
+    jams:tuneType <http://w3id.org/polifonia/resource/tunetype/waltz> ;
+    mc:title "Ar Lan Y Mor" ;
+    prov:wasDerivedFrom <http://w3id.org/polifonia/resource/JAMSFile/4762329cb32d875c9ff75cee932f5302c9fbe395> .
+
