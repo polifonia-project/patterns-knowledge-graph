@@ -1,0 +1,30 @@
+# These directories will be used by the code
+directories:
+  # 1. Pickle to Dictionary settings
+  # This file will be read from the 'music_pattern_directory' directory
+  pickle_pattern_locations_file        : ./music_patterns_pickle/thesession_27_04_23_kg_data.pkl
+  #metadata csv file, this file will be used to retrieve the metadata of tunes
+  metadata_csv_file: ./music_patterns_pickle/thesession_metadata.csv
+
+  # JAMS files will be created for each tune and they will be saved in 'JAMS_files_directory'
+  # NOTE: here we need absolute path - this is requirement for SPARQL query
+  JAMS_files_dir         : D:/Python-Projects/JAMS-Annotation/JAMS-pipeline/JAMS/thesession/
+  # 2. Dictionary to JAMS - Settings
+  # schema directory
+  schemas_directory : ./schemas
+  # schema file
+  schema_file :  pattern_fonn.json
+
+jams_annotations:
+  # 1. Pickle to Dictionary settings
+  # no setting required
+  # 2. pickle to jams
+  corpus_name : thesession
+  annotator_name : Danny Diamond
+  data_source : program
+  corpus : The Session
+  version : 1
+  email : d.diamond1@nuigalway.ie
+  annotation_tools : FONN-Tool
+  schema_name : pattern_fonn
+  tune_base_url : https://thesession.org/tunes/
