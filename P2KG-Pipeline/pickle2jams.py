@@ -26,31 +26,25 @@ KG_Data = NamedTuple('KG_Data', [
 
 # Generating JAMS files the given pickle file.
 class GenerateTunesJamsFile:
-    config = []
-    jams_files_completions_status = 1
-    tunes_metadata = []
-    pattern_locations_in_tunes = ()
+    config = tunes_metadata = []
+    pickle_pattern_information = ()
     KG_Data = None
     def __init__(self,  config):
         print("The first step of JAMS Pipeline stated: pickle to JAMS creation")
-        pattern_dict = {}
-        self.filtered_df = pd.DataFrame()
         self.listOfTunes = []
         self.path = ""
-        patterns_data = {}
         self.config = config
-        self.jams_files_completions_status = 1
         if not os.path.isdir(self.config['directories']['JAMS_files_dir']):
             os.makedirs(self.config['directories']['JAMS_files_dir'])
 
         self.__read_relevant_files()
 
     def __read_relevant_files(self):
-        pattern_locations_kg_data = self.__read_file(
-           self.config['directories']['pickle_pattern_locations_file'])
+        pattern_info_kg_data = self.__read_file(
+           self.config['directories']['pickle_pattern_information'])
 
-        self.pattern_locations_in_tunes = pd.DataFrame.from_records(
-            [x for x in pattern_locations_kg_data],
+        self.pickle_pattern_information = pd.DataFrame.from_records(
+            [x for x in pattern_info_kg_data],
             columns=KG_Data._fields
         )
 
