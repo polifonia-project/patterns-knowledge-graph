@@ -7,22 +7,7 @@ import re
 import yaml
 import os
 import logging
-from typing import NamedTuple
-
-# This is very important to define KG_Data in the Global scope
-# becuase the Pickle file define KG_Data otherwise it would
-# throw an error message.
-KG_Data = NamedTuple('KG_Data', [
-    ('id_number', str),
-    ('tune_title', str),
-    ('tune_family', str),
-    ('feature', str),
-    ('level', str),
-    ('n_vals', tuple),
-    ('duration_beats', int),
-    ('locations', dict),
-    ('feature_sequence_data', list)
-])
+from kgdata_namedtuple import KG_Data
 
 # Generating JAMS files the given pickle file.
 class GenerateTunesJamsFile:

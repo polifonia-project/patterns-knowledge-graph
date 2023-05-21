@@ -4,19 +4,7 @@ import pickle2jams as pickle2jams
 import jams2rdf as jams2rdf
 from multiprocessing import Process
 import logging
-from typing import NamedTuple
-
-KG_Data = NamedTuple('KG_Data', [
-    ('id_number', str),
-    ('tune_title', str),
-    ('tune_family', str),
-    ('feature', str),
-    ('level', str),
-    ('n_vals', tuple),
-    ('duration_beats', int),
-    ('locations', dict),
-    ('feature_sequence_data', list)
-])
+from kgdata_namedtuple import KG_Data
 
 class JAMSPipeline:
     config = dict2jams_config = jams2rdf_config = []
