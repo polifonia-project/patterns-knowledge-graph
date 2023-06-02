@@ -1,7 +1,7 @@
 ---
 component-id: P2KG Pipeline
-name: P2KG - Pattern to Knowledge garph JAMS Pipline
-description: This code takes the patterns generate by the FONN tool in the form of pickle file and then creates knowlege graph of the all the patterns found in different tunes.
+name: P2KG - Pattern to Knowledge graph JAMS Pipline
+description: This code takes the patterns generate by the FoNN tool in the form of pickle file and then creates knowledge graph of the all the patterns found in different tunes.
 type: Repository
 release-date: 01/12/2022
 release-number: v0.1.0.1-dev
@@ -18,7 +18,7 @@ credits:
 ---
 
 # P2KG - Patterns to Knowledge Graph JAMS Pipeline
-- Targetting the goals of Polifonia WP3 package, P2KG JAMS Pipeline creates the knowlege graph of the patterns generate by FONN tools. The details of directory and files are given below:
+- Targeting the goals of Polifonia WP3 package, P2KG JAMS Pipeline creates the knowledge graph of the patterns generate by [FoNN](https://github.com/polifonia-project/folk_ngram_analysis). The details of directory and files are given below:
 - **Directories**
   - ``config`` 
     - ``config.yml`` => this file contains configurations related to pickle file location and JAMS annotations such as ``music_pattern_directory`` and ``corpus_name`` etc. You need to update these settings before executing the pipeline 
@@ -31,7 +31,7 @@ credits:
       - ``feature`` => such as "diatonic pitch class"
       - ``level`` => information such as "accent" or "note" level
       - ``n_vals`` => n-gram information such as "(4, 5, 6)"
-      - ``duration_beats`` => the tune duration lenght, e.g. 34
+      - ``duration_beats`` => the tune duration length, e.g. 34
       - ``locations`` => pattern information should follow this structure, Dictionay of patterns in tuple and then its locations in a the list, e.g., "{(3, 4, 3, 2): [0, 8], (4, 3, 2, 3): [1, 9]}" 
       - ``feature_sequence_data``=> feature sequent data, list of pitch class values, [3, 4, 3, .... ] 
     - ``thesession_metadata.csv`` => This file contains metadata of each tune, it should follow the following structure
@@ -47,16 +47,16 @@ credits:
     - ``pattern_fonn.json`` => this is a JAMS schema file, it is required for creating proper JAMS file. For each tune (in the pickle file) a corresponding JAMS file will be generated.
   - ``sparql_anything``
     - ``jams_ontology_pattern.sparql`` => this is the query the SPARQL Anything Engine require to create an RDF file for a given JAMS file. 
-    - ``sa.jar`` => this is SPARQL Anything engine, you can can download the latest release from [SPARQL-Anything GitHub link](https://github.com/SPARQL-Anything/sparql.anything/releases/tag/v0.8.0).  
+    - ``sa.jar`` => this is SPARQL Anything engine, you can download the latest release from [SPARQL-Anything GitHub link](https://github.com/SPARQL-Anything/sparql.anything/releases/tag/v0.8.0).  
   - ``tests`` => this folder contain test cases (TODO- to be developed) 
   - ``JAMS``=> .jams file will be created in this folder for a corpus, for example, all The Session corpus files will go inside "thesession" folder
-  - ``RDF`` => All RDF files, .ttl files will be create inside this folder. for example, all The Session corpus files will go inside "thesession" folder
+  - ``RDF`` => All RDF files, .ttl files will be created inside this folder. for example, all The Session corpus files will go inside "thesession" folder
   
 NOTE: Apart from these folders, you will find the following important .py files 
 
   ``pattern2kg_pipeline.py`` => this is the starting file, you can start process by executing this file. It will first create all the jams files and then it will create rdf files
   
-  ``pattern2kg_pipeline_parallel.py`` => this file can used if you want to execute the whole process in parallel (parallelized version of the above file). However, most of the time you will not need to run this file.
+  ``pattern2kg_pipeline_parallel.py`` => this file can be used if you want to execute the whole process in parallel (parallelized version of the above file). However, most of the time you will not need to run this file.
   
   ``pickle2jams.py``=> this file is responsible for creating .jams files in the JAMS folder
   
@@ -64,10 +64,10 @@ NOTE: Apart from these folders, you will find the following important .py files
     
 ## P2KG JAMS Pipeline:
 1. **P2KG - General Steps**
-   * 1.1. Input: Patterns generated using FONN tool in the form of pickle file.
+   * 1.1. Input: Patterns generated using FoNN in the form of pickle file.
    * 1.2. Process: [JAMS Annotation] (https://jams.readthedocs.io/en/stable/) - JAMS files are created using custom pattern schema, you can find in the ``schema`` folder. 
    * 1.3. Process: [SPARQL Anything Engine] (https://sparql-anything.cc/) - It takes JAMS file and create KG. 
-   * 1.4. Output: Knowlege Graph of pattern is created, a demo of created KG can be accessed on [polifonia server] (https://polifonia.disi.unibo.it/fonn/sparql). 
+   * 1.4. Output: Knowledge Graph of pattern is created, a demo of created KG can be accessed on [polifonia server] (https://polifonia.disi.unibo.it/fonn/sparql). 
    
 ## P2KG - Requirements
 
