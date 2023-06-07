@@ -1,6 +1,3 @@
-# patterns-knowledge-graph
-The Patterns Knowledge Graph contains data about patterns extracted using the [FONN tools](https://github.com/polifonia-project/folk_ngram_analysis).
-
 ---
 component-id: patterns-knowledge-graph
 name: Patterns Knowledge Graph
@@ -20,3 +17,6 @@ credits:
 - https://github.com/jmmcd
 - https://github.com/danDiamo
 ---
+
+# patterns-knowledge-graph
+The Patterns Knowledge Graph contains data about patterns extracted using the [FONN tools](https://github.com/polifonia-project/folk_ngram_analysis).
