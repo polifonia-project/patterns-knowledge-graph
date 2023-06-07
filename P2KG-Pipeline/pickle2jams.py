@@ -7,7 +7,11 @@ import re
 import yaml
 import os
 import logging
+import glob
+import sys
+
 from kgdata_namedtuple import KG_Data
+
 
 # Generating JAMS files the given pickle file.
 class GenerateTunesJamsFile:
@@ -25,14 +29,24 @@ class GenerateTunesJamsFile:
         self.__read_relevant_files()
 
     def __read_relevant_files(self):
-        pattern_info_kg_data = self.__read_file(
-           self.config['directories']['pickle_pattern_information'])
 
+        # read one or more pickle files. each pickle is a list of KG_Data. We extend.
+        pkl_filename = self.config['directories']['pickle_pattern_information']
+        print("pkl_filename", pkl_filename)
+        pkl_filenames = glob.glob(pkl_filename)
+        print("pkl_filenames", pkl_filenames)
+        pattern_info_kg_data = []
+        for pkl_filename in pkl_filenames:
+            pattern_info_kg_data.extend(self.__read_file(pkl_filename))
+
+        # create a DataFrame
         self.pickle_pattern_information = pd.DataFrame.from_records(
             [x for x in pattern_info_kg_data],
             columns=KG_Data._fields
         )
+        # print(self.pickle_pattern_information.head())
 
+        # read the metadata csv
         self.tunes_metadata = self.__read_file(self.config["directories"]["metadata_csv_file"], "csv")
 
     # getter method
@@ -45,9 +59,9 @@ class GenerateTunesJamsFile:
                 with open(fileName, 'rb') as f:
                     data = pickle.load(f)
             else:
-                data = pd.read_csv(fileName, encoding='utf-8')
+                data = pd.read_csv(fileName, encoding='utf-8', dtype={"identifiers": "string", "transcriber": "string"})
             return data
-        except KeyError:
+        except KeyError: # TODO if a key is missing in the pickle, we'll get a partial pickle... this should not pass silently.
             # Key is not present
             pass
 
@@ -68,28 +82,47 @@ class GenerateTunesJamsFile:
         schema_file_name = dir+'/'+schema
         jams.schema.add_namespace(schema_file_name)
         tuneJAMSFile = jams.JAMS()
-        feature_sequence_data = str(tuneRow['feature_sequence_data'])
+        feature_sequence_data = str(tuneRow['data'])
 
         tuneJAMSFile.file_metadata.identifiers = {
             "tune-corpus": corpus,
-            "url": self.config['jams_annotations']['tune_base_url']+tuneRow["id_number"]
+            "url": self.config['jams_annotations']['tune_base_url']+tuneRow["identifiers"]
         }
-        tuneJAMSFile.file_metadata.title = tuneRow['tune_title']
+        tuneJAMSFile.file_metadata.title = tuneRow['title']
         tuneJAMSFile.file_metadata.release = "n-grams patterns-kg 1.0"
-        tuneJAMSFile.file_metadata.duration = float(tuneRow['duration_beats'])
+        tuneJAMSFile.file_metadata.duration = float(tuneRow['duration'])
+
+        # print(self.tunes_metadata)
 
         if (len(self.tunes_metadata) > 1):
-            metadata_row = self.tunes_metadata.loc[self.tunes_metadata['X'] == int(tuneRow["id_number"])]
-            if len(metadata_row) >= 1:
-                tuneJAMSFile.sandbox.content = metadata_row.iloc[0]["score"]
+
+            # changed from using int(identifiers) to using just title, for MTC, for now
+            metadata_row = self.tunes_metadata.loc[self.tunes_metadata['identifiers'] == tuneRow["identifiers"]]
+            if len(metadata_row) == 0:
+                logging.warning(f'No match: no matching row') # TODO improve error / warning messages
+                print(self.tunes_metadata['identifiers'])
+                print(tuneRow["identifiers"])
+                sys.exit()
+
+            elif len(metadata_row) > 1:
+                logging.warning(f'Overmatch: more than one matching row')
+                print(tuneRow["identifiers"])
+                sys.exit()
+                
+            else:
+
+                print("YES, we are populationg the sandbox")
+                metadata_row = metadata_row.iloc[0] 
+                tuneJAMSFile.sandbox.content = metadata_row["score"] if "score" in metadata_row else "" # raw abc score
                 tuneJAMSFile.sandbox.feature_data = feature_sequence_data
-                tuneJAMSFile.sandbox.transcriber = metadata_row.iloc[0]["Z"]
-                tuneJAMSFile.sandbox.tunetype = metadata_row.iloc[0]["R"]
-                tuneJAMSFile.sandbox.tunefamily = str(tuneRow['tune_family'])
-                tuneJAMSFile.sandbox.key = metadata_row.iloc[0]["K"]
-                tuneJAMSFile.sandbox.timesig = metadata_row.iloc[0]["M"]
-                tuneJAMSFile.sandbox.tuneid = str(tuneRow["id_number"])
-                title = re.sub(r'\d+', '', metadata_row.iloc[0]["Formatted_title"]).strip()
+                # tuneJAMSFile.sandbox.transcriber = metadata_row["transcriber"] if "transcriber" in metadata_row else "" # abc Z "transcription"
+                tuneJAMSFile.sandbox.tunetype = metadata_row["rhythm"] if "rhythm" in metadata_row else "" # abc R "rhythm" eg jig, reel 
+                tuneJAMSFile.sandbox.tunefamily = metadata_row["tune_family"] if "tune_family" in metadata_row else "" # 
+                tuneJAMSFile.sandbox.key = metadata_row["key"] if "key" in metadata_row else "" # abc K, ie key
+                tuneJAMSFile.sandbox.timesig = metadata_row["meter"] if "meter" in metadata_row else "" # abc M, ie meter
+                tuneJAMSFile.sandbox.tuneid = str(tuneRow["identifiers"])
+                #title = re.sub(r'\d+', '', metadata_row["title"]).strip() # TODO fix this hard-coded digit removal
+                title = metadata_row["title"]
                 tuneJAMSFile.sandbox.formatted_title = title
                 tuneJAMSFile.file_metadata.title = title
 
@@ -126,25 +159,27 @@ class GenerateTunesJamsFile:
     def createJAMSFilesUsingNewPickleFile(self):
         counter = 1
         blank_count = 0
-        for index, tuneRow in self.pattern_locations_in_tunes.iterrows():
-            print(counter, tuneRow['id_number'], tuneRow['tune_title'])
-            if(len(tuneRow['tune_title']) == 0):
+        for index, tuneRow in self.pickle_pattern_information.iterrows():
+            print(counter, tuneRow['identifiers'], tuneRow['title'])
+            if(len(tuneRow['title']) == 0):
                 blank_count = blank_count + 1
+                print("we are continuing for some reason...")
+                sys.exit()
                 continue
-            file_exists = os.path.exists(self.config['directories']['JAMS_files_dir'] + tuneRow['id_number']+"-"+tuneRow['tune_title'] + ".jams")
-            if file_exists:
-                counter = counter + 1
-                continue
+            file_exists = os.path.exists(self.config['directories']['JAMS_files_dir'] + tuneRow['identifiers']+"-"+tuneRow['title'] + ".jams")
+            # if file_exists:
+            #     counter = counter + 1
+            #     continue
             tuneJAMSFile = self.__setCurrentTuneJamsMetadata(tuneRow)
             pattern_annotation = self.__createJAMSAnnotation(self.config['jams_annotations']['schema_name'])
-            pattern_details =  tuneRow['locations']
+            pattern_details =  tuneRow['pattern_locations']
 
             for pattern, pattern_locations in pattern_details.items():
                 for location in pattern_locations:
                     pattern_dict = {
-                        "pattern_id": str(tuneRow['id_number']) + ":" + tuneRow['tune_title'],
+                        "pattern_id": str(tuneRow['identifiers']) + ":" + tuneRow['title'], # is this the tune id or pattern id?
                         "pattern_content": str(pattern).strip("()"),
-                        "pattern_type": "pitch-class-values",
+                        "pattern_type": self.config['jams_annotations']['pattern_type'], # should be constructed on the fly, but for now its coded in the config
                         "pattern_frequency": len(pattern_locations),
                         "pattern_complexity": round(len(set(pattern)) / len(pattern), 2),
                         "pattern_length": len(pattern),
@@ -153,7 +188,7 @@ class GenerateTunesJamsFile:
 
             counter = counter + 1
             tuneJAMSFile.annotations.append(pattern_annotation)
-            tuneJAMSFile.save(self.config['directories']['JAMS_files_dir'] + tuneRow['id_number']+"-"+ tuneRow['tune_title'] + ".jams", strict=False)
+            tuneJAMSFile.save(self.config['directories']['JAMS_files_dir'] + tuneRow['identifiers']+"-"+ tuneRow['title'] + ".jams", strict=False)
 
     # Deprecated function
     def createJAMSFiles(self):
@@ -169,7 +204,7 @@ class GenerateTunesJamsFile:
             #tune_feature_data = self.pattern_locations_in_tunes[tuneName].get(tune_feature_data)
             tune_id = self.getTuneId(tuneName)
             m_tune_id = self.getMorphedTuneId(tuneName)
-            pattern_details_row = self.pattern_locations_in_tunes.loc[(self.pattern_locations_in_tunes['id_number'] == m_tune_id)]
+            pattern_details_row = self.pickle_pattern_information.loc[(self.pattern_locations_in_tunes['identifiers'] == m_tune_id)]
 
             print(f"tune id: {tune_id}, m_tune_id: {m_tune_id}, tunename: {tuneName}, pattern_location: {len(pattern_details_row)}, pattern_freq: {len(rslt_df)}")
             #continue
@@ -182,7 +217,7 @@ class GenerateTunesJamsFile:
                 # 40152 files are there in pattern file while in location file there are
                 # 40148 record
                 if(len(pattern_details_row) >= 1):
-                    pattern_locations_dict = pattern_details_row.iloc[0]['locations']
+                    pattern_locations_dict = pattern_details_row.iloc[0]['pattern_locations']
                     if(pattern_content in pattern_locations_dict):
                         locations = pattern_locations_dict[pattern_content]
                         my_list = locations
@@ -194,12 +229,24 @@ class GenerateTunesJamsFile:
                     logging.warning(f'Mismatch: {tuneName} was not found in pattern location pickel file ')
                     my_list = []
 
+                # TODO: our KG is incomplete and is not clear on the distinction between pattern occurrence and pattern contents.
+                # Eg we have:
+                '''
+<http://w3id.org/polifonia/resource/JAMSObservation/87958cf18e061ce2bb458fd64e1be93077165d66>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.5"^^xsd:float ;
+        jams:hasPatternLocation    "43.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=4" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/4_4_3_3> .
+'''
+                # this has complexity, location, type as properties of the occurrence instead of the pattern
+                # and it doesn't seem to show contents or length at all.
                 for location in my_list:
                     #print(my_list, len(set(pattern_content)), len(v))
                     pattern_dict = {
                         "pattern_id": str(tune_id) + ":" + tuneName,
                         "pattern_content": str(pattern_content).strip("()"),
-                        "pattern_type": "pitch-class-values",
+                        "pattern_type": self.config['jams_annotations']['pattern_type'],
                         "pattern_frequency": len(my_list),
                         "pattern_complexity": round(len(set(pattern_content)) / len(pattern_content), 2),
                         "pattern_length": len(pattern_content),

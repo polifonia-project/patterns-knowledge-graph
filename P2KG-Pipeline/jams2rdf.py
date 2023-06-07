@@ -7,12 +7,11 @@ import os.path
 from rdflib import Graph, URIRef
 
 class JAMS2RDF:
-    query_current = query_test = namespace= rdf_directory= jams_files_dirctory = ""
+    query_test = namespace= rdf_directory= jams_files_dirctory = ""
     config = []
     jams2rdf_obj = None
     # constructor of the class for initialiazing various class level variables
     def __init__(self, config, jams_files_dirctory, jams2rdf_obj):
-        self.query_current = config['directories']['query_current_file']
         self.sparql_query_file = config['directories']['sparql_query_file']
         self.rdf_directory = config['directories']['rdf_directory']
         if not os.path.isdir(self.rdf_directory):
@@ -29,27 +28,35 @@ class JAMS2RDF:
         input_filename_with_ext = os.path.basename(input_file)
         jams_file, ext = os.path.splitext(input_filename_with_ext)
         input_file_dir_name = os.path.dirname(input_file)
-        input_file = input_file_dir_name +"/"+ input_filename_with_ext
-        with open(self.sparql_query_file, 'r') as r:
-            query_for_file = r.read().replace("%FILEPATH%", input_file)
-            with open(self.query_current, 'w') as w:
-                w.write(query_for_file)
+        # input_file = input_file_dir_name +"/"+ input_filename_with_ext
+        print(input_filename_with_ext, output)
+        # change here: no need to have a template query and replace the filename.
+        # instead, hard-code the filename as tmp.jams, and copy the input .jams file there
+        check_output(['cp', input_file, './sparql_anything/tmp.jams'])        
         g = Graph()
+        os.chdir(self.config["directories"]["query_dir"])
         try:
             out = check_output(["java", "-jar",
                                 self.config["directories"]["sparql_anything_jar_file"],
                                 "-q",
-                                self.query_current
+                                self.config["directories"]["sparql_query_file"],
+                                "-o",
+                                output
                                 ])
-            g.parse(out)
+            # print(out)
+            # g.parse(out)
         except CalledProcessError as e:
             print(e)
             print("Output graph is empty for {}".format(input_file))
+        os.chdir("..")
 
-        if output:
-            with open(output, 'w', encoding='utf-8') as wo:
-                wo.write(g.serialize(format=output_format))
-        os.remove(self.query_current)
+        # previous method was to parse the output to a Graph and serialise
+        # but for now, we are just going to write the output straight to disk
+        # I'm keeping this code in case we revert later.
+        # if output:
+        #     with open(output, 'w', encoding='utf-8') as wo:
+        #         wo.write(g.serialize(format=output_format))
+
 
     # this function will iterate over JAMS directory
     def iterateThroughDirectory(self):
