@@ -4,13 +4,10 @@
 from typing import NamedTuple
 KG_Data = NamedTuple('KG_Data', [
     ('identifiers', str),
-    ('title', str),
-    # ('tune_family', str), # not used in MTC
     ('feature', str),
     ('level', str),
     ('n_vals', tuple),
-    ('duration', int), # was 'duration_beats'
+    ('duration', int),
     ('pattern_locations', dict),
-    ('data', list)
+    ('data', list),
 ])
-

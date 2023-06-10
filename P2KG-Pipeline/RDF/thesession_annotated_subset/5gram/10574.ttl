@@ -1,0 +1,69 @@
+@prefix chord:        <http://purl.org/ontology/chord/> .
+@prefix core:         <http://w3id.org/polifonia/ontology/core/> .
+@prefix fx:           <http://sparql.xyz/facade-x/ns/> .
+@prefix jams:         <http://w3id.org/polifonia/ontology/jams/> .
+@prefix mc:           <http://w3id.org/polifonia/ontology/musical-composition/> .
+@prefix mf:           <http://w3id.org/polifonia/ontology/musical-features/> .
+@prefix mp:           <http://w3id.org/polifonia/ontology/musical-performance/> .
+@prefix poly:         <http://w3id.org/polifonia/ontology/polychord/> .
+@prefix pon-resource: <http://w3id.org/polifonia/resource/> .
+@prefix prov:         <http://www.w3.org/ns/prov#> .
+@prefix rdf:          <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:         <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix roman:        <http://w3id.org/polifonia/ontology/roman/> .
+@prefix xsd:          <http://www.w3.org/2001/XMLSchema#> .
+@prefix xyz:          <http://sparql.xyz/facade-x/data/> .
+
+<http://w3id.org/polifonia/resource/MusicalComposition/532fa2c5d35fce50951191d385beece3fad96dc7>
+        rdf:type             mc:MusicalComposition ;
+        rdfs:label           "Yankee Doodle" ;
+        jams:beatsDuration   "17.0"^^xsd:float ;
+        jams:key             <http://w3id.org/polifonia/resource/key/> ;
+        jams:timeSignature   <http://w3id.org/polifonia/resource/timesig/> ;
+        jams:tuneContent     "" ;
+        jams:tuneFamily      <http://w3id.org/polifonia/resource/tunefamily/Road_to_Lisdoonvarna> ;
+        jams:tuneId          "10574" ;
+        jams:tuneType        <http://w3id.org/polifonia/resource/tunetype/> ;
+        mc:title             "Yankee Doodle" ;
+        prov:wasDerivedFrom  <http://w3id.org/polifonia/resource/JAMSFile/532fa2c5d35fce50951191d385beece3fad96dc7> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/944ee93cb90a149e95685fad3c386d4814ac1fb8>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.6"^^xsd:float ;
+        jams:hasPatternLocation    "9.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=5" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/5_3_6_6_5> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/fab83d4bc1746e2425c8a5d921fa01e877e5dceb>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.2"^^xsd:float ;
+        jams:hasPatternLocation    "0.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=5" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/1_1_1_1_1> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/4f1bad7a142f26940e799e1f6d4d0adbb8ca0fed>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.6"^^xsd:float ;
+        jams:hasPatternLocation    "8.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=5" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/6_5_3_6_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/480e043945742c73339fb58f5b02153594ad03e7>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.8"^^xsd:float ;
+        jams:hasPatternLocation    "7.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=5" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/1_6_5_3_6> .
+
+<http://w3id.org/polifonia/resource/JAMSAnnotation/532fa2c5d35fce50951191d385beece3fad96dc7>
+        rdf:type                  jams:JAMSAnnotation ;
+        jams:includesObservation  <http://w3id.org/polifonia/resource/JAMSObservation/944ee93cb90a149e95685fad3c386d4814ac1fb8> , <http://w3id.org/polifonia/resource/JAMSObservation/fab83d4bc1746e2425c8a5d921fa01e877e5dceb> , <http://w3id.org/polifonia/resource/JAMSObservation/480e043945742c73339fb58f5b02153594ad03e7> , <http://w3id.org/polifonia/resource/JAMSObservation/4f1bad7a142f26940e799e1f6d4d0adbb8ca0fed> ;
+        jams:isJAMSAnnotationOf   <http://w3id.org/polifonia/resource/MusicalComposition/532fa2c5d35fce50951191d385beece3fad96dc7> .
+
+<http://w3id.org/polifonia/resource/JAMSFile/532fa2c5d35fce50951191d385beece3fad96dc7>
+        rdf:type             jams:JAMSFile ;
+        jams:beatsDuration   "17.0"^^xsd:double ;
+        jams:jamsVersion     "0.3.4" ;
+        jams:release         "n-grams patterns-kg 1.0" ;
+        prov:wasDerivedFrom  "The Session" ;
+        prov:wasMemberOf     <https://github.com/ashahidkhattak/thesession> .

@@ -1,0 +1,447 @@
+@prefix chord:        <http://purl.org/ontology/chord/> .
+@prefix core:         <http://w3id.org/polifonia/ontology/core/> .
+@prefix fx:           <http://sparql.xyz/facade-x/ns/> .
+@prefix jams:         <http://w3id.org/polifonia/ontology/jams/> .
+@prefix mc:           <http://w3id.org/polifonia/ontology/musical-composition/> .
+@prefix mf:           <http://w3id.org/polifonia/ontology/musical-features/> .
+@prefix mp:           <http://w3id.org/polifonia/ontology/musical-performance/> .
+@prefix poly:         <http://w3id.org/polifonia/ontology/polychord/> .
+@prefix pon-resource: <http://w3id.org/polifonia/resource/> .
+@prefix prov:         <http://www.w3.org/ns/prov#> .
+@prefix rdf:          <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:         <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix roman:        <http://w3id.org/polifonia/ontology/roman/> .
+@prefix xsd:          <http://www.w3.org/2001/XMLSchema#> .
+@prefix xyz:          <http://sparql.xyz/facade-x/data/> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/7de5225127d9a90ec6954145359938db04c6fcc5>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.33"^^xsd:float ;
+        jams:hasPatternLocation    "22.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/3_3_6_6_6_3> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/1110b74e810443b8164ed19a4b1e29e2d047f70d>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.67"^^xsd:float ;
+        jams:hasPatternLocation    "83.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/3_2_6_7_3_2> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/830e2e7a006fe4afe06fa4e86d3a8888cccbdae0>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.67"^^xsd:float ;
+        jams:hasPatternLocation    "89.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/6_2_3_2_6_7> .
+
+<http://w3id.org/polifonia/resource/JAMSFile/6dc6f9edd9083f5234772520d6f086f57b84cedb>
+        rdf:type             jams:JAMSFile ;
+        jams:beatsDuration   "98.0"^^xsd:double ;
+        jams:jamsVersion     "0.3.4" ;
+        jams:release         "n-grams patterns-kg 1.0" ;
+        prov:wasDerivedFrom  "The Session" ;
+        prov:wasMemberOf     <https://github.com/ashahidkhattak/thesession> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/f89e5990d3fcd87a690fdfcfbdf53f64aa514d9c>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.67"^^xsd:float ;
+        jams:hasPatternLocation    "40.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/6_4_7_3_6_4> .
+
+<http://w3id.org/polifonia/resource/JAMSAnnotation/6dc6f9edd9083f5234772520d6f086f57b84cedb>
+        rdf:type                  jams:JAMSAnnotation ;
+        jams:includesObservation  <http://w3id.org/polifonia/resource/JAMSObservation/93be4ae9bd885f8c8f7f8bf4b352980a8dda0658> , <http://w3id.org/polifonia/resource/JAMSObservation/b3fd6281e74bca3da7be91127762cd46d397dba5> , <http://w3id.org/polifonia/resource/JAMSObservation/dce2dcf2920490caafcee4bca474ae3c4bf94ce7> , <http://w3id.org/polifonia/resource/JAMSObservation/e40181cef2100a272f766bb23273167d8df521c0> , <http://w3id.org/polifonia/resource/JAMSObservation/617ef67f15aa3363a2bc4230db90edd869892c70> , <http://w3id.org/polifonia/resource/JAMSObservation/9266a03d91c6921bd99ebea20a76933f031ae630> , <http://w3id.org/polifonia/resource/JAMSObservation/06a6dd46cc4d751c46ced04a9718b658fa2d928e> , <http://w3id.org/polifonia/resource/JAMSObservation/dafae932b9ac5f36c2fa02c1e1a861bf5b6bc94f> , <http://w3id.org/polifonia/resource/JAMSObservation/682aabf122f835bc3fe92611ea488a39b75f5980> , <http://w3id.org/polifonia/resource/JAMSObservation/b61f91992a093c1e4271afe5542e689d475378db> , <http://w3id.org/polifonia/resource/JAMSObservation/37ffd0ab368ee394b3e4bddbda62d271089adc74> , <http://w3id.org/polifonia/resource/JAMSObservation/d928690b50571709eab2e97911895c878273f079> , <http://w3id.org/polifonia/resource/JAMSObservation/6f7118700ab9090e85247a1695eefdb1fdd2b679> , <http://w3id.org/polifonia/resource/JAMSObservation/1110b74e810443b8164ed19a4b1e29e2d047f70d> , <http://w3id.org/polifonia/resource/JAMSObservation/01961a7daa236cf70540b1a710edce475b673b16> , <http://w3id.org/polifonia/resource/JAMSObservation/6b68ffbd9559ed2eabe43fc4fe39cfd45c3ca5ab> , <http://w3id.org/polifonia/resource/JAMSObservation/9648c65c9a3eb88607e3237849d8168fd3171b81> , <http://w3id.org/polifonia/resource/JAMSObservation/a062bcbbc6a730a129a3f27ba9593584ffe5ae9f> , <http://w3id.org/polifonia/resource/JAMSObservation/4a2f88944939485c41482b99cdf19ba9a827438e> , <http://w3id.org/polifonia/resource/JAMSObservation/f525fbaff30352523b883b711dd6558c98356d99> , <http://w3id.org/polifonia/resource/JAMSObservation/e11af5a38cd30a46d7bcb16347e431a9c73427c7> , <http://w3id.org/polifonia/resource/JAMSObservation/c2d988981b4f90a697fe4ccef49d8136134d7123> , <http://w3id.org/polifonia/resource/JAMSObservation/3b08e1473cc28dc6ccbcbc43e265e206fa2ade5d> , <http://w3id.org/polifonia/resource/JAMSObservation/8fe365651421974225ccb1b3207c58156704be43> , <http://w3id.org/polifonia/resource/JAMSObservation/2d793da1625b7aa9ec6db35764fb59cabf4487eb> , <http://w3id.org/polifonia/resource/JAMSObservation/563b4d59c81a2ffabcba99aa65637eda7850c109> , <http://w3id.org/polifonia/resource/JAMSObservation/ce08974e8675364f24cca12b12f565e8c8286c78> , <http://w3id.org/polifonia/resource/JAMSObservation/528998d17435dda477322b62e05d568e2cbb8eeb> , <http://w3id.org/polifonia/resource/JAMSObservation/03ed47aa14f31b633cd0a61fb1fd7fa909b527fb> , <http://w3id.org/polifonia/resource/JAMSObservation/79db36c4e44c1a38121210dc19d639513bbcbf09> , <http://w3id.org/polifonia/resource/JAMSObservation/f89e5990d3fcd87a690fdfcfbdf53f64aa514d9c> , <http://w3id.org/polifonia/resource/JAMSObservation/31009ab66de7f63ada5e4b52cd17c6abef910b23> , <http://w3id.org/polifonia/resource/JAMSObservation/6709b46b3b66b22f0c2b207b0b9ee789cbb69b70> , <http://w3id.org/polifonia/resource/JAMSObservation/7b20d5ef23cf925e14a8b14f4d4edc26c1f80917> , <http://w3id.org/polifonia/resource/JAMSObservation/1d0e4194f272bc1e813807ce3cc9c320f807c955> , <http://w3id.org/polifonia/resource/JAMSObservation/e9975f2e66da20cecb5cf4d175ee50ad4df52508> , <http://w3id.org/polifonia/resource/JAMSObservation/9535f810b9c3155715830beb91d986a3b9da6fc0> , <http://w3id.org/polifonia/resource/JAMSObservation/1f0b7f3b50376db0dfd382cdc72d5bae8ffe6d22> , <http://w3id.org/polifonia/resource/JAMSObservation/29228aa1bd6a8715354b76965763101fbc6b448e> , <http://w3id.org/polifonia/resource/JAMSObservation/7563a1f709fd8b7c4d0efd678637a93a3d1177cd> , <http://w3id.org/polifonia/resource/JAMSObservation/d95a20deb9dae72808963e9fa8ba24549a531656> , <http://w3id.org/polifonia/resource/JAMSObservation/0845f4e464565c8319aef65040536053ac62260a> , <http://w3id.org/polifonia/resource/JAMSObservation/8f68e45822180d31945bee96cb26357d6a702cb3> , <http://w3id.org/polifonia/resource/JAMSObservation/ab679a87c8fa4cbfffbcff99a63e89bf793faab4> , <http://w3id.org/polifonia/resource/JAMSObservation/8e40a100c4614f2d49f39b96818e51a317da7ecc> , <http://w3id.org/polifonia/resource/JAMSObservation/1520a51c18f3ff5ecc535c85185df863d303d051> , <http://w3id.org/polifonia/resource/JAMSObservation/b1a849afba0272a4753d65d70e1aec2cee1f2712> , <http://w3id.org/polifonia/resource/JAMSObservation/7de5225127d9a90ec6954145359938db04c6fcc5> , <http://w3id.org/polifonia/resource/JAMSObservation/e66f80e168f5d815794344dc60c4a2fc482a1843> , <http://w3id.org/polifonia/resource/JAMSObservation/d99e741118c50203aaddcdce0e8b21b3a54df5c7> , <http://w3id.org/polifonia/resource/JAMSObservation/2215250b91f35cf7e3b461a07a59668fd9bd36f1> , <http://w3id.org/polifonia/resource/JAMSObservation/ee97f6962fbb7e97fc83e15afa4741b905b460ad> , <http://w3id.org/polifonia/resource/JAMSObservation/946df681ce619619b8705fdc28ee77d3d370cca2> , <http://w3id.org/polifonia/resource/JAMSObservation/fa6c9821305618f07ec780c682f4fa5636bd9627> , <http://w3id.org/polifonia/resource/JAMSObservation/830e2e7a006fe4afe06fa4e86d3a8888cccbdae0> , <http://w3id.org/polifonia/resource/JAMSObservation/f1f9e484233eb07d7bd3428495835e66b6f3342a> , <http://w3id.org/polifonia/resource/JAMSObservation/9f87769b42d1bafa394fd1903db086508078870b> , <http://w3id.org/polifonia/resource/JAMSObservation/d9ca191b2d0d40b6625fbe91c2fa31ce1b13d3ae> ;
+        jams:isJAMSAnnotationOf   <http://w3id.org/polifonia/resource/MusicalComposition/6dc6f9edd9083f5234772520d6f086f57b84cedb> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/e9975f2e66da20cecb5cf4d175ee50ad4df52508>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.67"^^xsd:float ;
+        jams:hasPatternLocation    "59.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/7_2_7_3_7_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/d928690b50571709eab2e97911895c878273f079>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.67"^^xsd:float ;
+        jams:hasPatternLocation    "14.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/3_3_6_4_7_3> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/6f7118700ab9090e85247a1695eefdb1fdd2b679>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.67"^^xsd:float ;
+        jams:hasPatternLocation    "42.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/7_3_6_4_3_3> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/9f87769b42d1bafa394fd1903db086508078870b>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.67"^^xsd:float ;
+        jams:hasPatternLocation    "34.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/6_3_4_7_3_3> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/2d793da1625b7aa9ec6db35764fb59cabf4487eb>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.33"^^xsd:float ;
+        jams:hasPatternLocation    "6.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/3_3_6_6_6_3> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/03ed47aa14f31b633cd0a61fb1fd7fa909b527fb>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.33"^^xsd:float ;
+        jams:hasPatternLocation    "29.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/6_3_3_6_6_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/ab679a87c8fa4cbfffbcff99a63e89bf793faab4>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.5"^^xsd:float ;
+        jams:hasPatternLocation    "80.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/2_6_2_3_2_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/682aabf122f835bc3fe92611ea488a39b75f5980>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.67"^^xsd:float ;
+        jams:hasPatternLocation    "39.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/3_6_4_7_3_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/1f0b7f3b50376db0dfd382cdc72d5bae8ffe6d22>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.67"^^xsd:float ;
+        jams:hasPatternLocation    "85.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/6_7_3_2_6_2> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/9648c65c9a3eb88607e3237849d8168fd3171b81>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.67"^^xsd:float ;
+        jams:hasPatternLocation    "81.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/6_2_3_2_6_7> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/79db36c4e44c1a38121210dc19d639513bbcbf09>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.67"^^xsd:float ;
+        jams:hasPatternLocation    "43.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/3_6_4_3_3_2> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/b3fd6281e74bca3da7be91127762cd46d397dba5>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.5"^^xsd:float ;
+        jams:hasPatternLocation    "73.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/2_6_7_6_2_7> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/e11af5a38cd30a46d7bcb16347e431a9c73427c7>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.67"^^xsd:float ;
+        jams:hasPatternLocation    "82.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/2_3_2_6_7_3> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/37ffd0ab368ee394b3e4bddbda62d271089adc74>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.5"^^xsd:float ;
+        jams:hasPatternLocation    "7.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/3_6_6_6_3_4> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/617ef67f15aa3363a2bc4230db90edd869892c70>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.5"^^xsd:float ;
+        jams:hasPatternLocation    "79.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/3_2_6_2_3_2> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/c2d988981b4f90a697fe4ccef49d8136134d7123>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.67"^^xsd:float ;
+        jams:hasPatternLocation    "11.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/3_4_7_3_3_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/8e40a100c4614f2d49f39b96818e51a317da7ecc>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.5"^^xsd:float ;
+        jams:hasPatternLocation    "87.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/3_2_6_2_3_2> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/6b68ffbd9559ed2eabe43fc4fe39cfd45c3ca5ab>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.33"^^xsd:float ;
+        jams:hasPatternLocation    "27.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/3_6_6_3_3_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/d95a20deb9dae72808963e9fa8ba24549a531656>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.67"^^xsd:float ;
+        jams:hasPatternLocation    "41.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/4_7_3_6_4_3> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/0845f4e464565c8319aef65040536053ac62260a>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.33"^^xsd:float ;
+        jams:hasPatternLocation    "25.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/6_6_3_6_6_3> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/e40181cef2100a272f766bb23273167d8df521c0>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.67"^^xsd:float ;
+        jams:hasPatternLocation    "12.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/4_7_3_3_6_4> .
+
+<http://w3id.org/polifonia/resource/MusicalComposition/6dc6f9edd9083f5234772520d6f086f57b84cedb>
+        rdf:type             mc:MusicalComposition ;
+        rdfs:label           "Foxhunters, The" ;
+        jams:beatsDuration   "98.0"^^xsd:float ;
+        jams:key             <http://w3id.org/polifonia/resource/key/> ;
+        jams:timeSignature   <http://w3id.org/polifonia/resource/timesig/> ;
+        jams:tuneContent     "" ;
+        jams:tuneFamily      <http://w3id.org/polifonia/resource/tunefamily/Greig's_Pipes> ;
+        jams:tuneId          "13439" ;
+        jams:tuneType        <http://w3id.org/polifonia/resource/tunetype/> ;
+        mc:title             "Foxhunters, The" ;
+        prov:wasDerivedFrom  <http://w3id.org/polifonia/resource/JAMSFile/6dc6f9edd9083f5234772520d6f086f57b84cedb> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/b61f91992a093c1e4271afe5542e689d475378db>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.5"^^xsd:float ;
+        jams:hasPatternLocation    "65.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/2_6_7_6_2_7> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/528998d17435dda477322b62e05d568e2cbb8eeb>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.33"^^xsd:float ;
+        jams:hasPatternLocation    "0.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/6_6_6_3_6_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/d9ca191b2d0d40b6625fbe91c2fa31ce1b13d3ae>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.67"^^xsd:float ;
+        jams:hasPatternLocation    "35.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/3_4_7_3_3_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/1d0e4194f272bc1e813807ce3cc9c320f807c955>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.33"^^xsd:float ;
+        jams:hasPatternLocation    "28.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/6_6_3_3_6_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/ce08974e8675364f24cca12b12f565e8c8286c78>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.67"^^xsd:float ;
+        jams:hasPatternLocation    "38.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/3_3_6_4_7_3> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/4a2f88944939485c41482b99cdf19ba9a827438e>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.67"^^xsd:float ;
+        jams:hasPatternLocation    "17.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/4_7_3_6_4_3> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/7b20d5ef23cf925e14a8b14f4d4edc26c1f80917>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.67"^^xsd:float ;
+        jams:hasPatternLocation    "15.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/3_6_4_7_3_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/946df681ce619619b8705fdc28ee77d3d370cca2>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.33"^^xsd:float ;
+        jams:hasPatternLocation    "2.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/6_3_6_6_3_3> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/31009ab66de7f63ada5e4b52cd17c6abef910b23>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.5"^^xsd:float ;
+        jams:hasPatternLocation    "31.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/3_6_6_6_3_4> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/f525fbaff30352523b883b711dd6558c98356d99>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.67"^^xsd:float ;
+        jams:hasPatternLocation    "13.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/7_3_3_6_4_7> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/01961a7daa236cf70540b1a710edce475b673b16>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.67"^^xsd:float ;
+        jams:hasPatternLocation    "78.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/7_3_2_6_2_3> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/3b08e1473cc28dc6ccbcbc43e265e206fa2ade5d>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.67"^^xsd:float ;
+        jams:hasPatternLocation    "8.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/6_6_6_3_4_7> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/d99e741118c50203aaddcdce0e8b21b3a54df5c7>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.5"^^xsd:float ;
+        jams:hasPatternLocation    "72.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/6_2_6_7_6_2> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/a062bcbbc6a730a129a3f27ba9593584ffe5ae9f>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.67"^^xsd:float ;
+        jams:hasPatternLocation    "10.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/6_3_4_7_3_3> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/ee97f6962fbb7e97fc83e15afa4741b905b460ad>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.33"^^xsd:float ;
+        jams:hasPatternLocation    "24.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/6_6_6_3_6_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/6709b46b3b66b22f0c2b207b0b9ee789cbb69b70>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.67"^^xsd:float ;
+        jams:hasPatternLocation    "37.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/7_3_3_6_4_7> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/9535f810b9c3155715830beb91d986a3b9da6fc0>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.33"^^xsd:float ;
+        jams:hasPatternLocation    "1.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/6_6_3_6_6_3> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/8fe365651421974225ccb1b3207c58156704be43>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.33"^^xsd:float ;
+        jams:hasPatternLocation    "26.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/6_3_6_6_3_3> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/1520a51c18f3ff5ecc535c85185df863d303d051>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.33"^^xsd:float ;
+        jams:hasPatternLocation    "4.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/6_6_3_3_6_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/2215250b91f35cf7e3b461a07a59668fd9bd36f1>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.67"^^xsd:float ;
+        jams:hasPatternLocation    "86.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/7_3_2_6_2_3> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/dafae932b9ac5f36c2fa02c1e1a861bf5b6bc94f>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.67"^^xsd:float ;
+        jams:hasPatternLocation    "32.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/6_6_6_3_4_7> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/8f68e45822180d31945bee96cb26357d6a702cb3>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.67"^^xsd:float ;
+        jams:hasPatternLocation    "16.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/6_4_7_3_6_4> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/29228aa1bd6a8715354b76965763101fbc6b448e>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.67"^^xsd:float ;
+        jams:hasPatternLocation    "9.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/6_6_3_4_7_3> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/7563a1f709fd8b7c4d0efd678637a93a3d1177cd>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.5"^^xsd:float ;
+        jams:hasPatternLocation    "88.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/2_6_2_3_2_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/f1f9e484233eb07d7bd3428495835e66b6f3342a>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.67"^^xsd:float ;
+        jams:hasPatternLocation    "36.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/4_7_3_3_6_4> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/93be4ae9bd885f8c8f7f8bf4b352980a8dda0658>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.33"^^xsd:float ;
+        jams:hasPatternLocation    "3.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/3_6_6_3_3_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/fa6c9821305618f07ec780c682f4fa5636bd9627>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.67"^^xsd:float ;
+        jams:hasPatternLocation    "69.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/2_7_4_6_2_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/563b4d59c81a2ffabcba99aa65637eda7850c109>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.67"^^xsd:float ;
+        jams:hasPatternLocation    "18.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/7_3_6_4_3_3> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/9266a03d91c6921bd99ebea20a76933f031ae630>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.67"^^xsd:float ;
+        jams:hasPatternLocation    "33.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/6_6_3_4_7_3> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/b1a849afba0272a4753d65d70e1aec2cee1f2712>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.67"^^xsd:float ;
+        jams:hasPatternLocation    "90.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/2_3_2_6_7_3> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/dce2dcf2920490caafcee4bca474ae3c4bf94ce7>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.5"^^xsd:float ;
+        jams:hasPatternLocation    "64.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/6_2_6_7_6_2> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/06a6dd46cc4d751c46ced04a9718b658fa2d928e>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.33"^^xsd:float ;
+        jams:hasPatternLocation    "5.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/6_3_3_6_6_6> .
+
+<http://w3id.org/polifonia/resource/JAMSObservation/e66f80e168f5d815794344dc60c4a2fc482a1843>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "0.33"^^xsd:float ;
+        jams:hasPatternLocation    "30.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=6" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/3_3_6_6_6_3> .

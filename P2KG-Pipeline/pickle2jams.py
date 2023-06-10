@@ -59,7 +59,8 @@ class GenerateTunesJamsFile:
                 with open(fileName, 'rb') as f:
                     data = pickle.load(f)
             else:
-                data = pd.read_csv(fileName, encoding='utf-8', dtype={"identifiers": "string", "transcriber": "string"})
+                data = pd.read_csv(fileName, encoding='utf-8', dtype={"identifiers": "string", "title": "string", "transcriber": "string", "publication_date": "string"})
+                data = data.fillna('') # no NaNs please
             return data
         except KeyError: # TODO if a key is missing in the pickle, we'll get a partial pickle... this should not pass silently.
             # Key is not present
@@ -88,9 +89,6 @@ class GenerateTunesJamsFile:
             "tune-corpus": corpus,
             "url": self.config['jams_annotations']['tune_base_url']+tuneRow["identifiers"]
         }
-        tuneJAMSFile.file_metadata.title = tuneRow['title']
-        tuneJAMSFile.file_metadata.release = "n-grams patterns-kg 1.0"
-        tuneJAMSFile.file_metadata.duration = float(tuneRow['duration'])
 
         # print(self.tunes_metadata)
 
@@ -111,7 +109,6 @@ class GenerateTunesJamsFile:
                 
             else:
 
-                print("YES, we are populationg the sandbox")
                 metadata_row = metadata_row.iloc[0] 
                 tuneJAMSFile.sandbox.content = metadata_row["score"] if "score" in metadata_row else "" # raw abc score
                 tuneJAMSFile.sandbox.feature_data = feature_sequence_data
@@ -126,6 +123,9 @@ class GenerateTunesJamsFile:
                 tuneJAMSFile.sandbox.formatted_title = title
                 tuneJAMSFile.file_metadata.title = title
 
+        tuneJAMSFile.file_metadata.title = metadata_row["title"]
+        tuneJAMSFile.file_metadata.release = "n-grams patterns-kg 1.0"
+        tuneJAMSFile.file_metadata.duration = float(tuneRow['duration'])
         tuneJAMSFile.sandbox.type = "score"
         tuneJAMSFile.sandbox.expanded = "true"
         tuneJAMSFile.sandbox.composers = []
@@ -160,16 +160,7 @@ class GenerateTunesJamsFile:
         counter = 1
         blank_count = 0
         for index, tuneRow in self.pickle_pattern_information.iterrows():
-            print(counter, tuneRow['identifiers'], tuneRow['title'])
-            if(len(tuneRow['title']) == 0):
-                blank_count = blank_count + 1
-                print("we are continuing for some reason...")
-                sys.exit()
-                continue
-            file_exists = os.path.exists(self.config['directories']['JAMS_files_dir'] + tuneRow['identifiers']+"-"+tuneRow['title'] + ".jams")
-            # if file_exists:
-            #     counter = counter + 1
-            #     continue
+            print(counter, tuneRow['identifiers'])
             tuneJAMSFile = self.__setCurrentTuneJamsMetadata(tuneRow)
             pattern_annotation = self.__createJAMSAnnotation(self.config['jams_annotations']['schema_name'])
             pattern_details =  tuneRow['pattern_locations']
@@ -177,7 +168,7 @@ class GenerateTunesJamsFile:
             for pattern, pattern_locations in pattern_details.items():
                 for location in pattern_locations:
                     pattern_dict = {
-                        "pattern_id": str(tuneRow['identifiers']) + ":" + tuneRow['title'], # is this the tune id or pattern id?
+                        "pattern_id": str(tuneRow['identifiers']), # is this the tune id or pattern id?
                         "pattern_content": str(pattern).strip("()"),
                         "pattern_type": self.config['jams_annotations']['pattern_type'], # should be constructed on the fly, but for now its coded in the config
                         "pattern_frequency": len(pattern_locations),
@@ -188,77 +179,10 @@ class GenerateTunesJamsFile:
 
             counter = counter + 1
             tuneJAMSFile.annotations.append(pattern_annotation)
-            tuneJAMSFile.save(self.config['directories']['JAMS_files_dir'] + tuneRow['identifiers']+"-"+ tuneRow['title'] + ".jams", strict=False)
+            outfilename = self.config['directories']['JAMS_files_dir'] + tuneRow['identifiers'] + ".jams"
+            print("Saving to " + outfilename)
+            tuneJAMSFile.save(outfilename, strict=False)
 
-    # Deprecated function
-    def createJAMSFiles(self):
-        self.jams_files_completions_status = 0
-        counter = 1
-        for tuneName in self.listOfTunes:
-            file_exists = os.path.exists(self.config['directories']['JAMS_files_dir']+ tuneName+".jams")
-            if file_exists:
-                counter = counter + 1
-                #continue
-            #print(tuneName)
-            rslt_df = self.filtered_df.loc[self.filtered_df[tuneName].notnull() == True, [tuneName, "index"]]
-            #tune_feature_data = self.pattern_locations_in_tunes[tuneName].get(tune_feature_data)
-            tune_id = self.getTuneId(tuneName)
-            m_tune_id = self.getMorphedTuneId(tuneName)
-            pattern_details_row = self.pickle_pattern_information.loc[(self.pattern_locations_in_tunes['identifiers'] == m_tune_id)]
-
-            print(f"tune id: {tune_id}, m_tune_id: {m_tune_id}, tunename: {tuneName}, pattern_location: {len(pattern_details_row)}, pattern_freq: {len(rslt_df)}")
-            #continue
-
-            tuneJAMSFile = self.__setCurrentTuneJamsMetadata(tuneName)
-            pattern_annotation = self.__createJAMSAnnotation(self.config['jams_annotations']['schema_name'])
-            for index, row in rslt_df.iterrows():
-                pattern_content = tuple(row['index']) #.strip("[]")
-                # get locations
-                # 40152 files are there in pattern file while in location file there are
-                # 40148 record
-                if(len(pattern_details_row) >= 1):
-                    pattern_locations_dict = pattern_details_row.iloc[0]['pattern_locations']
-                    if(pattern_content in pattern_locations_dict):
-                        locations = pattern_locations_dict[pattern_content]
-                        my_list = locations
-                    else:
-                        #print(f'{pattern_content} was not found in  {tuneName}')
-                        logging.warning(f'{pattern_content} was not found in  {tuneName}')
-                        my_list = []
-                else:
-                    logging.warning(f'Mismatch: {tuneName} was not found in pattern location pickel file ')
-                    my_list = []
-
-                # TODO: our KG is incomplete and is not clear on the distinction between pattern occurrence and pattern contents.
-                # Eg we have:
-                '''
-<http://w3id.org/polifonia/resource/JAMSObservation/87958cf18e061ce2bb458fd64e1be93077165d66>
-        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
-        jams:hasPatternComplexity  "0.5"^^xsd:float ;
-        jams:hasPatternLocation    "43.0"^^xsd:float ;
-        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=4" ;
-        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/4_4_3_3> .
-'''
-                # this has complexity, location, type as properties of the occurrence instead of the pattern
-                # and it doesn't seem to show contents or length at all.
-                for location in my_list:
-                    #print(my_list, len(set(pattern_content)), len(v))
-                    pattern_dict = {
-                        "pattern_id": str(tune_id) + ":" + tuneName,
-                        "pattern_content": str(pattern_content).strip("()"),
-                        "pattern_type": self.config['jams_annotations']['pattern_type'],
-                        "pattern_frequency": len(my_list),
-                        "pattern_complexity": round(len(set(pattern_content)) / len(pattern_content), 2),
-                        "pattern_length": len(pattern_content),
-                    }
-                    pattern_annotation.append(time=location, duration=0.0, value=pattern_dict, confidence=1)
-
-            tuneJAMSFile.annotations.append(pattern_annotation)
-            tuneJAMSFile.save(self.config['directories']['JAMS_files_dir']+ tuneName+".jams", strict=False)
-            counter += 1
-
-        # this will be used by rdf generator
-        self.jams_files_completions_status = 0
 
 if __name__ == "__main__":
     config = yaml.safe_load(open("config/config.yml"))
