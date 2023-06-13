@@ -85,8 +85,8 @@ If you would like to use this software and knowledge graph, please cite this rep
 }
 ```
 
-## Zenodo releases
 
-(coming soon!)
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8034504.svg)](https://doi.org/10.5281/zenodo.8034504)
 
 This Pattern KG and associated software in this repository form part of Polifonia Deliverable D3.5, part of WP3.
