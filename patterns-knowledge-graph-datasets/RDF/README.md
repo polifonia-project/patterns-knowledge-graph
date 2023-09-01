@@ -11,7 +11,7 @@ project: polifonia-project
 links:
 - https://github.com/polifonia-project/patterns-knowledge-graph
 - https://zenodo.org/record/ (TODO)
-credits:
+contributors:
 - https://github.com/ashahidkhattak
 - https://github.com/jmmcd
 - https://github.com/danDiamo
