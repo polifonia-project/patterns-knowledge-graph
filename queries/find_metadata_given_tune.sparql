@@ -1,0 +1,17 @@
+# Given a tune title, find its metadata
+
+PREFIX jams: <http://w3id.org/polifonia/ontology/jams/>
+
+SELECT DISTINCT ?title ?compositionType ?key ?signature ?transcriber
+WHERE
+{ 
+    VALUES ?givenTuneTitle {'Bucks Of Oranmore, The'}
+    ?tuneFile jams:isJAMSAnnotationOf ?tune.
+    ?tune mc:title ?title.
+    FILTER (?title = ?givenTuneTitle) .
+    ?tune jams:tuneType ?tuneType.
+    ?tune jams:key ?key.
+    ?tune jams:timeSignature ?signature .
+    ?tune jams:transcriber ?transcriber.
+    ?tune jams:tuneContent ?tuneContent.
+} LIMIT 20

@@ -1,0 +1,18 @@
+# Given a pattern, find the tunes it occurs in and the location at which it occurs
+
+PREFIX jams: <http://w3id.org/polifonia/ontology/jams/>
+PREFIX mm:   <http://w3id.org/polifonia/ontology/music-meta/>
+
+SELECT DISTINCT (concat(?tuneId,"-", ?tuneName) as ?TuneInfo) ?PatternLocations
+WHERE
+{ 
+VALUES ?Pattern {<5_5_6_5_5_3>}
+  ?observation jams:ofPattern ?Pattern.
+  ?observation jams:hasPatternLocation ?PatternLocations.
+  ?tuneFile jams:includesObservation ?observation.
+  ?tuneFile jams:isJAMSAnnotationOf ?musicalComposition.
+  ?musicalComposition mm:title ?tuneName.
+  ?musicalComposition jams:tuneId ?tuneId.
+} 
+ORDER BY ?TuneInfo ?PatternLocations
+LIMIT 5

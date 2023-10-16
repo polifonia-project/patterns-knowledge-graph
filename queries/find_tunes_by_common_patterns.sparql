@@ -1,0 +1,22 @@
+# Given a tune, find related tunes by common patterns.
+
+PREFIX jams: <http://w3id.org/polifonia/ontology/jams/>
+PREFIX mm:   <http://w3id.org/polifonia/ontology/music-meta/>
+
+SELECT DISTINCT ?givenTunetitle ?matchedTuneTitle ?SharedPattern ?PatternComplexity
+WHERE { 
+VALUES ?givenTune {'Bucks Of Oranmore, The'}
+?tune mm:title ?givenTune .
+?tuneFile jams:isJAMSAnnotationOf ?tune .
+?tuneFile jams:includesObservation ?observation .
+?observation jams:ofPattern ?SharedPattern .
+?observation jams:hasPatternComplexity ?PatternComplexity .
+?anotherTuneFile jams:includesObservation ?anotherTuneObser .
+?anotherTuneFile jams:isJAMSAnnotationOf ?anotherTune .
+?anotherTuneObser  jams:ofPattern ?SharedPattern .
+FILTER(?tuneFile != ?anotherTuneFile) .
+?tune mm:title ?givenTunetitle .
+?tune jams:tuneId ?givenTuneId .  
+?anotherTune mc:title ?matchedTuneTitle . 
+?anotherTune jams:tuneId ?matchedTuneId .  
+}

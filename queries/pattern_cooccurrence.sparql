@@ -1,0 +1,30 @@
+# Given two patterns, find the compositions both occur in
+
+PREFIX jams: <http://w3id.org/polifonia/ontology/jams/>
+PREFIX mm:   <http://w3id.org/polifonia/ontology/music-meta/>
+
+SELECT * { 
+{		
+    SELECT ?TuneId (sample(?tuneName) AS ?TuneTitle)  
+                   (count(?Pattern1) AS ?Pattern1_Freq) {
+    VALUES ?Pattern1 {<5_1_3_1>}
+    ?observation1 jams:ofPattern ?Pattern1 .
+    ?tuneFile jams:includesObservation ?observation1.
+    ?tuneFile jams:isJAMSAnnotationOf ?tune.
+    ?tune mm:title ?tuneName.
+    ?tune jams:tuneId ?TuneId.
+    } GROUP BY (?TuneId)
+} 
+{
+    SELECT ?TuneId (count(?Pattern2) AS ?Pattern2_Freq) {
+    VALUES ?Pattern2 {<5_3_1_1_5_1>}
+    ?observation2 jams:ofPattern ?Pattern2 .
+    ?tuneFile jams:includesObservation ?observation2.
+    ?tuneFile jams:isJAMSAnnotationOf ?musicalComposition.
+    ?musicalComposition mm:title ?tuneName.
+    ?musicalComposition jams:tuneId ?TuneId.
+    } GROUP BY (?TuneId)
+}
+} 
+ORDER BY DESC (?Pattern1_Freq)
+LIMIT 5

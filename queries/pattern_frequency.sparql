@@ -1,0 +1,11 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX jams: <http://w3id.org/polifonia/ontology/jams/>
+
+SELECT ?pattern (COUNT(?pattern) AS ?occurrences) 
+WHERE { 
+    ?observation rdf:type jams:JAMSObservation ; 
+    jams:ofPattern ?pattern . 
+} 
+GROUP BY ?pattern 
+ORDER BY DESC(?occurrences) 
+LIMIT 10 

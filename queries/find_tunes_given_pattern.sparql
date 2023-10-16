@@ -1,0 +1,17 @@
+# Given an n-gram pattern, find tunes where it is found
+
+PREFIX jams: <http://w3id.org/polifonia/ontology/jams/>
+PREFIX mm:   <http://w3id.org/polifonia/ontology/music-meta/>
+
+SELECT distinct (concat(?tuneId, "-" ,?tuneTitle) as ?TuneInfo) 
+       ?TuneType ?TuneSignature
+WHERE { 
+    VALUES ?Pattern {<5_1_6_2_4_1>}
+    ?observation  jams:ofPattern ?pattern .
+    ?tuneFile jams:includesObservation ?observation .
+    ?tuneFile jams:isJAMSAnnotationOf ?tune .
+    ?tune mm:title ?tuneTitle .
+    ?tune jams:tuneId ?tuneId .
+    ?tune jams:tuneType ?TuneType .
+    ?tune jams:timeSignature ?TuneSignature .
+}

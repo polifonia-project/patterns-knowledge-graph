@@ -1,0 +1,15 @@
+# Given a pattern, find all compositions when it or a pattern that contains that pattern occurs
+
+PREFIX jams: <http://w3id.org/polifonia/ontology/jams/>
+PREFIX mm:   <http://w3id.org/polifonia/ontology/music-meta/>
+
+SELECT (concat(?tuneId,"-",?tuneName) as ?TuneInfo) ?Pattern 
+WHERE { 
+VALUES ?givenPattern {'5_2_5_2'}
+?observation jams:ofPattern ?Pattern .
+FILTER regex(str(?Pattern), ?givenPattern).
+?tuneFile jams:includesObservation ?observation .
+?tuneFile jams:isJAMSAnnotationOf ?musicalComposition .
+?musicalComposition mm:title ?tuneName .
+?musicalComposition jams:tuneId ?tuneId .
+} LIMIT 5

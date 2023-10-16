@@ -1,0 +1,13 @@
+# Given a tune, find members of the same tune family (as annotated)
+
+PREFIX jams: <http://w3id.org/polifonia/ontology/jams/>
+
+SELECT distinct ?givenTuneId ?matchedTuneId ?tuneFamily 
+WHERE { 
+    VALUES ?givenTuneId {'NLB072360_01'} 
+    ?givenTune jams:tuneId ?givenTuneId. 
+    ?givenTune jams:tuneFamily ?tuneFamily. 
+    ?matchedTune jams:tuneFamily ?tuneFamily. 
+    ?matchedTune jams:tuneId ?matchedTuneId. 
+    FILTER (?matchedTuneId != ?givenTuneId). 
+} LIMIT 10 

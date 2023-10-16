@@ -1,0 +1,13 @@
+# For each pattern gather its complexity and location.
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX jams: <http://w3id.org/polifonia/ontology/jams/>
+
+SELECT (xsd:float(?loc) AS ?x) (xsd:integer(?comp * 100) as ?y) 
+WHERE { 
+    ?ja rdf:type jams:JAMSAnnotation; 
+        jams:includesObservation ?ob. 
+    ?ob jams:hasPatternLocation ?loc; 
+        jams:hasPatternComplexity ?comp 
+} ORDER BY ?x

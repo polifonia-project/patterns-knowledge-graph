@@ -1,0 +1,17 @@
+# Given a tune name, find the patterns which occur in it and their frequencies in it
+
+## TODO: supply the tune name as a cmdline parameter?
+
+PREFIX jams: <http://w3id.org/polifonia/ontology/jams/>
+PREFIX mm:   <http://w3id.org/polifonia/ontology/music-meta/>
+
+SELECT ?tune_name ?pattern (count(?pattern) as ?patternFreq)    
+{ 
+    ?tune_file mm:title ?tune_name. 
+    FILTER (?tune_name = "Bowe's Favourite ").
+    ?tune jams:isJAMSAnnotationOf ?tune_file.
+    ?tune jams:includesObservation ?observation  . 
+    ?observation jams:ofPattern ?pattern .
+} GROUP BY ?tune_name ?pattern
+ORDER BY DESC (?patternFreq)
+LIMIT 5

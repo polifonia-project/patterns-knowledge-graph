@@ -1,0 +1,9 @@
+# Find all pattern types in the KG
+
+PREFIX jams: <http://w3id.org/polifonia/ontology/jams/>
+PREFIX mm:   <http://w3id.org/polifonia/ontology/music-meta/>
+
+SELECT DISTINCT ?patternType  
+WHERE {
+    ?pattern jams:hasPatternType ?patternType.
+}

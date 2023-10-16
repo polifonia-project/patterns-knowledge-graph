@@ -1,0 +1,8 @@
+# How many distinct patterns are there in this KG?
+
+PREFIX jams: <http://w3id.org/polifonia/ontology/jams/>
+
+SELECT (COUNT(?pat) AS ?count)
+WHERE {
+  ?ob jams:ofPattern ?pat.
+} 

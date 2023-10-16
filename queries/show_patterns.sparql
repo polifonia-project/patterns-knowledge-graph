@@ -1,0 +1,7 @@
+# List some patterns. Each pattern URI includes pattern contents so we get a useful result.
+
+PREFIX jams: <http://w3id.org/polifonia/ontology/jams/>
+
+SELECT DISTINCT ?pat WHERE {
+  ?ob jams:ofPattern ?pat.
+} LIMIT 20
