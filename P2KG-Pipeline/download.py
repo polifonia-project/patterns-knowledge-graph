@@ -9,8 +9,8 @@ import requests
 
 # These urls are for the MTC dataset
 urls = {
-    "mtc_ann/data/4gram_kg_data.pkl": "https://github.com/polifonia-project/folk_ngram_analysis/raw/master/FoNN/mtc_ann_corpus/kg_pipeline_output_data/4gram_kg_data.pkl"
-    "mtc_ann/data/5gram_kg_data.pkl": "https://github.com/polifonia-project/folk_ngram_analysis/raw/master/FoNN/mtc_ann_corpus/kg_pipeline_output_data/5gram_kg_data.pkl"
+    "mtc_ann/data/4gram_kg_data.pkl": "https://github.com/polifonia-project/folk_ngram_analysis/raw/master/FoNN/mtc_ann_corpus/kg_pipeline_output_data/4gram_kg_data.pkl",
+    "mtc_ann/data/5gram_kg_data.pkl": "https://github.com/polifonia-project/folk_ngram_analysis/raw/master/FoNN/mtc_ann_corpus/kg_pipeline_output_data/5gram_kg_data.pkl",
     "mtc_ann/data/6gram_kg_data.pkl": "https://github.com/polifonia-project/folk_ngram_analysis/raw/master/FoNN/mtc_ann_corpus/kg_pipeline_output_data/6gram_kg_data.pkl"
     }
 
