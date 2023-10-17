@@ -1,9 +1,11 @@
-# Find all pattern types in the KG
+# Find all pattern types in the KG and the number of each
 
 PREFIX jams: <http://w3id.org/polifonia/ontology/jams/>
-PREFIX mm:   <http://w3id.org/polifonia/ontology/music-meta/>
 
-SELECT DISTINCT ?patternType  
-WHERE {
+SELECT ?patternType (COUNT(?patternType) AS ?occurrences) 
+WHERE { 
     ?pattern jams:hasPatternType ?patternType.
-}
+} 
+GROUP BY ?patternType 
+ORDER BY DESC(?occurrences) 
+LIMIT 10 
