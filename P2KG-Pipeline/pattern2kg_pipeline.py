@@ -6,22 +6,12 @@ import os
 import glob
 
 class JAMSPipeline:
-    config = dict2jams_config = jams2rdf_config = []
-    directroy = pickle_file_name = ""
+    # config = dict2jams_config = jams2rdf_config = []
+    # directroy = pickle_file_name = ""
     def __init__(self):
         # this line will load the configuration settings from config.yml file
         self.config = yaml.safe_load(open("config/config.yml"))
         self.jams2rdf_config = yaml.safe_load(open("config/jams2rdf_config.yml"))
-
-    # Step1 (Pickle_to_JAMS): This create JAMS files for each tune recording in  JSON file (created in step no.1)
-    def pickle_to_JAMS(self) -> None:
-        genTunesJAMSFiles = pickle2jams.GenerateTunesJamsFile(self.config)
-        genTunesJAMSFiles.createJAMSFiles()
-
-    # Step2 (JAMS_to_RDF): This method calls JAMS2RDF class for generating RDF files for JAMS files (created in step no.1)
-    def JAMS_to_RDF(self) -> None:
-        jamsrdf = jams2rdf.JAMS2RDF(self.jams2rdf_config, self.config['directories']['JAMS_files_dir'], genTunesJAMSFiles)
-        jamsrdf.iterateThroughDirectory()
 
     def start_pipleline(self):
         # Step1 (dictionary_to_JAMS)
@@ -33,13 +23,13 @@ class JAMSPipeline:
                                     genTunesJAMSFiles)
         jamsrdf.iterateThroughDirectory()
 
-    def cat(self, corpus_name):
-        d = self.jams2rdf_config['directories']['rdf_directory']
-        d = d.split("/") # not using os.sep, because our config uses /
-        indir = os.sep.join(d[1:-2])
-        outfile = os.path.join(os.sep.join(d[1:-3]), f"{corpus_name}_rdf_cat.ttl")
-        concatenate_files(indir, ".ttl", outfile)
-        print("")
+def cat(rdf_dir, corpus_name):
+    d = rdf_dir
+    d = d.split("/") # not using os.sep, because our config uses /
+    indir = os.sep.join(d[1:-2])
+    outfile = os.path.join(os.sep.join(d[1:-3]), f"{corpus_name}_rdf_cat.ttl")
+    concatenate_files(indir, ".ttl", outfile)
+    print("")
 
 
 # from ChatGPT
@@ -72,9 +62,13 @@ def copy_configs(corpus, n):
     print(f"copying jams2rdf_config: {src} to {dest}")
     
 if __name__ == "__main__":
+    rdf_dir = ""
     for corpus in "mtc_ann", "thesession_annotated_subset":
         for n in (4, 5, 6):
+            # if corpus != "thesession_annotated_subset": continue
+            # if n == 4: continue
             copy_configs(corpus, n)
             JAMS_pipeline = JAMSPipeline()
             JAMS_pipeline.start_pipleline()
-        JAMS_pipeline.cat(corpus)
+            rdf_dir = JAMS_pipeline.jams2rdf_config['directories']['rdf_directory']
+        cat(rdf_dir, corpus)

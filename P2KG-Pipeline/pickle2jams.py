@@ -115,8 +115,8 @@ class GenerateTunesJamsFile:
                 # tuneJAMSFile.sandbox.transcriber = metadata_row["transcriber"] if "transcriber" in metadata_row else "" # abc Z "transcription"
                 tuneJAMSFile.sandbox.tunetype = metadata_row["rhythm"] if "rhythm" in metadata_row else "" # abc R "rhythm" eg jig, reel 
                 tuneJAMSFile.sandbox.tunefamily = metadata_row["tune_family"] if "tune_family" in metadata_row else "" # 
-                tuneJAMSFile.sandbox.key = metadata_row["key"] if "key" in metadata_row else "" # abc K, ie key
-                tuneJAMSFile.sandbox.timesig = metadata_row["meter"] if "meter" in metadata_row else "" # abc M, ie meter
+                tuneJAMSFile.sandbox.key = metadata_row["K"] if "K" in metadata_row else "" # abc K, ie key
+                tuneJAMSFile.sandbox.timesig = metadata_row["M"] if "M" in metadata_row else "" # abc M, ie meter
                 tuneJAMSFile.sandbox.tuneid = str(tuneRow["identifiers"])
                 #title = re.sub(r'\d+', '', metadata_row["title"]).strip() # TODO fix this hard-coded digit removal
                 title = metadata_row["title"]

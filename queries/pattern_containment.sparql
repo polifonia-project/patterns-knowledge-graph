@@ -5,7 +5,7 @@ PREFIX mm:   <http://w3id.org/polifonia/ontology/music-meta/>
 
 SELECT (concat(?tuneId,"-",?tuneName) as ?TuneInfo) ?Pattern 
 WHERE { 
-VALUES ?givenPattern {'5_2_5_2'}
+VALUES ?givenPattern <http://w3id.org/polifonia/resource/pattern/6_1_1_7>
 ?observation jams:ofPattern ?Pattern .
 FILTER regex(str(?Pattern), ?givenPattern).
 ?tuneFile jams:includesObservation ?observation .
