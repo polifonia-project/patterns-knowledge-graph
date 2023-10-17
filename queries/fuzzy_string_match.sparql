@@ -1,5 +1,15 @@
-select ?hit ?score
-where {
-?hit bds:search "Maggie" .
-?hit bds:relevance ?score .
+# Given a query string, find tunes whose title is a partial match
+
+PREFIX bds: <http://www.bigdata.com/rdf/search#>
+PREFIX jams:<http://w3id.org/polifonia/ontology/jams/>
+PREFIX mm: <http://w3id.org/polifonia/ontology/music-meta/>
+
+SELECT ?tune_name ?score ?rank
+WHERE {
+?tune_name bds:search "Retreat" .
+?tune_name bds:matchAllTerms true .
+?tune_name bds:minRelevance 0.25 .
+?tune_name bds:relevance ?score .
+?tune_name bds:maxRank 1000 .
+?tune_name bds:rank ?rank .
 }
