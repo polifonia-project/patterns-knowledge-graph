@@ -2,6 +2,8 @@ import yaml
 import pickle2jams as pickle2jams
 import jams2rdf as jams2rdf
 from kgdata_namedtuple import KG_Data
+import os
+import glob
 
 class JAMSPipeline:
     config = dict2jams_config = jams2rdf_config = []
@@ -31,6 +33,48 @@ class JAMSPipeline:
                                     genTunesJAMSFiles)
         jamsrdf.iterateThroughDirectory()
 
+    def cat(self, corpus_name):
+        d = self.jams2rdf_config['directories']['rdf_directory']
+        d = d.split("/") # not using os.sep, because our config uses /
+        indir = os.sep.join(d[1:-2])
+        outfile = os.path.join(os.sep.join(d[1:-3]), f"{corpus_name}_rdf_cat.ttl")
+        concatenate_files(indir, ".ttl", outfile)
+        print("")
+
+
+# from ChatGPT
+def concatenate_files(root_dir, suffix, output_file_path):
+    print(f"concatenating files! {root_dir}")
+    with open(output_file_path, 'w') as output_file:
+        for dirpath, _, _ in os.walk(root_dir):
+            print(f"processing directory {dirpath}")
+            for filename in glob.glob(os.path.join(dirpath, f"*{suffix}")):
+                with open(filename, 'r') as input_file:
+                    output_file.write(input_file.read())
+                    output_file.write("\n")
+
+# from ChatGPT
+def trim_path_components(path):
+    components = path.split(os.sep)
+    if len(components) < 3:
+        raise ValueError("Path should have at least three components to remove.")
+    return os.sep.join(components[1:-2])
+
+def copy_configs(corpus, n):
+    d = "config"
+    src = os.path.join(d, f"config_{corpus}_{n}gram.yml")
+    dest = os.path.join(d, "config.yml")
+    print(f"copying config: {src} to {dest}")
+    os.system(f"cp {src} {dest}")
+    src = os.path.join(d, f"jams2rdf_config_{corpus}_{n}gram.yml")
+    dest = os.path.join(d, "jams2rdf_config.yml")
+    os.system(f"cp {src} {dest}")
+    print(f"copying jams2rdf_config: {src} to {dest}")
+    
 if __name__ == "__main__":
-    JAMS_pipeline = JAMSPipeline()
-    JAMS_pipeline.start_pipleline()
+    for corpus in "mtc_ann", "thesession_annotated_subset":
+        for n in (4, 5, 6):
+            copy_configs(corpus, n)
+            JAMS_pipeline = JAMSPipeline()
+            JAMS_pipeline.start_pipleline()
+        JAMS_pipeline.cat(corpus)

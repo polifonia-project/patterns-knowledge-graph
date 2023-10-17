@@ -14,8 +14,10 @@ class JAMS2RDF:
     def __init__(self, config, jams_files_dirctory, jams2rdf_obj):
         self.sparql_query_file = config['directories']['sparql_query_file']
         self.rdf_directory = config['directories']['rdf_directory']
-        if not os.path.isdir(self.rdf_directory):
-            os.makedirs(self.rdf_directory)
+        # don't make this directory for now as we are going to cd into the query dir
+        # so we need an extra ../, so this directory is not right.
+        # if not os.path.isdir(self.rdf_directory):
+        #    os.makedirs(self.rdf_directory)
         self.jams_files_dirctory = jams_files_dirctory
         self.config = config
         self.jams2rdf_obj = jams2rdf_obj
@@ -29,11 +31,13 @@ class JAMS2RDF:
         jams_file, ext = os.path.splitext(input_filename_with_ext)
         input_file_dir_name = os.path.dirname(input_file)
         # input_file = input_file_dir_name +"/"+ input_filename_with_ext
-        print(input_filename_with_ext, output)
+        print(f"SA converting from {input_filename_with_ext} to {output}")
         # change here: no need to have a template query and replace the filename.
         # instead, hard-code the filename as tmp.jams, and copy the input .jams file there
-        check_output(['cp', input_file, './sparql_anything/tmp.jams'])        
-        g = Graph()
+        print(os.getcwd())
+        check_output(['cp', input_file, 
+                      os.path.join(self.config["directories"]["query_dir"], 'tmp.jams')])
+        # g = Graph()
         os.chdir(self.config["directories"]["query_dir"])
         try:
             out = check_output(["java", "-jar",
@@ -46,8 +50,8 @@ class JAMS2RDF:
             # print(out)
             # g.parse(out)
         except CalledProcessError as e:
+            print(f"Error when processing the input file {input_file}")
             print(e)
-            print("Output graph is empty for {}".format(input_file))
         os.chdir("..")
 
         # previous method was to parse the output to a Graph and serialise
@@ -74,6 +78,9 @@ class JAMS2RDF:
                         print(counter, filename)
                         counter = counter + 1
                         self.jams2rdf(filename, outfilePath)
+                if counter > 2: # just for testing
+                    pass # break
+
             print("Process end: conversion completed (no more files available for conversion)")
 if __name__ == "__main__":
     config = yaml.safe_load(open("config/jams2rdf_config.yml"))

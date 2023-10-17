@@ -3,9 +3,10 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX fx: <http://sparql.xyz/facade-x/ns/>
 PREFIX jams: <http://w3id.org/polifonia/ontology/jams/>
-PREFIX mp:  <http://w3id.org/polifonia/ontology/musical-performance/>
-PREFIX mf:  <http://w3id.org/polifonia/ontology/musical-features/>
-PREFIX mc:  <http://w3id.org/polifonia/ontology/musical-composition/>
+#PREFIX mp:  <http://w3id.org/polifonia/ontology/musical-performance/>
+#PREFIX mf:  <http://w3id.org/polifonia/ontology/musical-features/>
+#PREFIX mc:  <http://w3id.org/polifonia/ontology/musical-composition/>
+PREFIX mm:  <http://w3id.org/polifonia/ontology/music-meta/>
 PREFIX core:  <http://w3id.org/polifonia/ontology/core/>
 PREFIX pon-resource: <http://w3id.org/polifonia/resource/>
 PREFIX prov: <http://www.w3.org/ns/prov#>
@@ -24,9 +25,9 @@ CONSTRUCT {
         prov:wasMemberOf <https://github.com/ashahidkhattak/thesession> .
 
     # COMPOSITION
-    ?composition_uri a mc:MusicalComposition ;
+    ?composition_uri a mm:MusicalComposition ;
         rdfs:label ?title ;
-        mc:title ?title ;
+        mm:title ?title ;
         prov:wasDerivedFrom ?jams_file_uri ;
         # only if the sandbox.type = score
         jams:tuneId     ?tuneId;
@@ -68,7 +69,7 @@ CONSTRUCT {
     # SCORE
     # if it a score, we create a score individual and its description (duration, provenance)
     ?score_uri ?is_score_of ?composition_uri ;
-        ?score_type mf:Score ;
+        ?score_type mm:Score ;
         ?score_label ?title ;
         ?score_derived_from ?jams_file_uri ;
         ?performer_no_audio ?performer_uri ;
@@ -132,16 +133,16 @@ WHERE {
 
     OPTIONAL {
         FILTER (?composer != "")
-            BIND (mc:hasComposer AS ?composer_type_relation)
+            BIND (mm:hasComposer AS ?composer_type_relation)
             BIND (rdf:type AS ?composer_is_type)
             BIND (rdf:type AS ?score_type)
-            BIND (mc:isScoreOf AS ?is_score_of)
+            BIND (mm:isScoreOf AS ?is_score_of)
             BIND (rdfs:label AS ?score_label)
-            BIND (mf:duration AS ?score_duration)
+            BIND (mm:duration AS ?score_duration)
     }
     OPTIONAL {
         FILTER (?performer != "")
-            BIND (mp:performedBy AS ?performer_type_relation)
+            BIND (mm:performedBy AS ?performer_type_relation)
             BIND (rdf:type AS ?performer_is_type)
     }
 

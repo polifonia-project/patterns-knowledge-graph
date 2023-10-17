@@ -71,8 +71,51 @@ NOTE: Apart from these folders, you will find the following important .py files
 1. **P2KG - General Steps**
    * 1.1. Input: Patterns generated using FoNN in the form of pickle file.
    * 1.2. Process: [JAMS Annotation] (https://jams.readthedocs.io/en/stable/) - JAMS files are created using custom pattern schema, you can find in the ``schema`` folder. 
-   * 1.3. Process: [SPARQL Anything Engine] (https://sparql-anything.cc/) - It takes JAMS file and create KG. 
-   * 1.4. Output: Knowledge Graph of pattern is created, a demo of created KG can be accessed on [polifonia server] (https://polifonia.disi.unibo.it/fonn/sparql). 
+   * 1.3. Process: [SPARQL Anything Engine] (https://sparql-anything.cc/) - It takes JAMS file and creates the KG. 
+   * 1.4. Output: Knowledge Graph of pattern is created, a demo of created KG can be accessed on [Polifonia server] (https://polifonia.disi.unibo.it/fonn/sparql). 
+
+## Outputs
+
+After processing one tune to a JAMS file and then to RDF, we have output like the following. We have one `MusicalComposition` stanza:
+
+```rdf
+<http://w3id.org/polifonia/resource/MusicalComposition/29318d2d8c8d2faebfb1e1560fb208c57681d91a>
+        rdf:type             mc:MusicalComposition ;
+        rdfs:label           "Drowsy Maggie" ;
+        jams:beatsDuration   "34.0"^^xsd:float ;
+        jams:key             <http://w3id.org/polifonia/resource/key/> ;
+        jams:timeSignature   <http://w3id.org/polifonia/resource/timesig/> ;
+        jams:tuneContent     "" ;
+        jams:tuneFamily      <http://w3id.org/polifonia/resource/tunefamily/Drowsy_Maggie> ;
+        jams:tuneId          "27" ;
+        jams:tuneType        <http://w3id.org/polifonia/resource/tunetype/> ;
+        mc:title             "Drowsy Maggie" ;
+        prov:wasDerivedFrom  <http://w3id.org/polifonia/resource/JAMSFile/29318d2d8c8d2faebfb1e1560fb208c57681d91a> .
+```
+
+And one `JAMSFile`:
+
+```rdf
+<http://w3id.org/polifonia/resource/JAMSFile/29318d2d8c8d2faebfb1e1560fb208c57681d91a>
+        rdf:type             jams:JAMSFile ;
+        jams:beatsDuration   "34.0"^^xsd:double ;
+        jams:jamsVersion     "0.3.4" ;
+        jams:release         "n-grams patterns-kg 1.0" ;
+        prov:wasDerivedFrom  "The Session" ;
+        prov:wasMemberOf     <https://github.com/ashahidkhattak/thesession> .
+```
+
+And then many `JAMSObservation`s:
+
+```rdf
+<http://w3id.org/polifonia/resource/JAMSObservation/9d82e4a5005124ece8d7e9472f5e71dedbe26ea6>
+        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
+        jams:hasPatternComplexity  "1.0"^^xsd:float ;
+        jams:hasPatternLocation    "3.0"^^xsd:float ;
+        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=4" ;
+        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/5_2_1_6> .
+```
+
    
 ## P2KG - Requirements
 

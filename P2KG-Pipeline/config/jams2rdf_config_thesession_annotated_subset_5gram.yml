@@ -1,0 +1,14 @@
+# these direcotory will be used by the code
+directories:
+  # rdf directory
+  rdf_directory : ../../patterns-knowledge-graph-datasets/RDF/thesession_annotated_subset/5gram/
+  #directory for sparql anything
+  query_dir :  ./sparql_anything
+  # sparql anything query for converting jams to rdf
+  # sparql_query_file : jams_ontology_pattern-metadata.sparql
+  sparql_query_file : jams_ontology_pattern-metadata.sparql
+  # SPARQL anything engine file, this is used to execute sparql query for JAMS conversion.
+  # There is something weird about SA accessing files in current versus relative versus absolute directories
+  # and I can make it work with sa-0.6.0.jar but not sa 0.8.
+  # We are going to cd into the directory so we specify filename only
+  sparql_anything_jar_file : sa-0.6.0.jar 

@@ -183,6 +183,9 @@ class GenerateTunesJamsFile:
             print("Saving to " + outfilename)
             tuneJAMSFile.save(outfilename, strict=False)
 
+            if counter > 2: # just for testing
+                pass # break
+
 
 if __name__ == "__main__":
     config = yaml.safe_load(open("config/config.yml"))
