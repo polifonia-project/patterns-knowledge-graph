@@ -21,6 +21,7 @@ related-components:
 - generated-by:
   - folk_ngram_analysis
   - P2KG-Pipeline
+bibliography:
 - main-publication: "Forthcoming paper in SWODCH 2023"
 - publication: 
   - "Polifonia Deliverable 3.4"
