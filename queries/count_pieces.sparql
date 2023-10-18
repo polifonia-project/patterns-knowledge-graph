@@ -1,0 +1,8 @@
+# How many distinct pieces are there in this KG?
+
+PREFIX jams: <http://w3id.org/polifonia/ontology/jams/>
+
+SELECT (COUNT(?piece) AS ?count)
+WHERE {
+  ?s jams:isJAMSAnnotationOf ?piece.
+} 
