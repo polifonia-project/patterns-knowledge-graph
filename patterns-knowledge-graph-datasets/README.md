@@ -12,7 +12,7 @@ generated-by:
 project: polifonia-project
 licence: 
 - CC-BY-NC-ND_v4
-demo: "http://projects.dharc.unibo.it/melody/fonn/statistics_on_the_session_annotated_subset_and_meertens_tune_collections_mtcann_pattern_kg"
+demo: http://projects.dharc.unibo.it/melody/fonn/statistics_on_the_session_annotated_subset_and_meertens_tune_collections_mtcann_pattern_kg
 related-components:
 - use-case:
   - pattern-exploration-gui

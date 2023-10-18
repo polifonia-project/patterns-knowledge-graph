@@ -9,7 +9,8 @@ work-package:
 - WP3
 project: polifonia-project
 demo: https://projects.dharc.unibo.it/melody/fonn/statistics_on_the_session_annotated_subset_and_meertens_tune_collections_mtcann_pattern_kg
-licence: GPLv3
+licence: 
+- GPLv3
 links:
 - https://zenodo.org/record/TODO
 related-components:
