@@ -13,6 +13,9 @@ licence:
 - GNU_GPL_v3
 links:
 - https://zenodo.org/record/TODO
+- main-publication: "Forthcoming paper in SWODCH 2023"
+- publication: 
+  - "Polifonia Deliverable 3.4"
 related-components:
 - reuses:
   - sparql-anything-cli

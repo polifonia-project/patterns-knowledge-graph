@@ -9,7 +9,10 @@ work-package:
 - WP3
 project: polifonia-project
 bibliography:
-- main-publication: "Polifonia Deliverable 3.4"
+bibliography:
+- main-publication: "Forthcoming paper in SWODCH 2023"
+- publication: 
+  - "Polifonia Deliverable 3.4"
 related-components:
   - folk_ngram_analysis
 links:
