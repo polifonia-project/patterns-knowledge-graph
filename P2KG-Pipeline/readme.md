@@ -13,6 +13,7 @@ licence:  CC BY 4.0, https://creativecommons.org/licenses/by/4.0/
 links:
 - https://zenodo.org/record/ TODO
 related-components:
+- patterns-knowledge-graph-datasets
 - sparql-anything
 - https://github.com/smashub/choco
 contributors:
