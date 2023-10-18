@@ -14,10 +14,13 @@ licence:
 - CC-BY-NC-ND_v4
 demo: "http://projects.dharc.unibo.it/melody/fonn/statistics_on_the_session_annotated_subset_and_meertens_tune_collections_mtcann_pattern_kg"
 related-components:
-- patterns-knowledge-graph
-- pattern-exploration-gui
-- pattern-explorations-backend
-- folk_ngram_analysis
+- use-case:
+  - pattern-exploration-gui
+- use-case:
+  - pattern-explorations-backend
+- generated-by:
+  - folk_ngram_analysis
+  - P2KG-Pipeline
 links:
 - https://zenodo.org/record/ (TODO)
 contributors:

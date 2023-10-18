@@ -13,10 +13,10 @@ licence: GPLv3
 links:
 - https://zenodo.org/record/TODO
 related-components:
-- patterns-knowledge-graph-datasets
-- sparql-anything
-- https://github.com/smashub/choco
-- folk_ngram_analysis
+- reuses:
+  - sparql-anything-cli
+- extends:
+  - "The Smashub pipeline exemplified in Choco https://github.com/smashub/choco"
 contributors:
 - Danny Diamond <https://github.com/danDiamo>
 - Abdul Shahid <https://github.com/ashahidkhattak>
