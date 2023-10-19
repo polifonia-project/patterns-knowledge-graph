@@ -1,0 +1,9 @@
+# Given a query string q, find triples (s, p, o) where q is a substring match to o
+
+# 'Retreat' is a common theme, eg Bonaparte's Retreat is a well-known tune
+
+SELECT ?s ?p ?o
+WHERE {
+  ?s ?p ?o .
+  FILTER CONTAINS(STR(?o), "Retreat")
+}

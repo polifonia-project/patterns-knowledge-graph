@@ -1,0 +1,10 @@
+# Find all distinct tune titles
+
+PREFIX mm: <http://w3id.org/polifonia/ontology/music-meta/>
+
+# Note, could use `?s rdfs:label ?tune_name.` instead.
+
+SELECT distinct ?tune_name 
+WHERE {
+  ?s mm:title ?tune_name.
+}
