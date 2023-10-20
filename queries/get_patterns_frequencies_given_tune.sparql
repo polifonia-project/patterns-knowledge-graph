@@ -8,7 +8,7 @@ PREFIX mm:   <http://w3id.org/polifonia/ontology/music-meta/>
 SELECT ?tune_name ?pattern (count(?pattern) as ?patternFreq)    
 { 
     ?tune_file mm:title ?tune_name. 
-    FILTER (?tune_name = "Bowe's Favourite ").
+    FILTER (?tune_name = "Drowsy Maggie").
     ?tune jams:isJAMSAnnotationOf ?tune_file.
     ?tune jams:includesObservation ?observation  . 
     ?observation jams:ofPattern ?pattern .

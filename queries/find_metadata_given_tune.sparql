@@ -1,17 +1,15 @@
-# Given a tune title, find its metadata
+# Given a tune title, find its musical metadata: for now, duration, timesig, key
 
 PREFIX jams: <http://w3id.org/polifonia/ontology/jams/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix mm:   <http://w3id.org/polifonia/ontology/music-meta/>
 
-SELECT DISTINCT ?title ?compositionType ?key ?signature ?transcriber
+SELECT DISTINCT ?tune ?duration ?timesig ?key 
 WHERE
 { 
-    VALUES ?givenTuneTitle {'Bucks Of Oranmore, The'}
-    ?tuneFile jams:isJAMSAnnotationOf ?tune.
-    ?tune mc:title ?title.
-    FILTER (?title = ?givenTuneTitle) .
-    ?tune jams:tuneType ?tuneType.
-    ?tune jams:key ?key.
-    ?tune jams:timeSignature ?signature .
-    ?tune jams:transcriber ?transcriber.
-    ?tune jams:tuneContent ?tuneContent.
-} LIMIT 20
+  VALUES ?givenTuneTitle {'Blackbird, The'} # fill in your query tune title here
+  ?tune rdfs:label ?givenTuneTitle.
+  ?tune mm:hasKey ?key.
+  ?tune jams:timeSignature ?timesig.
+  ?tune jams:beatsDuration ?duration.
+}

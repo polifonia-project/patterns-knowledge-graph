@@ -1,0 +1,16 @@
+# Given a tune title, find its corpus name and URI
+
+PREFIX jams: <http://w3id.org/polifonia/ontology/jams/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix mm:   <http://w3id.org/polifonia/ontology/music-meta/>
+prefix prov:         <http://www.w3.org/ns/prov#>
+
+SELECT ?corpus_name ?uri
+WHERE
+{ 
+    VALUES ?givenTuneTitle {'Blackbird, The'} # fill in your query tune title here
+    ?composition rdfs:label ?givenTuneTitle.
+    ?ann jams:isJAMSAnnotationOf ?composition.    
+    ?jfile prov:wasDerivedFrom ?corpus_name.
+    ?jfile prov:wasMemberOf ?uri.
+}

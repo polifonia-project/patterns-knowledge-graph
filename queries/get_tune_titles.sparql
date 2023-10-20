@@ -1,10 +1,9 @@
-# Find all distinct tune titles
+# Find all tune titles and their URIs
 
 PREFIX mm: <http://w3id.org/polifonia/ontology/music-meta/>
 
-# Note, could use `?s rdfs:label ?tune_name.` instead.
-
-SELECT distinct ?tune_name 
+SELECT ?uri ?tune_name
 WHERE {
-  ?s mm:title ?tune_name.
+  ?uri mm:title ?tune_name.
+  ?uri rdfs:label ?label.
 }

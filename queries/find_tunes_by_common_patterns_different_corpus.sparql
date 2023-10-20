@@ -1,4 +1,5 @@
-# Given a tune, find related tunes by common patterns.
+# Given a tune, find related tunes by common patterns and ensure in a different corpus
+
 
 PREFIX jams: <http://w3id.org/polifonia/ontology/jams/>
 PREFIX mm:   <http://w3id.org/polifonia/ontology/music-meta/>
@@ -21,3 +22,11 @@ FILTER(?tuneFile != ?anotherTuneFile) .
 ?anotherTune mm:title ?matchedTuneTitle . 
 ?anotherTune jams:tuneId ?matchedTuneId .  
 }
+
+TODO: filter that the found tunes are in a different corpus.
+
+
+    ?composition rdfs:label ?givenTuneTitle.
+    ?ann jams:isJAMSAnnotationOf ?composition.    
+    ?jfile prov:wasDerivedFrom ?corpus_name.
+    ?jfile prov:wasMemberOf ?uri.
