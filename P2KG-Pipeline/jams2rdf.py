@@ -4,7 +4,7 @@ import yaml
 from subprocess import check_output, CalledProcessError
 import glob, os
 import os.path
-from rdflib import Graph, URIRef
+# from rdflib import Graph, URIRef
 
 class JAMS2RDF:
     query_test = namespace= rdf_directory= jams_files_dirctory = ""
@@ -79,7 +79,7 @@ class JAMS2RDF:
                         counter = counter + 1
                         self.jams2rdf(filename, outfilePath)
                 if counter > 2: # just for testing
-                    pass # break
+                    break
 
             print("Process end: conversion completed (no more files available for conversion)")
 if __name__ == "__main__":

@@ -113,10 +113,11 @@ class GenerateTunesJamsFile:
                 tuneJAMSFile.sandbox.content = metadata_row["score"] if "score" in metadata_row else "" # raw abc score
                 tuneJAMSFile.sandbox.feature_data = feature_sequence_data
                 # tuneJAMSFile.sandbox.transcriber = metadata_row["transcriber"] if "transcriber" in metadata_row else "" # abc Z "transcription"
-                tuneJAMSFile.sandbox.tunetype = metadata_row["rhythm"] if "rhythm" in metadata_row else "" # abc R "rhythm" eg jig, reel 
+                tuneJAMSFile.sandbox.tunetype = metadata_row["R"] if "R" in metadata_row else "" # abc R "rhythm" eg jig, reel 
                 tuneJAMSFile.sandbox.tunefamily = metadata_row["tune_family"] if "tune_family" in metadata_row else "" # 
                 tuneJAMSFile.sandbox.key = metadata_row["K"] if "K" in metadata_row else "" # abc K, ie key
                 tuneJAMSFile.sandbox.timesig = metadata_row["M"] if "M" in metadata_row else "" # abc M, ie meter
+                tuneJAMSFile.sandbox.year = metadata_row["date"] if "date" in metadata_row else "" # date -> year in MTC
                 tuneJAMSFile.sandbox.tuneid = str(tuneRow["identifiers"])
                 #title = re.sub(r'\d+', '', metadata_row["title"]).strip() # TODO fix this hard-coded digit removal
                 title = metadata_row["title"]
@@ -135,7 +136,7 @@ class GenerateTunesJamsFile:
         pattern_annotation = jams.Annotation(namespace=name_space)
         pattern_annotation.annotation_metadata.annotator.name = self.config['jams_annotations']['annotator_name']
         pattern_annotation.annotation_metadata.data_source = self.config['jams_annotations']['data_source']
-        pattern_annotation.annotation_metadata.corpus = self.config['jams_annotations']['corpus']
+        pattern_annotation.annotation_metadata.corpus = self.config['jams_annotations']['tune_base_url']
         pattern_annotation.annotation_metadata.version = self.config['jams_annotations']['version']
         pattern_annotation.annotation_metadata.curator.name = self.config['jams_annotations']['annotator_name']
         pattern_annotation.annotation_metadata.curator.email = self.config['jams_annotations']['email']
@@ -184,7 +185,7 @@ class GenerateTunesJamsFile:
             tuneJAMSFile.save(outfilename, strict=False)
 
             if counter > 2: # just for testing
-                pass # break
+                break
 
 
 if __name__ == "__main__":
