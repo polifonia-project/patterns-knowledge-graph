@@ -176,7 +176,7 @@ class GenerateTunesJamsFile:
                         "pattern_complexity": round(len(set(pattern)) / len(pattern), 2),
                         "pattern_length": len(pattern),
                     }
-                    pattern_annotation.append(time=location, duration=0.0, value=pattern_dict, confidence=1)
+                    pattern_annotation.append(time=location, duration=len(pattern), value=pattern_dict, confidence=1)
 
             counter = counter + 1
             tuneJAMSFile.annotations.append(pattern_annotation)
@@ -185,7 +185,7 @@ class GenerateTunesJamsFile:
             tuneJAMSFile.save(outfilename, strict=False)
 
             if counter > 2: # just for testing
-                break
+                pass # break
 
 
 if __name__ == "__main__":

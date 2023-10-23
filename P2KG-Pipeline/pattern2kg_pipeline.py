@@ -26,8 +26,8 @@ class JAMSPipeline:
 def cat(rdf_dir, corpus_name):
     d = rdf_dir
     d = d.split("/") # not using os.sep, because our config uses /
-    indir = os.sep.join(d[1:-2])
-    outfile = os.path.join(os.sep.join(d[1:-3]), f"{corpus_name}_rdf_cat.ttl")
+    indir = os.sep.join(d[:-2])
+    outfile = os.path.join(os.sep.join(d[:-3]), f"{corpus_name}_rdf_cat.ttl")
     concatenate_files(indir, ".ttl", outfile)
     print("")
 
