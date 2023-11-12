@@ -39,16 +39,11 @@ def concatenate_files(root_dir, suffix, output_file_path):
         for dirpath, _, _ in os.walk(root_dir):
             print(f"processing directory {dirpath}")
             for filename in glob.glob(os.path.join(dirpath, f"*{suffix}")):
+                print(f"processing file {filename}")
                 with open(filename, 'r') as input_file:
                     output_file.write(input_file.read())
                     output_file.write("\n")
 
-# from ChatGPT
-def trim_path_components(path):
-    components = path.split(os.sep)
-    if len(components) < 3:
-        raise ValueError("Path should have at least three components to remove.")
-    return os.sep.join(components[1:-2])
 
 def copy_configs(corpus, n):
     d = "config"
