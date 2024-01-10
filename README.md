@@ -71,6 +71,12 @@ python pattern2kg_pipeline.py
 
 It will read the data (metadata in csv format, and pattern occurrences in pickle format) from `inputs/`. It will write out the knowledge graph to the `RDF` directory in `.ttl` files.
 
+## Testing locally
+
+You can run Blazegraph locally to test your Knowledge Graph. Download it from: `https://blazegraph.com/` and put it (e.g.) into a `/test` directory.  
+
+# Deployment 
+
 We then copy this to the Polifonia server https://polifonia.disi.unibo.it/fonn/sparql, which provides the data via a public SPARQL endpoint. We also provide some data stories via MELODY:
 
 * https://projects.dharc.unibo.it/melody/fonn/statistics_on_the_session_annotated_subset_and_meertens_tune_collections_mtcann_pattern_kg
