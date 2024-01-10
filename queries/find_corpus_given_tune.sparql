@@ -3,14 +3,13 @@
 PREFIX jams: <http://w3id.org/polifonia/ontology/jams/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 prefix mm:   <http://w3id.org/polifonia/ontology/music-meta/>
-prefix prov:         <http://www.w3.org/ns/prov#>
+prefix prov: <http://www.w3.org/ns/prov#>
 
-SELECT ?corpus_name ?uri
+SELECT ?corpus_label
 WHERE
 { 
-    VALUES ?givenTuneTitle {'Blackbird, The'} # fill in your query tune title here
-    ?composition rdfs:label ?givenTuneTitle.
-    ?ann jams:isJAMSAnnotationOf ?composition.    
-    ?jfile prov:wasDerivedFrom ?corpus_name.
-    ?jfile prov:wasMemberOf ?uri.
-}
+   <http://w3id.org/polifonia/resource/MusicalComposition/12913e6ca5c9fdddb6884c46fd6513189b57c18f> prov:wasDerivedFrom ?jfile.  
+
+   ?jfile prov:wasMemberOf ?corpus_uri.
+   ?jfile prov:wasDerivedFrom ?corpus_label.  
+} 
