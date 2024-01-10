@@ -2,8 +2,7 @@
 
 PREFIX mm: <http://w3id.org/polifonia/ontology/music-meta/>
 
-SELECT ?uri ?tune_name
+SELECT ?uri ?label
 WHERE {
-  ?uri mm:title ?tune_name.
-  ?uri rdfs:label ?label.
+  ?uri a mm:MusicalComposition ; rdfs:label ?label.
 }
