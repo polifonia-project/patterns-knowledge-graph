@@ -2,12 +2,10 @@
 
 PREFIX jams: <http://w3id.org/polifonia/ontology/jams/>
 
-SELECT distinct ?givenTuneId ?matchedTuneId ?tuneFamily 
+SELECT distinct ?label
 WHERE { 
-    VALUES ?givenTuneId {'NLB072360_01'} 
-    ?givenTune jams:tuneId ?givenTuneId. 
-    ?givenTune jams:tuneFamily ?tuneFamily. 
-    ?matchedTune jams:tuneFamily ?tuneFamily. 
-    ?matchedTune jams:tuneId ?matchedTuneId. 
-    FILTER (?matchedTuneId != ?givenTuneId). 
-} LIMIT 10 
+  VALUES ?givenTune {<http://w3id.org/polifonia/resource/MusicalComposition/12913e6ca5c9fdddb6884c46fd6513189b57c18f>} 
+  ?givenTune jams:tuneFamily ?tuneFamily.
+  ?matchedTune jams:tuneFamily ?tuneFamily;
+               rdfs:label ?label.
+}

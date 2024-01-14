@@ -1,0 +1,10 @@
+# Given a tune, find its tune family
+
+PREFIX jams: <http://w3id.org/polifonia/ontology/jams/>
+
+SELECT ?givenTuneId ?tuneFamily 
+WHERE { 
+    VALUES ?givenTuneId {'NLB072360_01'} 
+    ?givenTune jams:tuneId ?givenTuneId. 
+    ?givenTune jams:tuneFamily ?tuneFamily. 
+}

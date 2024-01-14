@@ -1,29 +1,27 @@
 # Given a tune, find related tunes by common patterns and ensure in a different corpus
 
-
 PREFIX jams: <http://w3id.org/polifonia/ontology/jams/>
 PREFIX mm:   <http://w3id.org/polifonia/ontology/music-meta/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
 
-SELECT DISTINCT ?givenTunetitle ?matchedTuneTitle ?SharedPattern ?PatternComplexity
+SELECT DISTINCT ?matchedTuneTitle
 WHERE { 
-VALUES ?givenTune {'Drowsy Maggie'}
-?tune mm:title ?givenTune .
-?tuneFile jams:isJAMSAnnotationOf ?tune .
-?tuneFile jams:includesObservation ?observation .
-?observation jams:ofPattern ?SharedPattern .
-?observation jams:hasPatternComplexity ?PatternComplexity .
-?anotherTuneFile jams:includesObservation ?anotherTuneObser .
-?anotherTuneFile jams:isJAMSAnnotationOf ?anotherTune .
-?anotherTuneObser  jams:ofPattern ?SharedPattern .
-FILTER(?tuneFile != ?anotherTuneFile) .
-?tune mm:title ?givenTunetitle .
-?tune jams:tuneId ?givenTuneId .  
-?anotherTune mm:title ?matchedTuneTitle . 
-?anotherTune jams:tuneId ?matchedTuneId .  
+  ?tuneAnn jams:isJAMSAnnotationOf <http://w3id.org/polifonia/resource/MusicalComposition/9ca6b885335fb77c07475fff08cd4869c184d454> .
+  ?tuneAnn jams:includesObservation ?observation .
+  ?observation jams:ofPattern ?SharedPattern .
+  ?anotherTuneAnn jams:includesObservation ?anotherTuneObservation .
+  ?anotherTuneAnn jams:isJAMSAnnotationOf ?anotherTune .
+  ?anotherTuneObservation jams:ofPattern ?SharedPattern .
+  FILTER(?tuneAnn != ?anotherTuneAnn) .
+  ?anotherTune mm:title ?matchedTuneTitle .
+  ?anotherTune jams:tuneId ?matchedTuneId .
 }
 
 TODO: filter that the found tunes are in a different corpus.
+
+   <http://w3id.org/polifonia/resource/MusicalComposition/12913e6ca5c9fdddb6884c46fd6513189b57c18f> prov:wasDerivedFrom ?jfile.  
+   ?jfile prov:wasDerivedFrom ?corpus_label.  
 
 
     ?composition rdfs:label ?givenTuneTitle.
