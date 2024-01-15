@@ -137,7 +137,7 @@ class GenerateTunesJamsFile:
         pattern_annotation = jams.Annotation(namespace=name_space)
         pattern_annotation.annotation_metadata.annotator.name = self.config['jams_annotations']['annotator_name']
         pattern_annotation.annotation_metadata.data_source = self.config['jams_annotations']['data_source']
-        pattern_annotation.annotation_metadata.corpus = self.config['jams_annotations']['tune_base_url']
+        pattern_annotation.annotation_metadata.corpus = self.config['jams_annotations']['corpus_name']
         pattern_annotation.annotation_metadata.version = self.config['jams_annotations']['version']
         pattern_annotation.annotation_metadata.curator.name = self.config['jams_annotations']['annotator_name']
         pattern_annotation.annotation_metadata.curator.email = self.config['jams_annotations']['email']
@@ -186,7 +186,7 @@ class GenerateTunesJamsFile:
             tuneJAMSFile.save(outfilename, strict=False)
 
             if counter > 2: # just for testing
-                pass # break
+                break
 
 
 if __name__ == "__main__":
