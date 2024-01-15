@@ -110,14 +110,15 @@ class GenerateTunesJamsFile:
             else:
 
                 metadata_row = metadata_row.iloc[0] 
-                tuneJAMSFile.sandbox.content = metadata_row["score"] if "score" in metadata_row else "" # raw abc score
+                tuneJAMSFile.sandbox.content = metadata_row["abc_score"] if "abc_score" in metadata_row else "" # raw abc score
                 tuneJAMSFile.sandbox.feature_data = feature_sequence_data
+                # transcriber can be set in the config instead
                 # tuneJAMSFile.sandbox.transcriber = metadata_row["transcriber"] if "transcriber" in metadata_row else "" # abc Z "transcription"
                 tuneJAMSFile.sandbox.tunetype = metadata_row["R"] if "R" in metadata_row else "" # abc R "rhythm" eg jig, reel 
                 tuneJAMSFile.sandbox.tunefamily = metadata_row["tune_family"] if "tune_family" in metadata_row else "" # 
                 tuneJAMSFile.sandbox.key = metadata_row["K"] if "K" in metadata_row else "" # abc K, ie key
                 tuneJAMSFile.sandbox.timesig = metadata_row["M"] if "M" in metadata_row else "" # abc M, ie meter
-                tuneJAMSFile.sandbox.year = metadata_row["date"] if "date" in metadata_row else "" # date -> year in MTC
+                # tuneJAMSFile.sandbox.year = metadata_row["date"] if "date" in metadata_row else "" # date -> year in MTC
                 tuneJAMSFile.sandbox.tuneid = str(tuneRow["identifiers"])
                 #title = re.sub(r'\d+', '', metadata_row["title"]).strip() # TODO fix this hard-coded digit removal
                 title = metadata_row["title"]
