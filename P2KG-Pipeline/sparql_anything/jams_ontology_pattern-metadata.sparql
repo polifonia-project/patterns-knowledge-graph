@@ -242,29 +242,31 @@ WHERE {
     OPTIONAL {?file_meta xyz:title ?title .}
     OPTIONAL {?file_meta xyz:jams_version ?jams_version .}
     ?file_meta xyz:identifiers ?ids .
+    
     OPTIONAL {?ids xyz:music_brainz ?mb_id .}
     OPTIONAL {?ids xyz:discogs ?discogs_id .}
     OPTIONAL {?ids xyz:perlam ?perlam_id .}
+
     OPTIONAL {?file_meta xyz:release ?release .}
-    OPTIONAL {?file_meta xyz:duration ?fduration .}
     OPTIONAL {?file_meta xyz:artist ?artist .}
     OPTIONAL {?file_meta xyz:duration ?beats_duration .
         BIND (round(xsd:float(?beats_duration)) AS ?beats_duration_float )}
 
     # PLACEHOLDER URIs
-    #BIND (IRI(CONCAT(STR(pon-resource:MusicalComposition), "/song_local_id")) AS ?composition_uri)
-    BIND (IRI(CONCAT(STR(pon-resource:MusicalComposition),"/", SHA1(CONCAT(?tuneId,?title)))) AS ?composition_uri)
+
+    # match: <http://w3id.org/polifonia/resource/tunes/thesession20211212/MusicEntity/1029>
+    BIND (IRI(CONCAT(STR(pon-resource:tunes),"/", ?corpus, "/MusicEntity/", STR(?tuneId)))  AS ?composition_uri)
+    
     BIND (IRI(CONCAT(STR(pon-resource:JAMSFile), "/", SHA1(CONCAT(?tuneId,?title)))) AS ?jams_file_uri)
     BIND (IRI(CONCAT(STR(pon-resource:JAMSAnnotation), "/", SHA1(CONCAT(?tuneId, ?title)))) AS ?annotation_uri)
     # BIND (IRI(CONCAT(STR(pon-resource:JAMSObservation), "/", REPLACE (STR(REPLACE(STR(?observation_value), " ", "_")), "/", "_"), "@", STR(?observation_time_float))) AS ?observation_uri)
     BIND (IRI(CONCAT(STR(pon-resource:Agent), "/Composer/", STR(REPLACE(?composer, " ", "_"))  )) AS ?composer_uri)
     BIND (IRI(CONCAT(STR(pon-resource:Agent), "/Performer/", STR(REPLACE(?performer, " ", "_"))  )) AS ?performer_uri)
     
-    
     BIND (IRI(CONCAT(STR(pon-resource:pattern), "/", SHA1(CONCAT(STR(?pattern_content), ?pattern_type)) )) AS ?pattern_uri)
 
     BIND (IRI(CONCAT(STR(pon-resource:transcriber), "/", REPLACE(STR(?transcriberName), ",", "_"))) AS ?transcriberURI)
-    BIND (IRI(CONCAT(STR(pon-resource:tunetype), "/", REPLACE(STR(?tuneTypeName), ",", "_"))) AS ?tuneTypeURI)
+    BIND (IRI(CONCAT(STR(pon-resource:tunes), "/", ?corpus, "/FormType/", REPLACE(STR(?tuneTypeName), ",", "_"))) AS ?tuneTypeURI)
     BIND (IRI(CONCAT(STR(pon-resource:tunefamily), "/", encode_for_uri(?tuneFamilyName))) AS ?tuneFamilyURI)
     BIND (IRI(CONCAT(STR(pon-resource:key), "/", REPLACE(STR(?keyName), ",", "_"))) AS ?tuneKeyURI)
     BIND (IRI(CONCAT(STR(pon-resource:timesig), "/", REPLACE(STR(?timesig), "/", "_"))) AS ?tuneTimeSignatureURI)
@@ -273,4 +275,3 @@ WHERE {
 } 
 
 }
-# 

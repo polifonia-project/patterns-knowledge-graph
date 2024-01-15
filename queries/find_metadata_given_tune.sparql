@@ -3,13 +3,19 @@
 PREFIX jams: <http://w3id.org/polifonia/ontology/jams/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 prefix mm:   <http://w3id.org/polifonia/ontology/music-meta/>
+PREFIX core:  <http://w3id.org/polifonia/ontology/core/>
 
-SELECT DISTINCT ?tune ?duration ?timesig ?key 
+SELECT DISTINCT ?givenTuneTitle ?tuneID ?duration ?timesig ?key ?form
 WHERE
 { 
-  VALUES ?givenTuneTitle {'Blackbird, The'} # fill in your query tune title here
+  VALUES ?givenTuneTitle {'I Won\'t Be A Nun'} # fill in your query tune title here
   ?tune rdfs:label ?givenTuneTitle.
-  ?tune mm:hasKey ?key.
-  ?tune jams:timeSignature ?timesig.
-  ?tune jams:beatsDuration ?duration.
+  ?tune core:id ?tuneID.
+  ?tune mm:hasKey ?keyURI;
+        jams:timeSignature ?timesigURI;
+        jams:beatsDuration ?duration;
+        mm:hasFormType ?formURI.
+  ?formURI mm:tuneTypeName ?form.
+  ?timesigURI mm:timesig ?timesig.
+  ?keyURI mm:tuneKeyName ?key.
 }
