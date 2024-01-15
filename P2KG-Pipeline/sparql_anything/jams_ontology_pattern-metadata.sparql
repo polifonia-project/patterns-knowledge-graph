@@ -23,35 +23,46 @@ CONSTRUCT {
 
     # COMPOSITION
     ?composition_uri a mm:MusicEntity ;
-        rdfs:label ?title ;
-        core:title ?title ;
-        prov:wasDerivedFrom ?jams_file_uri ;
+        # rdfs:label ?title ;
+        # core:title ?title ;
+        # prov:wasDerivedFrom ?jams_file_uri ;
         # only if the sandbox.type = score
-        jams:tuneId     ?tuneId;
+        # jams:tuneId     ?tuneId;
         jams:beatsDuration ?beats_duration;
         jams:tuneContent  ?tuneContent;
         jams:tuneFeatureData  ?tuneFeatureData;
         jams:transcriber  ?transcriberURI;
-		jams:tuneType 	  ?tuneTypeURI;
+	    mm:FormType 	  ?tuneTypeURI;
         core:isMemberOf   ?tuneFamilyURI;
-		mm:hasKey		  ?tuneKeyURI;
-		jams:timeSignature ?tuneTimeSignatureURI;
-        ?composer_type_relation ?composer_uri .
+		mm:hasKey		      ?tuneKeyURI;
+		jams:timeSignature ?tuneTimeSignatureURI .
+        # ?composer_type_relation ?composer_uri .
+
+    # TUNE musical metadata - going from URIs to concrete strings/ints
+    # TODO these names eg mm:tuneTypeName need to be adjusted to use MusicMeta and PON correctly, I think.
+    ?tuneTypeURI mm:tuneTypeName ?tuneTypeName.
+    ?tuneFamilyURI mm:tuneFamilyName ?tuneFamilyName.
+    ?tuneKeyURI mm:tuneKeyName ?keyName.
+    ?tuneTimeSignatureURI mm:timesig ?timesig.
 
     # TUNE FAMILY
     ?tuneFamilyURI a tunes:TuneFamily , core:Collection;
                    core:isDefinedBy ?tune_family_concept_URI.
 
+    ?tune_family_concept_URI
+        a           core:CollectionConcept ;
+        rdfs:label  "Tunes that belong to the same Tune Family as annotated by Danny Diamond in 2023 (documented in Polifonia Deliverable 3.6 and MSc thesis, 2024, forthcoming)." .
+
     # ARTIST COMPOSER
-    ?composer_uri ?composer_is_type core:Agent ;
-        rdfs:label ?composer .
+    # ?composer_uri ?composer_is_type core:Agent ;
+    #     rdfs:label ?composer .
 
     # ARTIST PERFORMER
-    ?performer_uri ?performer_is_type core:Agent ;
-        rdfs:label ?performer .
+    # ?performer_uri ?performer_is_type core:Agent ;
+    #    rdfs:label ?performer .
 
     # ANNOTATION
-    ?annotation_uri a jams:JAMSAnnotation ;
+     ?annotation_uri a jams:JAMSAnnotation ;
         a ?jams_annotation_type .
 
 
@@ -69,16 +80,15 @@ CONSTRUCT {
 
     # SCORE
     # if it a score, we create a score individual and its description (duration, provenance)
-    ?score_uri ?is_score_of ?composition_uri ;
-        ?score_type mm:Score ;
-        ?score_label ?title ;
-        ?score_derived_from ?jams_file_uri ;
-        ?performer_no_audio ?performer_uri ;
-        ?score_has_jams_annotation ?composition_uri .
+    # ?score_uri ?is_score_of ?composition_uri ; # FIXME this cannot be right - ?is_score_of should be a relation name, not a variable
+    #    ?score_type mm:Score ;
+    #    ?score_label ?title ;
+    #    ?score_derived_from ?jams_file_uri ;
+    #    ?performer_no_audio ?performer_uri ;
+    #    ?score_has_jams_annotation ?composition_uri .
 
     # OBSERVATION
-    ?observation_uri a jams:JAMSObservation ,
-        ?observation_type, ?occurrence_type ;
+    ?observation_uri a jams:JAMSObservation, ?observation_type, ?occurrence_type ;
         #rdfs:label ?observation_value ;
         #jams:hasConfidence ?confidence ;
         #jams:hasDuration ?observation_duration_float ;
@@ -87,10 +97,14 @@ CONSTRUCT {
         #jams:ofChord ?chord_uri ;
         # PATTERN ADDITION
         #jams:hasFrequency ?pattern_frequency ;
-        jams:hasPatternType ?pattern_type ;
         jams:ofPattern ?pattern_uri ;
-        jams:hasPatternLocation ?observation_time_float;
-        jams:hasPatternComplexity ?observation_complexity_float.
+        jams:hasLocation ?observation_time_float.
+
+    # PATTERN
+    ?pattern_uri xyz:pattern_type ?pattern_type ;
+                 xyz:pattern_content ?pattern_content ;
+                 xyz:pattern_length ?pattern_length;
+                 xyz:pattern_complexity ?pattern_complexity.
 
 }
 
@@ -116,7 +130,6 @@ WHERE {
  #             ?sandbox xyz:year ?yearValue.}
 #   OPTIONAL {?feature_data xyz:sandbox ?sandbox .
 #            ?sandbox xyz:feature_data ?tuneFeatureData.}
-    OPTIONAL {?sandbox xyz:timesig ?timeSignatureName .}
     OPTIONAL {?x xyz:sandbox ?sandbox .
             ?sandbox xyz:type ?object_type .}
     OPTIONAL {?sandbox xyz:performers ?performer_list .
@@ -220,10 +233,10 @@ WHERE {
         BIND (jams:ScorePatternOccurrence AS ?occurrence_type)
 
         ?observation_value xyz:pattern_content ?pattern_content ;
-        xyz:pattern_type ?pattern_type ;
-        xyz:pattern_length ?pattern_length;
-        xyz:pattern_complexity ?observation_complexity .
-        BIND (xsd:float(?observation_complexity) AS ?observation_complexity_float )
+          xyz:pattern_type ?pattern_type ;
+          xyz:pattern_length ?pattern_length;
+          xyz:pattern_complexity ?pattern_complexity .
+        BIND (xsd:float(?pattern_complexity) AS ?pattern_complexity_float )
 
     }
     ###################
@@ -256,9 +269,9 @@ WHERE {
     BIND (IRI(CONCAT(STR(pon-resource:tunetype), "/", REPLACE(STR(?tuneTypeName), ",", "_"))) AS ?tuneTypeURI)
     BIND (IRI(CONCAT(STR(pon-resource:tunefamily), "/", encode_for_uri(?tuneFamilyName))) AS ?tuneFamilyURI)
     BIND (IRI(CONCAT(STR(pon-resource:key), "/", REPLACE(STR(?keyName), ",", "_"))) AS ?tuneKeyURI)
-    BIND (IRI(CONCAT(STR(pon-resource:timesig), "/", REPLACE(STR(?timeSignatureName), "/", "_"))) AS ?tuneTimeSignatureURI)
+    BIND (IRI(CONCAT(STR(pon-resource:timesig), "/", REPLACE(STR(?timesig), "/", "_"))) AS ?tuneTimeSignatureURI)
     BIND (IRI(CONCAT(STR(pon-resource:JAMSObservation), "/", SHA1(CONCAT(?tuneId, ?title, REPLACE (STR(REPLACE(STR(?pattern_content), ", ", "_")), "/", "_"), "@", STR(?observation_time_float))))) AS ?observation_uri)
-    BIND (IRI(CONCAT(STR(pon-resource:CollectionConcept), "/", "tune_family")) AS ?tune_family_concept_uri)
+    BIND (IRI(CONCAT(STR(pon-resource:CollectionConcept), "/", "TuneFamily")) AS ?tune_family_concept_URI)
 } 
 
 
