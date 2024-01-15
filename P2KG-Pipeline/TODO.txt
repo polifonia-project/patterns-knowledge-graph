@@ -1,19 +1,134 @@
-Plan
+Plan:
+
+1. Change our pattern URI to a more informative one, eg:  
+  * http://w3id.org/polifonia/resource/pattern/fonn/diatonic/accent/5_2_1_6
+  * http://w3id.org/polifonia/resource/pattern/fonn/diatonic/note/5_2_1_6
+2. Test all queries
+3. Update README with examples of output, and script usage
+4. Upload to disi server for testing with Pattern UI
+5. Check output more carefully - capitalisation, spaces, commas, accented characters 
+6. What to do with 'prov'?
 
 
-1. I should fill in default names, eg tune family #1
-2. Underscore-separated tune family names eg Daar_ging_een_heer_1
-3. Capitalisation - ignore this, I hope
-4. beatsDuration is there twice
-5. rdfs:label and mc:title the same 
-6. accented characters
-7. key and timeSignature and tune type are blank. the latter is formType in the TUNES KG. The others are available in the metadata for The Session.
+
+Notes:
+
+The following relations exist in TUNES:
+
+<http://w3id.org/polifonia/ontology/jams/beatsDuration>
+<http://w3id.org/polifonia/ontology/jams/hasPatternComplexity>
+<http://w3id.org/polifonia/ontology/jams/hasPatternLocation>
+<http://w3id.org/polifonia/ontology/jams/hasPatternType>
+<http://w3id.org/polifonia/ontology/jams/includesObservation>
+<http://w3id.org/polifonia/ontology/jams/isJAMSAnnotationOf>
+<http://w3id.org/polifonia/ontology/jams/jamsVersion>
+<http://w3id.org/polifonia/ontology/jams/key>
+<http://w3id.org/polifonia/ontology/jams/ofPattern>
+<http://w3id.org/polifonia/ontology/jams/release>
+<http://w3id.org/polifonia/ontology/jams/timeSignature>
+<http://w3id.org/polifonia/ontology/jams/tuneContent>
+<http://w3id.org/polifonia/ontology/jams/tuneFamily>
+<http://w3id.org/polifonia/ontology/jams/tuneId>
+<http://w3id.org/polifonia/ontology/jams/tuneType>
+<http://w3id.org/polifonia/ontology/music-meta/title>
+<http://www.w3.org/ns/prov#wasDerivedFrom>
+<http://www.w3.org/ns/prov#wasMemberOf>
+<http://w3id.org/polifonia/ontology/core/description>
+<http://w3id.org/polifonia/ontology/core/hasMember>
+<http://w3id.org/polifonia/ontology/core/hasPart>
+<http://w3id.org/polifonia/ontology/core/id>
+<http://w3id.org/polifonia/ontology/core/isMemberOf>
+<http://w3id.org/polifonia/ontology/core/title>
+<http://w3id.org/polifonia/ontology/music-meta/hasFormType>
+<http://w3id.org/polifonia/ontology/music-meta/isRealisedIn>
+<http://w3id.org/polifonia/ontology/core/name>
+<http://w3id.org/polifonia/ontology/core/isDefinedBy>
+rdf:type
+rdfs:label
+
+
+Collection concepts:
+
+<http://w3id.org/polifonia/resource/tunes/CollectionConcept/Tune>
+        a           core:CollectionConcept ;
+        rdfs:label  "Melodies that belong to the same Tune as conceptualized in The Session." .
+
+<http://w3id.org/polifonia/resource/tunes/CollectionConcept/TuneFamily>
+        a           core:CollectionConcept ;
+        rdfs:label  "Melodies that belong to the same tune family." .
+
+
+Form types, just a few:
+
+<http://w3id.org/polifonia/resource/tunes/thesession20211212/FormType/jig>
+        a          mm:FormType ;
+        core:name  "jig" .
+
+Tunes (40k):
+
+<http://w3id.org/polifonia/resource/tunes/thesession20211212/Tune/4335>
+        a                 core:Collection ;
+        core:description  "https://thesession.org/tunes/4335" ;
+        core:id           "4335" ;
+        core:isDefinedBy  <http://w3id.org/polifonia/resource/tunes/CollectionConcept/Tune> ;
+        core:name         "Beech Tree, The" .
+
+Entities (AbstractScore, Score, MusicEntity):
+
+<http://w3id.org/polifonia/resource/tunes/thesession20211212/MusicEntity/18576/AbstractScore>
+        rdf:type         mm:AbstractScore ;
+        mm:isRealisedIn  <http://w3id.org/polifonia/resource/tunes/thesession20211212/MusicEntity/18576/Score> .
+
+<http://w3id.org/polifonia/resource/tunes/thesession20211212/MusicEntity/7829/Score>
+        rdf:type    mm:Score ;
+        core:id     "7829" ;
+        core:title  "Lady's Well, The" .
+
+<http://w3id.org/polifonia/resource/tunes/thesession20211212/MusicEntity/33129>
+        rdf:type          mm:MusicEntity ;
+        rdfs:label        "Train Journey North, The" ;
+        core:description  "https://thesession.org/tunes/11638#setting33129" ;
+        core:hasPart      <http://w3id.org/polifonia/resource/tunes/thesession20211212/MusicEntity/33129/AbstractScore> ;
+        core:id           "33129" ;
+        core:isMemberOf   <http://w3id.org/polifonia/resource/tunes/thesession20211212/Tune/11638> , <http://w3id.org/polifonia/resource/tunes/Collection/thesession20211212> ;
+        core:title        "Train Journey North, The" ;
+        mm:hasFormType    <http://w3id.org/polifonia/resource/tunes/thesession20211212/FormType/hornpipe> .
+
+
+compare (from Patterns):
+
+<http://w3id.org/polifonia/resource/MusicalComposition/29318d2d8c8d2faebfb1e1560fb208c57681d91a>
+        rdf:type            mm:MusicEntity ;
+        core:isMemberOf     <http://w3id.org/polifonia/resource/tunefamily/Drowsy%20Maggie> ;
+        jams:beatsDuration  "34.0"^^xsd:double ;
+        jams:timeSignature  <http://w3id.org/polifonia/resource/timesig/4_4> ;
+        jams:tuneContent    " X:27 T:Drowsy Maggie 27 Z:Jeremy S:thesession.org R:reel |:E2BE dEBE|E2BE AFDF|E2BE dEBE|BABc dAFD:| d2fd c2ec|defg afge|d2fd c2ec|BABc dAFA| d2fd c2ec|defg afge|afge fdec|BABc dAFD| " ;
+        mm:FormType         <http://w3id.org/polifonia/resource/tunetype/reel> ;
+        mm:hasKey           <http://w3id.org/polifonia/resource/key/Edorian> .
+
+
+But there is an inconsistency here: we are using NLB072255_01, but the id here is just 72255:
+
+<http://w3id.org/polifonia/resource/tunes/MTC-FS-INST-2.0/MusicEntity/72255/Stanza/1>
+        rdf:type          mm:Stanza , mm:CompositionPart ;
+        rdfs:label        "1" ;
+        core:description  "https://www.liederenbank.nl/liedpresentatie.php?zoek=72255&lan=en" ;
+        core:id           "NLB072255_01" ;
+        core:isPartOf     <http://w3id.org/polifonia/resource/tunes/MTC-FS-INST-2.0/MusicEntity/72255/AbstractScore> ;
+        mm:isRealisedIn   <http://w3id.org/polifonia/resource/tunes/MTC-FS-INST-2.0/MusicEntity/72255/Score> .
 
 
 
+Issues from Giulia:
 
-with PVK about URIs
+* Index - list of tunes - done, but check that every tune now has a label - should be in the TUNES KG
+* Card - text - find_metadata_given_tune.sparql returns weird results for timesig and key - URIs seem wrong - done - but give the timesig name
+* Card - link - find_corpus_given_tune.sparql 
+* 
+* Provide 200 words describing the data for portal front page
 
+
+Discussion with PVK about URIs. Examples:
 
 MTC-FS-INST-2.0/NLBxxxxxx_yy
 thesession/12345
@@ -23,8 +138,9 @@ kolberg/
 easmes/ # early american sources manuscripts from europe same as rism but books in USA
 essen/deutsch12345
 
+URIs:
 
-tune family - tunes:TuneFamily
+tunes:TuneFamily
 mm:MusicEntity
 
 /resource/tunes/<corpusname>/<classname>/<id>
@@ -35,8 +151,9 @@ eg
 
 
 
+Future work:
 
-I should re-do The Session using all the fields, including annotator and setting versus tune ID 
+I could re-do The Session using all the fields, including annotator and setting versus tune ID 
 
 X: 2
 T: Johnny An Gabha
@@ -54,39 +171,6 @@ g2 GB/d/|e/f/e/d/ Bd|e/f/e/d/ e>f|ag g:|
 Then just use Danny's metadata on tune families to add more families
 
 
-In JAMS, pattern_id is actually the tune id. 
-
-
-The pattern length, type and complexity should be attached to the pattern, not the observation. 
-
-
-read the diff again and identify any important diffs
-
-* mc:title -> core:title
-* mc mp etc
-* add owl prefix
-* musicbrainz etc?
-* what is a bnode?
-* they have ?_filepath somehow
-* we don't seem to use a lot of PON??
-
-* our additions: 
-** RED IS OURS, GREEN IS THEIRS
-** composition we have to keep a lot of ours
-** most of their composition stuff is commented-out
-
-load the current ttl to BG and see if we can query
-
-run their version and see what happens - empty, just prefixes for some reason
-
-remove SHA and check it produces good outputs - but note ChoCo uses SHA
-
-
-
-java -server -Xmx4g -jar blazegraph.jar
-
-
-
 Add a section to readme to show an example of the output ttl
 
 * The URI we mint for a musical composition is eg:
@@ -98,65 +182,4 @@ Add a section to readme to show an example of the output ttl
   * http://w3id.org/polifonia/resource/pattern/fonn/diatonic/note/5_2_1_6
 * The `pattern-type` is a string, eg:
   * `URI jams:hasPatternType "feature='diatonic scale degree', level='accent', n_vals=4" ;`
-
-
-
-<http://w3id.org/polifonia/resource/MusicalComposition/6c979ddacb28fa23920e630e7bfa5400866caabf>
-        rdf:type             mc:MusicalComposition ;
-        rdfs:label           "An Seanduine DÃ³ite" ;
-        jams:beatsDuration   "66.0"^^xsd:float ;
-        jams:key             <http://w3id.org/polifonia/resource/key/> ;
-        jams:timeSignature   <http://w3id.org/polifonia/resource/timesig/> ;
-        jams:tuneContent     "" ;
-        jams:tuneFamily      <http://w3id.org/polifonia/resource/tunefamily/Hob_or_Nob> ;
-        jams:tuneId          "1029" ;
-        jams:tuneType        <http://w3id.org/polifonia/resource/tunetype/> ;
-        mc:title             "An Seanduine DÃ³ite" ;
-        prov:wasDerivedFrom  <http://w3id.org/polifonia/resource/JAMSFile/6c979ddacb28fa23920e630e7bfa5400866caabf> .
-
-<http://w3id.org/polifonia/resource/JAMSObservation/5c1d21d4f7f93d914d02b395b1f73dc2f7ec9992>
-        rdf:type                   jams:ScorePatternOccurrence , jams:JAMSScoreObservation , jams:JAMSObservation ;
-        jams:hasPatternComplexity  "0.75"^^xsd:float ;
-        jams:hasPatternLocation    "47.0"^^xsd:float ;
-        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=4" ;
-        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/3_1_1_5> .
-
-<http://w3id.org/polifonia/resource/JAMSFile/6c979ddacb28fa23920e630e7bfa5400866caabf>
-        rdf:type             jams:JAMSFile ;
-        jams:beatsDuration   "66.0"^^xsd:double ;
-        jams:jamsVersion     "0.3.4" ;
-        jams:release         "n-grams patterns-kg 1.0" ;
-        prov:wasDerivedFrom  "The Session" ;
-        prov:wasMemberOf     <https://github.com/ashahidkhattak/thesession> .
-
-
-
-
-NEW
-
-
-<http://w3id.org/polifonia/resource/JAMSObservation/33c77c41a81e6ce948f4fa10ff6b2ed2e56c7e05>
-        rdf:type                   jams:JAMSScoreObservation , jams:JAMSObservation , jams:ScorePatternOccurrence ;
-        rdfs:label                 []  ;
-        jams:hasConfidence         "1"^^xsd:int ;
-        jams:hasPatternComplexity  "0.5"^^xsd:float ;
-        jams:hasPatternLocation    "34.0"^^xsd:float ;
-        jams:hasPatternType        "feature='diatonic scale degree', level='accent', n_vals=4" ;
-        jams:isJAMSObservationOf   <http://w3id.org/polifonia/resource/JAMSAnnotation/6c979ddacb28fa23920e630e7bfa5400866caabf> ;
-        jams:ofPattern             <http://w3id.org/polifonia/resource/pattern/5_5_2_2> .
-
-
-<http://w3id.org/polifonia/resource/JAMSFile/6c979ddacb28fa23920e630e7bfa5400866caabf>
-        rdf:type             jams:JAMSFile ;
-        jams:beatsDuration   "66.0"^^xsd:double ;
-        jams:jamsVersion     "0.3.4" ;
-        jams:release         "n-grams patterns-kg 1.0" ;
-        prov:wasDerivedFrom  "TheSession-Annotated" ;
-        prov:wasMemberOf     <https://github.com/ashahidkhattak/thesession> .
-
-<http://w3id.org/polifonia/resource/JAMSAnnotation/6c979ddacb28fa23920e630e7bfa5400866caabf>
-        rdf:type                  jams:JAMSAnnotation ;
-        jams:hasAnnotationType    "pattern_fonn" ;
-        jams:includesObservation  <http://w3id.org/polifonia/resource/JAMSObservation/8817894647d9f42a490906e0c384fc9a3f494ad6> , <http://w3id.org/polifonia/resource/JAMSObservation/061ef02f58fc9fd2b7e9d8b05103b8403af51b40> , <http://w3id.org/polifonia/resource/JAMSObservation/7c22872974e819ab38912272d4d730ee1265b83c> , <http://w3id.org/polifonia/resource/JAMSObservation/a7cc96133ddbbce2e2049523afbfdb153803cd04> , <http://w3id.org/polifonia/resource/JAMSObservation/03223b2fef4568794d63de726dd61499bf1c5e92> , <http://w3id.org/polifonia/resource/JAMSObservation/d8124373be77c8a859149faa7ae8d8c789116d0e> , <http://w3id.org/polifonia/resource/JAMSObservation/5964e041ed26a8262b8edcd201aa6749d8a5768a> , <http://w3id.org/polifonia/resource/JAMSObservation/faca1f26deeef0094a8ccbc0e0ac83a0a7574625> , <http://w3id.org/polifonia/resource/JAMSObservation/577a989d4bbbabafe64314ba1c5c59e4a97910e4> , <http://w3id.org/polifonia/resource/JAMSObservation/94dc0aca39ad8bbea607f6c021e57a953df7479a> , <http://w3id.org/polifonia/resource/JAMSObservation/0099b654179796f880cf387903cbdb72b5822617> , <http://w3id.org/polifonia/resource/JAMSObservation/6c58e50b6042a99c641292ddf8a00e12f432b866> , <http://w3id.org/polifonia/resource/JAMSObservation/8f4929acd4332744ce241ab1cd73940fcd5f9352> , <http://w3id.org/polifonia/resource/JAMSObservation/8b6a06812326204029ca66719e6f2f852fc439ba> , <http://w3id.org/polifonia/resource/JAMSObservation/65d1e09011dc2d453f59879666dfab943ee32d61> , <http://w3id.org/polifonia/resource/JAMSObservation/4813dbfb9205c3e8fd0f305155480eb54677e47c> , <http://w3id.org/polifonia/resource/JAMSObservation/c3733a3a42fc2d97de68587dbaf095da444970dd> , <http://w3id.org/polifonia/resource/JAMSObservation/f9d8c31c58fd7c54fdeb9ad9c0ca5af224538469> , <http://w3id.org/polifonia/resource/JAMSObservation/e43d2b263e27336702716f9b1b5b5231eb14f2b0> , <http://w3id.org/polifonia/resource/JAMSObservation/f07699c298280bba3236628e364a714d44a4300a> , <http://w3id.org/polifonia/resource/JAMSObservation/bf6b11b27b3e970d3ddb50bc96ca3cec38cd8329> , <http://w3id.org/polifonia/resource/JAMSObservation/c2ca3a0e0b156840893c0850b456b04cd1a14460> , <http://w3id.org/polifonia/resource/JAMSObservation/1c00cb45fbf17e8771dd05b04a441ab79a9393dd> , <http://w3id.org/polifonia/resource/JAMSObservation/b4beb1490699f5edcf76bead7064bf5276ad2a2e> , <http://w3id.org/polifonia/resource/JAMSObservation/a74b5c31b129a537554896d4fcfc4ace23955ece> , <http://w3id.org/polifonia/resource/JAMSObservation/5dd7aa34c4bf37f7207f81ace0e60ae8270888c7> , <http://w3id.org/polifonia/resource/JAMSObservation/b9198d02a27fef1ee1da0f3739e6838260113183> , <http://w3id.org/polifonia/resource/JAMSObservation/322d4cbcb5e0eaff95d93dd767501a91b73b9867> , <http://w3id.org/polifonia/resource/JAMSObservation/556339d3a2cce2f1531883242f9cbc4387f5b722> , <http://w3id.org/polifonia/resource/JAMSObservation/7a1ffa20110e10257d3f93def94f58a1603bd189> , <http://w3id.org/polifonia/resource/JAMSObservation/1713f042f8a5723fc0cbe2c0ec718dadff42c7c5> , <http://w3id.org/polifonia/resource/JAMSObservation/37154e56d736940f976440b024a20908654e9949> , <http://w3id.org/polifonia/resource/JAMSObservation/fb4d95455659c865a6c5e68bddb1f85da4f04d66> , <http://w3id.org/polifonia/resource/JAMSObservation/7cd1eba716c7c592e0c7e6d68f90d0b8ee8f45f8> , <http://w3id.org/polifonia/resource/JAMSObservation/6a9ac9ae3e73da76d27f95c7869b1a677af86e5d> , <http://w3id.org/polifonia/resource/JAMSObservation/091f9105ed32fa9dafbe58ef3cda6b4d9ca98dce> , <http://w3id.org/polifonia/resource/JAMSObservation/ce8baaf811b837ef0dedc1000c0d86733500110d> , <http://w3id.org/polifonia/resource/JAMSObservation/5c1d21d4f7f93d914d02b395b1f73dc2f7ec9992> , <http://w3id.org/polifonia/resource/JAMSObservation/d4998594513de7753431b29e82bb60cf816c49f7> , <http://w3id.org/polifonia/resource/JAMSObservation/a35bd5530234f03dd783cb259c36a11ba6e8c204> , <http://w3id.org/polifonia/resource/JAMSObservation/74a39f49a9d708c50b64470dfe3ed0397fe6b0d6> , <http://w3id.org/polifonia/resource/JAMSObservation/5ef4141a4b98ce7172bb446e453d2dc3b5fd8695> , <http://w3id.org/polifonia/resource/JAMSObservation/b1892ebea1d8289664a3596b333f40d984383bbf> , <http://w3id.org/polifonia/resource/JAMSObservation/b1917862056bdbe74791fb2464768c609340edc9> , <http://w3id.org/polifonia/resource/JAMSObservation/33c77c41a81e6ce948f4fa10ff6b2ed2e56c7e05> , <http://w3id.org/polifonia/resource/JAMSObservation/befd8bcf46d83e128edc7dc38fe3c9411e169ba8> , <http://w3id.org/polifonia/resource/JAMSObservation/42e86aca4bb1731eeead44aaa3f09327ff16156f> , <http://w3id.org/polifonia/resource/JAMSObservation/deef800d9b07766cabe7f696d4fda823715945a4> , <http://w3id.org/polifonia/resource/JAMSObservation/a7fc8ddcbab000e02e84a40b2e65838e534610f7> , <http://w3id.org/polifonia/resource/JAMSObservation/74d1db695f96a4b56695b0cb399589f9bf923d33> , <http://w3id.org/polifonia/resource/JAMSObservation/779904a67f0a10004e49e8a7ac9fe9e291f7d864> , <http://w3id.org/polifonia/resource/JAMSObservation/d3a2093ae629c6072f12a82b9f062490a5f9f9e2> , <http://w3id.org/polifonia/resource/JAMSObservation/c9025f7c248a54f823ff52065e6bcf0952f8239f> , <http://w3id.org/polifonia/resource/JAMSObservation/6f748a11b70af67dd02a836494518794565317ee> , <http://w3id.org/polifonia/resource/JAMSObservation/894c5da4050629b25e2c254041fd013ce3a2fcb2> , <http://w3id.org/polifonia/resource/JAMSObservation/d23ce26329776025a0a6a1bcf802392ea6e56d36> , <http://w3id.org/polifonia/resource/JAMSObservation/51576d6f171c74c10df219317a02046a4b65af13> , <http://w3id.org/polifonia/resource/JAMSObservation/06583a9de4590576bec781b7a76831500707c787> , <http://w3id.org/polifonia/resource/JAMSObservation/f74fa08c5a8af30cca5c7313550abf800f320c51> , <http://w3id.org/polifonia/resource/JAMSObservation/c159f503a7185351389a134523818f522b015b1a> , <http://w3id.org/polifonia/resource/JAMSObservation/868b17553f62868102fcef69eeca740cee574315> ;
-        jams:isJAMSAnnotationOf   <http://w3id.org/polifonia/resource/MusicalComposition/6c979ddacb28fa23920e630e7bfa5400866caabf> .
 
