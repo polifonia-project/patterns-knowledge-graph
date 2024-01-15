@@ -49,10 +49,6 @@ CONSTRUCT {
     ?tuneFamilyURI a tunes:TuneFamily , core:Collection;
                    core:isDefinedBy ?tune_family_concept_URI.
 
-    ?tune_family_concept_URI
-        a           core:CollectionConcept ;
-        rdfs:label  "Tunes that belong to the same Tune Family as annotated by Danny Diamond in 2023 (documented in Polifonia Deliverable 3.6 and MSc thesis, 2024, forthcoming)." .
-
     # ARTIST COMPOSER
     # ?composer_uri ?composer_is_type core:Agent ;
     #     rdfs:label ?composer .
@@ -262,8 +258,10 @@ WHERE {
     BIND (IRI(CONCAT(STR(pon-resource:JAMSAnnotation), "/", SHA1(CONCAT(?tuneId, ?title)))) AS ?annotation_uri)
     # BIND (IRI(CONCAT(STR(pon-resource:JAMSObservation), "/", REPLACE (STR(REPLACE(STR(?observation_value), " ", "_")), "/", "_"), "@", STR(?observation_time_float))) AS ?observation_uri)
     BIND (IRI(CONCAT(STR(pon-resource:Agent), "/Composer/", STR(REPLACE(?composer, " ", "_"))  )) AS ?composer_uri)
-    BIND (IRI(CONCAT(STR(pon-resource:Agent), "/Performer/", STR(REPLACE(?performer, " ", "_"))  )) AS ?performer_uri)}
-    BIND (IRI(CONCAT(STR(pon-resource:pattern), "/", REPLACE(STR(?pattern_content), ", ", "_"))) AS ?pattern_uri)
+    BIND (IRI(CONCAT(STR(pon-resource:Agent), "/Performer/", STR(REPLACE(?performer, " ", "_"))  )) AS ?performer_uri)
+    
+    
+    BIND (IRI(CONCAT(STR(pon-resource:pattern), "/", SHA1(CONCAT(STR(?pattern_content), ?pattern_type)) )) AS ?pattern_uri)
 
     BIND (IRI(CONCAT(STR(pon-resource:transcriber), "/", REPLACE(STR(?transcriberName), ",", "_"))) AS ?transcriberURI)
     BIND (IRI(CONCAT(STR(pon-resource:tunetype), "/", REPLACE(STR(?tuneTypeName), ",", "_"))) AS ?tuneTypeURI)
@@ -274,5 +272,5 @@ WHERE {
     BIND (IRI(CONCAT(STR(pon-resource:CollectionConcept), "/", "TuneFamily")) AS ?tune_family_concept_URI)
 } 
 
-
+}
 # 
