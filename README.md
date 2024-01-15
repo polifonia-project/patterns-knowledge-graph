@@ -73,11 +73,19 @@ It will read the data (metadata in csv format, and pattern occurrences in pickle
 
 ## Testing locally
 
-You can run Blazegraph locally to test your Knowledge Graph. Download it from: `https://blazegraph.com/` and put it (e.g.) into a `/test` directory.  
+You can run Blazegraph locally to test your Knowledge Graph. Download it from: `https://blazegraph.com/` and put it (e.g.) into a `/test` directory. From there run, e.g.:
+
+`shell
+$ java -server -Xmx4g -jar blazegraph.jar
+`
+
+And it will start a UI in the browser. From there you can upload the `.ttl` files and issue test queries.
 
 # Deployment 
 
-We then copy this to the Polifonia server https://polifonia.disi.unibo.it/fonn/sparql, which provides the data via a public SPARQL endpoint. We also provide some data stories via MELODY:
+To instead deploy, we copy our `.ttl` to the Polifonia server https://polifonia.disi.unibo.it/fonn/sparql, which provides the data via a public SPARQL endpoint. 
+
+## We also provide some data stories via MELODY:
 
 * https://projects.dharc.unibo.it/melody/fonn/statistics_on_the_session_annotated_subset_and_meertens_tune_collections_mtcann_pattern_kg
 * https://projects.dharc.unibo.it/melody/fonn/tune_families_in_the_session_and_mtcann
