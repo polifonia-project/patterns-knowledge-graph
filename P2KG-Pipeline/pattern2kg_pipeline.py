@@ -60,8 +60,9 @@ if __name__ == "__main__":
     rdf_dir = ""
     for corpus in "mtc_ann", "thesession_annotated_subset":
         for n in (4, 5, 6):
+            # for testing just a few examples with the session only
             # if corpus != "thesession_annotated_subset": continue
-            # if n == 4: continue
+            # if n != 4: continue
             copy_configs(corpus, n)
             JAMS_pipeline = JAMSPipeline()
             JAMS_pipeline.start_pipleline()
