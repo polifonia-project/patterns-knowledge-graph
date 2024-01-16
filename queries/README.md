@@ -23,25 +23,25 @@ The following are intended to be useful in the Polifonia Web Portal:
 
 Queries:
 
-count_patterns.sparql - ok
-count_pieces.sparql - ok
-find_corpus_given_tune.sparql
-find_members_same_family.sparql
-find_metadata_given_tune.sparql - ok
-find_tunes_by_common_patterns.sparql - ok
-find_tunes_by_common_patterns_different_corpus.sparql
-find_tunes_given_pattern.sparql - ok
-find_tune_family_given_tune.sparql
-get_patterns_frequencies_given_tune.sparql
-get_pattern_location.sparql
-get_pattern_types.sparql
-get_tunetypes.sparql - ok
-get_tune_titles.sparql - ok
-list_relations.sparql - ok
-pattern_containment.sparql
-pattern_cooccurrence.sparql
-pattern_frequency.sparql
-pattern_location_versus_complexity.sparql
-show_patterns.sparql
-substring_query.sparql
-title_substring_match.sparql
+* count_patterns.sparql - ok
+* count_pieces.sparql - ok
+* find_corpus_given_tune.sparql
+* find_members_same_family.sparql
+* find_metadata_given_tune.sparql - ok
+* find_tunes_by_common_patterns.sparql - ok
+* find_tunes_by_common_patterns_different_corpus.sparql
+* find_tunes_given_pattern.sparql - ok
+* find_tune_family_given_tune.sparql
+* get_patterns_frequencies_given_tune.sparql
+* get_pattern_location.sparql
+* get_pattern_types.sparql
+* get_tunetypes.sparql - ok
+* get_tune_titles.sparql - ok
+* list_relations.sparql - ok
+* pattern_containment.sparql
+* pattern_cooccurrence.sparql
+* pattern_frequency.sparql
+* pattern_location_versus_complexity.sparql
+* show_patterns.sparql
+* substring_query.sparql
+* title_substring_match.sparql
