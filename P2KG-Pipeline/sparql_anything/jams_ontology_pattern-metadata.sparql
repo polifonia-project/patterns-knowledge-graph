@@ -305,7 +305,7 @@ WHERE {
           AS ?tuneTypeURI)
 
     # eg: <http://w3id.org/polifonia/resource/key/Gmajor>
-    BIND (IRI(CONCAT(STR(pon-resource:key), "/", REPLACE(STR("?keyName"), "#", "sharp"))) AS ?tuneKeyURI)
+    BIND (IRI(CONCAT(STR(pon-resource:key), "/", REPLACE(STR(?keyName), "#", "sharp"))) AS ?tuneKeyURI)
 
     # eg: <http://w3id.org/polifonia/resource/timesig/4_4>
     BIND (IRI(CONCAT(STR(pon-resource:timesig), "/", REPLACE(STR(?timesig), "/", "_"))) AS ?tuneTimeSignatureURI)
