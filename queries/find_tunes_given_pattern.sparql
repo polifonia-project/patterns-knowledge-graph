@@ -2,16 +2,17 @@
 
 PREFIX jams: <http://w3id.org/polifonia/ontology/jams/>
 PREFIX mm:   <http://w3id.org/polifonia/ontology/music-meta/>
+PREFIX xyz:  <http://sparql.xyz/facade-x/data/>
+PREFIX core: <http://w3id.org/polifonia/ontology/core/>
 
-SELECT distinct (concat(?tuneId, "-" ,?tuneTitle) as ?TuneInfo) 
-       ?TuneType ?TuneSignature
+SELECT distinct ?pattern ?tuneId ?tuneTitle ?TuneType ?TuneSignature
 WHERE { 
-    VALUES ?Pattern {<5_1_6_2_4_1>}
+    VALUES ?contents {"3, 3, 5, 1"}
+    ?pattern xyz:pattern_content ?contents .
     ?observation  jams:ofPattern ?pattern .
     ?tuneFile jams:includesObservation ?observation .
     ?tuneFile jams:isJAMSAnnotationOf ?tune .
-    ?tune mm:title ?tuneTitle .
-    ?tune jams:tuneId ?tuneId .
-    ?tune jams:tuneType ?TuneType .
+    ?tune core:title ?tuneTitle .
+    ?tune mm:FormType ?TuneType .
     ?tune jams:timeSignature ?TuneSignature .
 }

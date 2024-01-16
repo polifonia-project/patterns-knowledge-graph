@@ -1,8 +1,10 @@
-# Find all tune titles and their URIs
+# Find all tune titles (which have annotations) in this KG 
 
-PREFIX mm: <http://w3id.org/polifonia/ontology/music-meta/>
+PREFIX jams: <http://w3id.org/polifonia/ontology/jams/>
+PREFIX core: <http://w3id.org/polifonia/ontology/core/>
 
-SELECT ?uri ?label
+SELECT ?title
 WHERE {
-  ?uri a mm:MusicalComposition ; rdfs:label ?label.
-}
+  ?s jams:isJAMSAnnotationOf ?piece.
+  ?piece core:title ?title.
+} 

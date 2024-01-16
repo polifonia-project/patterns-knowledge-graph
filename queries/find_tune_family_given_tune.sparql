@@ -1,10 +1,18 @@
-# Given a tune, find its tune family
+# Given a tune by ID, find its name and tune family
 
-PREFIX jams: <http://w3id.org/polifonia/ontology/jams/>
+PREFIX jams:  <http://w3id.org/polifonia/ontology/jams/>
+PREFIX core:  <http://w3id.org/polifonia/ontology/core/>
+PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX tunes: <http://w3id.org/polifonia/ontology/tunes/>
+PREFIX mm:    <http://w3id.org/polifonia/ontology/music-meta/>
 
-SELECT ?givenTuneId ?tuneFamily 
+SELECT ?givenTuneId ?givenTuneName ?tuneFamilyName 
 WHERE { 
-    VALUES ?givenTuneId {'NLB072360_01'} 
-    ?givenTune jams:tuneId ?givenTuneId. 
-    ?givenTune jams:tuneFamily ?tuneFamily. 
+    VALUES ?givenTuneId {'3822'} 
+    ?givenTune rdf:type mm:MusicEntity.
+    ?givenTune core:id ?givenTuneId. 
+    ?givenTune core:title ?givenTuneName.
+    ?givenTune core:isMemberOf ?tuneFamily. 
+    ?tuneFamily rdf:type tunes:TuneFamily.
+    ?tuneFamily mm:tuneFamilyName ?tuneFamilyName.
 }
