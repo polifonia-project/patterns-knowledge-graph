@@ -1,4 +1,6 @@
 
+# java -server -Xmx4g -jar ..\test\blazegraph.jar # would like to run in bg 
+
 # drop db.
 
 # Note current namespace: kb
