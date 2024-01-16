@@ -63,8 +63,7 @@ class JAMS2RDF:
                         print(counter, filename)
                         counter = counter + 1
                         self.jams2rdf(filename, outfilePath)
-                if counter > 2: # just for testing
-                    pass # break
+                # if counter > 2: break # just for testing
 
             print("Process end: conversion completed (no more files available for conversion)")
 if __name__ == "__main__":

@@ -185,8 +185,7 @@ class GenerateTunesJamsFile:
             print("Saving to " + outfilename)
             tuneJAMSFile.save(outfilename, strict=False)
 
-            if counter > 2: # just for testing
-                break
+            # if counter > 2: break # just for testing
 
 
 if __name__ == "__main__":
