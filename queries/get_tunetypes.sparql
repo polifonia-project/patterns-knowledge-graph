@@ -1,5 +1,10 @@
-prefix jams:         <http://w3id.org/polifonia/ontology/jams/> 
+# find all the different types of tunes (reel, jig, etc)
 
-# this is currently not useful as tunetype is not populated correctly
+prefix mm:   <http://w3id.org/polifonia/ontology/music-meta/>
 
-SELECT DISTINCT * WHERE {?s jams:tuneType ?o} 
+SELECT DISTINCT ?form 
+WHERE 
+{
+?tune mm:hasFormType ?formURI.
+?formURI mm:tuneTypeName ?form.
+}

@@ -1,23 +1,35 @@
 # Given a tune, find related tunes by common patterns.
 
+# TODO: write a more complex one which orders 
+# the matched tunes by sum of complexity of shared patterns
+
 PREFIX jams: <http://w3id.org/polifonia/ontology/jams/>
 PREFIX mm:   <http://w3id.org/polifonia/ontology/music-meta/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX core: <http://w3id.org/polifonia/ontology/core/>
+PREFIX xyz:  <http://sparql.xyz/facade-x/data/>
 
-SELECT DISTINCT ?givenTunetitle ?matchedTuneTitle ?SharedPattern ?PatternComplexity
-WHERE { 
-VALUES ?givenTune {'Drowsy Maggie'}
-?tune mm:title ?givenTune .
-?tuneFile jams:isJAMSAnnotationOf ?tune .
-?tuneFile jams:includesObservation ?observation .
+SELECT DISTINCT ?givenTuneTitle ?anotherTuneTitle ?anotherTuneID ?SharedPatternContents ?PatternComplexity 
+WHERE {
+
+VALUES ?givenTuneTitle {'Drowsy Maggie'}
+
+# work on this tune's patterns
+?givenTune core:title ?givenTuneTitle.
+?tuneAnn jams:isJAMSAnnotationOf ?givenTune.
+?tuneAnn jams:includesObservation ?observation .
 ?observation jams:ofPattern ?SharedPattern .
-?observation jams:hasPatternComplexity ?PatternComplexity .
-?anotherTuneFile jams:includesObservation ?anotherTuneObser .
-?anotherTuneFile jams:isJAMSAnnotationOf ?anotherTune .
-?anotherTuneObser  jams:ofPattern ?SharedPattern .
-FILTER(?tuneFile != ?anotherTuneFile) .
-?tune mm:title ?givenTunetitle .
-?tune jams:tuneId ?givenTuneId .  
-?anotherTune mm:title ?matchedTuneTitle . 
-?anotherTune jams:tuneId ?matchedTuneId .  
+
+# work on matching another tune's patterns and ensure it's a different tune
+?anotherTuneObser jams:ofPattern ?SharedPattern .
+?anotherTuneAnn jams:isJAMSAnnotationOf ?anotherTune .
+?anotherTuneAnn jams:includesObservation ?anotherTuneObser .
+FILTER(?tuneAnn != ?anotherTuneAnn) .
+
+# gather extra info
+?anotherTune core:title ?anotherTuneTitle.
+?anotherTune core:id ?anotherTuneID .  
+?SharedPattern xyz:pattern_complexity ?PatternComplexity .
+?SharedPattern xyz:pattern_content ?SharedPatternContents .
 }
+

@@ -5,7 +5,7 @@ PREFIX mm:   <http://w3id.org/polifonia/ontology/music-meta/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX prov: <http://www.w3.org/ns/prov#>
 
-SELECT DISTINCT ?anotherTune #?matchedTuneTitle
+SELECT DISTINCT ?anotherTune ?matchedTuneTitle
 WHERE { 
   ?tuneAnn jams:isJAMSAnnotationOf <http://w3id.org/polifonia/resource/tunes/thesession20211212/MusicEntity/3822> .
   ?tuneAnn jams:includesObservation ?observation .

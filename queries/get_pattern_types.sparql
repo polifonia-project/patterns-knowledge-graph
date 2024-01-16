@@ -1,10 +1,10 @@
 # Find all pattern types in the KG and the number of each
 
-PREFIX jams: <http://w3id.org/polifonia/ontology/jams/>
+PREFIX xyz:  <http://sparql.xyz/facade-x/data/>
 
 SELECT ?patternType (COUNT(?patternType) AS ?occurrences) 
 WHERE { 
-    ?pattern jams:hasPatternType ?patternType.
+    ?pattern xyz:pattern_type ?patternType.
 } 
 GROUP BY ?patternType 
 ORDER BY DESC(?occurrences) 
