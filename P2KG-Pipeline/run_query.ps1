@@ -1,4 +1,4 @@
-# myscript.ps1
+
 param(
     [String]$FilePath
 )
