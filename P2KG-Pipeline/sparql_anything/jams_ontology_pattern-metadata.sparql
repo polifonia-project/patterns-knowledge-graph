@@ -254,24 +254,68 @@ WHERE {
 
     # PLACEHOLDER URIs
 
-    # match: <http://w3id.org/polifonia/resource/tunes/thesession20211212/MusicEntity/1029>
+    # use this regex for URI encoding. underscores are more readable than percents. we don't
+    # need to be able to map back to the original, for the purpose of the URI.
+    BIND("[ ,\'\"?#/]+" AS ?regex)
+
+    # a useful component for reuse below:
+    BIND(REPLACE(?title, ?regex, "_") AS ?titleForURI)
+
+
+    # eg: <http://w3id.org/polifonia/resource/tunes/thesession20211212/MusicEntity/1029>
     BIND (IRI(CONCAT(STR(pon-resource:tunes),"/", ?corpus, "/MusicEntity/", STR(?tuneId)))  AS ?composition_uri)
-    
-    BIND (IRI(CONCAT(STR(pon-resource:JAMSFile), "/", SHA1(CONCAT(?tuneId,?title)))) AS ?jams_file_uri)
-    BIND (IRI(CONCAT(STR(pon-resource:JAMSAnnotation), "/", SHA1(CONCAT(?tuneId, ?title)))) AS ?annotation_uri)
-    # BIND (IRI(CONCAT(STR(pon-resource:JAMSObservation), "/", REPLACE (STR(REPLACE(STR(?observation_value), " ", "_")), "/", "_"), "@", STR(?observation_time_float))) AS ?observation_uri)
+
+    # eg: <http://w3id.org/polifonia/resource/JAMSFile/thesession20211212/3822/I_Won_t_Be_A_Nun>
+    BIND (IRI(CONCAT(STR(pon-resource:JAMSFile), "/", 
+                     ?corpus, "/",
+                     ?tuneId, "/", 
+                     ?titleForURI)) 
+          AS ?jams_file_uri)
+
+    # eg: <http://w3id.org/polifonia/resource/JAMSAnnotation/thesession20211212/3822/I_Won_t_Be_A_Nun>
+    BIND (IRI(CONCAT(STR(pon-resource:JAMSAnnotation), "/", 
+                     ?corpus, "/",
+                     ?tuneId, "/", 
+                     ?titleForURI)) 
+          AS ?annotation_uri)
+
+    # eg: <http://w3id.org/polifonia/resource/JAMSObservation/thesession20211212/3822/I_Won_t_Be_A_Nun/1c1ca58e70cc70c9d1d96514ef8f4869a1dbcbb3>
+    BIND (IRI(CONCAT(STR(pon-resource:JAMSObservation), "/", 
+                     ?corpus, "/",
+                     ?tuneId, "/", 
+                     ?titleForURI, "/", 
+                     SHA1(CONCAT(STR(?pattern_content), STR(?pattern_type), STR(?observation_time_float)))))
+          AS ?observation_uri)
+
     BIND (IRI(CONCAT(STR(pon-resource:Agent), "/Composer/", STR(REPLACE(?composer, " ", "_"))  )) AS ?composer_uri)
     BIND (IRI(CONCAT(STR(pon-resource:Agent), "/Performer/", STR(REPLACE(?performer, " ", "_"))  )) AS ?performer_uri)
     
-    BIND (IRI(CONCAT(STR(pon-resource:pattern), "/", SHA1(CONCAT(STR(?pattern_content), ?pattern_type)) )) AS ?pattern_uri)
+    # eg: <http://w3id.org/polifonia/resource/pattern/fonn/feature=_diatonic_scale_degree_level=_accent_n_vals=4/5_3_1_6>
+    BIND (IRI(CONCAT(STR(pon-resource:pattern), "/fonn/", 
+                     REPLACE(?pattern_type, ?regex, "_"), "/", 
+                     REPLACE(?pattern_content, ?regex, "_"))) 
+          AS ?pattern_uri)
 
-    BIND (IRI(CONCAT(STR(pon-resource:transcriber), "/", REPLACE(STR(?transcriberName), ",", "_"))) AS ?transcriberURI)
-    BIND (IRI(CONCAT(STR(pon-resource:tunes), "/", ?corpus, "/FormType/", REPLACE(STR(?tuneTypeName), ",", "_"))) AS ?tuneTypeURI)
-    BIND (IRI(CONCAT(STR(pon-resource:tunefamily), "/", encode_for_uri(?tuneFamilyName))) AS ?tuneFamilyURI)
-    BIND (IRI(CONCAT(STR(pon-resource:key), "/", REPLACE(STR(?keyName), ",", "_"))) AS ?tuneKeyURI)
+    BIND (IRI(CONCAT(STR(pon-resource:transcriber), "/", 
+                     REPLACE(STR(?transcriberName), ?regex, "_"))) 
+          AS ?transcriberURI)
+
+    BIND (IRI(CONCAT(STR(pon-resource:tunes), "/", ?corpus, "/FormType/", 
+                     REPLACE(STR(?tuneTypeName), ?regex, "_"))) 
+          AS ?tuneTypeURI)
+
+    # eg: <http://w3id.org/polifonia/resource/key/Gmajor>
+    BIND (IRI(CONCAT(STR(pon-resource:key), "/", REPLACE(STR("?keyName"), "#", "sharp"))) AS ?tuneKeyURI)
+
+    # eg: <http://w3id.org/polifonia/resource/timesig/4_4>
     BIND (IRI(CONCAT(STR(pon-resource:timesig), "/", REPLACE(STR(?timesig), "/", "_"))) AS ?tuneTimeSignatureURI)
-    BIND (IRI(CONCAT(STR(pon-resource:JAMSObservation), "/", SHA1(CONCAT(?tuneId, ?title, REPLACE (STR(REPLACE(STR(?pattern_content), ", ", "_")), "/", "_"), "@", STR(?observation_time_float))))) AS ?observation_uri)
+
+    # ie: <http://w3id.org/polifonia/resource/CollectionConcept/TuneFamily>
     BIND (IRI(CONCAT(STR(pon-resource:CollectionConcept), "/", "TuneFamily")) AS ?tune_family_concept_URI)
+
+    # eg: <http://w3id.org/polifonia/resource/tunefamily/O_Sullivan_s_March>
+    BIND (IRI(CONCAT(STR(pon-resource:tunefamily), "/", REPLACE(?tuneFamilyName, ?regex, "_"))) AS ?tuneFamilyURI)
+
 } 
 
 }
