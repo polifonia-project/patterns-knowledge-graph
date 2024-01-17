@@ -3,8 +3,8 @@ component-id: patterns-knowledge-graph-datasets
 name: Patterns Knowledge Graph - Output datasets
 description: Knowledge graph containing data about patterns extracted from multiple corpora using the [FONN tools](https://github.com/polifonia-project/folk_ngram_analysis)
 type: Dataset
-release-date: 07/06/2023
-release-number: v0.1.0
+release-date: 17/01/2023
+release-number: v0.2.0
 work-package: 
 - WP3
 generated-by:
@@ -41,4 +41,6 @@ credits: "This project has received funding from the European Union's Horizon 20
 The Patterns Knowledge Graph contains data about patterns in multiple corpora of folk / traditional music. The patterns are those extracted using the [FONN tools](https://github.com/polifonia-project/folk_ngram_analysis).
 
 The Patterns Knowledge Graph is used by the [Pattern Exploration GUI](https://github.com/polifonia-project/pattern-exploration-gui) via the [Pattern Exploration GUI backend](https://github.com/polifonia-project/pattern-explorations-backend).
+
+It lives on top of and takes advantage of the [TUNES Knowledge Graph](https://github.com/polifonia-project/tunes-knowledge-graph).
 
