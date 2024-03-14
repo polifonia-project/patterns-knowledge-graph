@@ -2,7 +2,7 @@
 container-id: patterns-knowledge-graph
 name: Patterns Knowledge Graph
 description: Knowledge graph containing data about patterns extracted using the [FONN tools](https://github.com/polifonia-project/folk_ngram_analysis), and software for creating that knowledge graph
-type: Project
+type: KnowledgeGraph
 release-date: 07/06/2023
 release-number: v0.1.0
 work-package:
