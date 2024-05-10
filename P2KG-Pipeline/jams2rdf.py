@@ -43,7 +43,7 @@ class JAMS2RDF:
                       os.path.join(self.config["directories"]["query_dir"], 'tmp.jams')])
 
         # PySPARQLAnything 
-        self.sa.run(q="sparql_anything/" + self.config["directories"]["sparql_query_file"], type='TTL', o=output)
+        self.sa.run(query="sparql_anything/" + self.config["directories"]["sparql_query_file"], format='TTL', output=output)
 
 
     # this function will iterate over JAMS directory
@@ -63,7 +63,7 @@ class JAMS2RDF:
                         print(counter, filename)
                         counter = counter + 1
                         self.jams2rdf(filename, outfilePath)
-                # if counter > 2: break # just for testing
+                #if counter > 2: break # just for testing
 
             print("Process end: conversion completed (no more files available for conversion)")
 if __name__ == "__main__":

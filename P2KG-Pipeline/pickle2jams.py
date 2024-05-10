@@ -126,7 +126,7 @@ class GenerateTunesJamsFile:
                 tuneJAMSFile.file_metadata.title = title
 
         tuneJAMSFile.file_metadata.title = metadata_row["title"]
-        tuneJAMSFile.file_metadata.release = "n-grams patterns-kg 1.0"
+        tuneJAMSFile.file_metadata.release = "n-grams patterns-kg 1.1"
         tuneJAMSFile.file_metadata.duration = float(tuneRow['duration'])
         tuneJAMSFile.sandbox.type = "score"
         tuneJAMSFile.sandbox.expanded = "true"

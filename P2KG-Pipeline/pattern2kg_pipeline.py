@@ -8,10 +8,10 @@ import glob
 class JAMSPipeline:
     # config = dict2jams_config = jams2rdf_config = []
     # directroy = pickle_file_name = ""
-    def __init__(self):
+    def __init__(self, corpus, n):
         # this line will load the configuration settings from config.yml file
-        self.config = yaml.safe_load(open("config/config.yml"))
-        self.jams2rdf_config = yaml.safe_load(open("config/jams2rdf_config.yml"))
+        self.config = yaml.safe_load(open(f"config/config_{corpus}_{n}gram.yml"))
+        self.jams2rdf_config = yaml.safe_load(open(f"config/jams2rdf_config_{corpus}_{n}gram.yml"))
 
     def start_pipleline(self):
         # Step1 (dictionary_to_JAMS)
@@ -58,13 +58,15 @@ def copy_configs(corpus, n):
     
 if __name__ == "__main__":
     rdf_dir = ""
-    for corpus in "mtc_ann", "thesession_annotated_subset":
+
+    # NB: cannot actually run more than one iteration, without closing pysparql-anything
+    for corpus in ("mtc_ann", "thesession_annotated_subset", "essen"):
         for n in (4, 5, 6):
             # for testing just a few examples with the session only
-            # if corpus != "thesession_annotated_subset": continue
-            # if n != 4: continue
+            if corpus != "essen": continue
+            if n != 5: continue
             copy_configs(corpus, n)
-            JAMS_pipeline = JAMSPipeline()
+            JAMS_pipeline = JAMSPipeline(corpus, n)
             JAMS_pipeline.start_pipleline()
             rdf_dir = JAMS_pipeline.jams2rdf_config['directories']['rdf_directory']
         cat(rdf_dir, corpus)
